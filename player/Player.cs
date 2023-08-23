@@ -22,6 +22,7 @@ public class Player : KinematicBody
 		{
 			RotateY(-eventMouseMotion.Relative.x * MouseSensitivity);
 			_head.RotateX(-eventMouseMotion.Relative.y * MouseSensitivity);
+			_head.RotationDegrees = new Vector3(Mathf.Clamp(_head.RotationDegrees.x, -90, 90), 0, 0);
 		}
 	}
 
@@ -44,7 +45,8 @@ public class Player : KinematicBody
 
 		if (Input.IsActionJustPressed("shoot"))
 		{
-			var node = PlayerRayCast();
+			var pistol = GetNode<Pistol>("Head/GunHolder/Pistol");
+			pistol.FireBullet(_head.GlobalTranslation, -_head.GlobalTransform.basis.z);
 		}
 
 		_velocity.y += Gravity * delta;
@@ -60,27 +62,5 @@ public class Player : KinematicBody
 		_velocity.z = direction.z * MovementSpeed;
 
 		MoveAndSlide(_velocity, new Vector3(0, 1, 0));
-	}
-
-	public Node PlayerRayCast()
-	{
-		Vector3 rayOrigin = _head.GlobalTranslation;
-		Vector3 rayEnd = -_head.GlobalTransform.basis.z * 1000 + rayOrigin;
-
-		PhysicsDirectSpaceState spaceState = GetWorld().DirectSpaceState;
-		Godot.Collections.Dictionary hit = spaceState.IntersectRay(rayOrigin, rayEnd);
-
-		if (hit.Count > 0)
-		{
-			Node node = (Node)hit["collider"];
-			GD.Print(node.Name);
-			if (node is IShootable shootable)
-			{
-				shootable.Shot((Vector3)hit["position"]);
-			}
-			return node;
-		}
-
-		return null;
 	}
 }

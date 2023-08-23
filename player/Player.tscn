@@ -25,7 +25,7 @@ fov = 55.0
 [node name="GunHolder" type="Spatial" parent="Head"]
 
 [node name="Pistol" parent="Head/GunHolder" instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 0.997659, -0.068381, 0, 0.068381, 0.997659, 0.83, -0.704, -1.35 )
+transform = Transform( 1, 0, 0, 0, 0.999515, -0.0311491, 0, 0.0311491, 0.999514, 0.61, -0.693, -1.831 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

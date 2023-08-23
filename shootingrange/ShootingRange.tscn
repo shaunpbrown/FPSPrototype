@@ -95,15 +95,16 @@ depth = 1.0
 material = SubResource( 2 )
 
 [node name="TargetSpawner" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.51, -10 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -10 )
 script = ExtResource( 2 )
 Target = ExtResource( 3 )
 
 [node name="SpawnArea" type="CSGBox" parent="TargetSpawner"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0409799, 0.0588937, -0.0470181 )
 visible = false
 width = 8.0
 height = 5.0
-depth = 0.2
+depth = 0.1
 
 [node name="Walls" type="Spatial" parent="."]
 
