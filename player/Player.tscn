@@ -20,6 +20,7 @@ shape = SubResource( 1 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0 )
 
 [node name="Camera" type="Camera" parent="Head"]
+fov = 55.0
 
 [node name="GunHolder" type="Spatial" parent="Head"]
 
