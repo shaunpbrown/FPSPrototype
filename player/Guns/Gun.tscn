@@ -1,11 +1,11 @@
 [gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://assets/3D Models/Gun_v2.glb" type="PackedScene" id=1]
-[ext_resource path="res://player/Guns/muzzleFlash_test.png" type="Texture" id=2]
-[ext_resource path="res://player/Guns/Pistol.cs" type="Script" id=3]
-[ext_resource path="res://player/Guns/Bullet.cs" type="Script" id=4]
-[ext_resource path="res://player/Guns/BulletSplash.cs" type="Script" id=5]
-[ext_resource path="res://player/Guns/bullethole_test.png" type="Texture" id=6]
+[ext_resource path="res://player/guns/BulletSplash.cs" type="Script" id=2]
+[ext_resource path="res://player/guns/Gun.cs" type="Script" id=3]
+[ext_resource path="res://player/guns/Bullet.cs" type="Script" id=4]
+[ext_resource path="res://player/guns/muzzleFlash_test.png" type="Texture" id=5]
+[ext_resource path="res://player/guns/bullethole_test.png" type="Texture" id=6]
 
 [sub_resource type="QuadMesh" id=1]
 size = Vector2( 8, 8 )
@@ -14,7 +14,7 @@ size = Vector2( 8, 8 )
 flags_transparent = true
 flags_unshaded = true
 params_cull_mode = 1
-albedo_texture = ExtResource( 2 )
+albedo_texture = ExtResource( 5 )
 
 [sub_resource type="SpatialMaterial" id=3]
 flags_unshaded = true
@@ -86,11 +86,6 @@ omni_range = 10.0
 [node name="Gun_v2" parent="." instance=ExtResource( 1 )]
 transform = Transform( -0.15, 0, -1.31134e-08, 0, 0.15, 0, 1.31134e-08, 0, -0.15, 0, 0, 0 )
 
-[node name="Skeleton" parent="Gun_v2/Armature" index="0"]
-bones/0/bound_children = [ NodePath("BoneAttachment3"), NodePath("BoneAttachment4"), NodePath("BoneAttachment5"), NodePath("BoneAttachment6"), NodePath("BoneAttachment7"), NodePath("BoneAttachment8"), NodePath("BoneAttachment9"), NodePath("BoneAttachment10"), NodePath("BoneAttachment11") ]
-bones/1/bound_children = [ NodePath("BoneAttachment") ]
-bones/2/bound_children = [ NodePath("BoneAttachment2") ]
-
 [node name="BoneAttachment" parent="Gun_v2/Armature/Skeleton" index="0"]
 transform = Transform( 1, 0, -5.6426e-07, -5.6426e-07, 0, -1, 0, 1, 0, 2.32604e-14, 0.986388, -1.76825 )
 
@@ -121,7 +116,7 @@ initial_velocity = 5.0
 scale_amount = 0.03
 scale_amount_curve = SubResource( 6 )
 color = Color( 0.94902, 1, 0, 1 )
-script = ExtResource( 5 )
+script = ExtResource( 2 )
 
 [node name="BulletHole" type="CSGMesh" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.534929, -4.44695 )

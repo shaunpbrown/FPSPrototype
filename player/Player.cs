@@ -6,6 +6,7 @@ public class Player : KinematicBody
 	public float MovementSpeed = 5.0f;
 	public float JumpStrength = 5.0f;
 	public float Gravity = -9.8f;
+	public bool IsUsingPrinter;
 
 	private Vector3 _velocity = new Vector3();
 	private Spatial _head;
@@ -18,6 +19,9 @@ public class Player : KinematicBody
 
 	public override void _Input(InputEvent @event)
 	{
+		if (IsUsingPrinter)
+			return;
+
 		if (@event is InputEventMouseMotion eventMouseMotion)
 		{
 			RotateY(-eventMouseMotion.Relative.x * MouseSensitivity);
@@ -26,10 +30,35 @@ public class Player : KinematicBody
 		}
 	}
 
+	public override void _Process(float delta)
+	{
+		if (IsUsingPrinter)
+			return;
+
+		var rayHit = InteractRayCast();
+		if (rayHit.Count > 0)
+		{
+			var node = rayHit["collider"] as Node;
+			if (node is IInteractable interactable)
+			{
+				SetInteractText(interactable.GetInteractText());
+				if (Input.IsActionJustPressed("interact"))
+					interactable.Interact(this);
+			}
+		}
+		else
+		{
+			SetInteractText("");
+		}
+	}
+
 	public override void _PhysicsProcess(float delta)
 	{
 		if (Input.IsActionPressed("app_exit"))
 			GetTree().Quit();
+
+		if (IsUsingPrinter)
+			return;
 
 		if (Input.IsActionJustPressed("mouse_capture"))
 			Input.MouseMode = Input.MouseMode == Input.MouseModeEnum.Visible ? Input.MouseModeEnum.Captured : Input.MouseModeEnum.Visible; Vector3 direction = new Vector3();
@@ -45,8 +74,8 @@ public class Player : KinematicBody
 
 		if (Input.IsActionJustPressed("shoot"))
 		{
-			var pistol = GetNode<Pistol>("Head/GunHolder/Pistol");
-			pistol.PullTrigger();
+			var gun = GetNode<Gun>("Head/GunHolder/Gun");
+			gun.PullTrigger();
 		}
 
 		_velocity.y += Gravity * delta;
@@ -62,5 +91,26 @@ public class Player : KinematicBody
 		_velocity.z = direction.z * MovementSpeed;
 
 		MoveAndSlide(_velocity, new Vector3(0, 1, 0));
+	}
+
+	public Godot.Collections.Dictionary InteractRayCast()
+	{
+		var origin = _head.GlobalTransform.origin;
+		var direction = -_head.GlobalTransform.basis.z.Normalized();
+
+		Vector3 rayOrigin = origin;
+		Vector3 rayEnd = direction * 6 + rayOrigin;
+
+		PhysicsDirectSpaceState spaceState = GetWorld().DirectSpaceState;
+		uint collisionMask = 2; // 0100
+		Godot.Collections.Dictionary hit = spaceState.IntersectRay(rayOrigin, rayEnd, null, collisionMask);
+
+		return hit;
+	}
+
+	public void SetInteractText(string text)
+	{
+		var interactText = GetNode<Label>("CanvasLayer/Panel/Label");
+		interactText.Text = text;
 	}
 }

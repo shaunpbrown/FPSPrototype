@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://player/Player.cs" type="Script" id=1]
-[ext_resource path="res://player/Guns/Pistol.tscn" type="PackedScene" id=2]
+[ext_resource path="res://player/guns/Gun.tscn" type="PackedScene" id=2]
 [ext_resource path="res://player/crosshair.png" type="Texture" id=3]
 
 [sub_resource type="CapsuleShape" id=1]
@@ -23,9 +23,10 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0 )
 fov = 55.0
 
 [node name="GunHolder" type="Spatial" parent="Head"]
+transform = Transform( 1, 0, 0, 0, 0.999515, -0.0311491, 0, 0.0311491, 0.999515, 0.61, -0.693, -1.831 )
 
-[node name="Pistol" parent="Head/GunHolder" instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 0.999515, -0.0311491, 0, 0.0311491, 0.999514, 0.61, -0.693, -1.831 )
+[node name="Gun" parent="Head/GunHolder" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 0.999999, 0, 0, 0 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -45,3 +46,14 @@ margin_right = 7.0
 margin_bottom = 7.0
 texture = ExtResource( 3 )
 stretch_mode = 7
+
+[node name="Label" type="Label" parent="CanvasLayer/Panel"]
+anchor_left = 0.5
+anchor_top = 0.8
+anchor_right = 0.5
+anchor_bottom = 0.8
+margin_left = -445.5
+margin_top = -47.0
+margin_right = 445.5
+align = 1
+valign = 1

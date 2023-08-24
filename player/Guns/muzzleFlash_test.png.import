@@ -2,8 +2,8 @@
 
 importer="texture"
 type="StreamTexture"
-path.s3tc="res://.import/muzzleFlash_test.png-d2c8962acd68b33db74bbad111f74c4e.s3tc.stex"
-path.etc="res://.import/muzzleFlash_test.png-d2c8962acd68b33db74bbad111f74c4e.etc.stex"
+path.s3tc="res://.import/muzzleFlash_test.png-9b882803ca519b472c87588db055d134.s3tc.stex"
+path.etc="res://.import/muzzleFlash_test.png-9b882803ca519b472c87588db055d134.etc.stex"
 metadata={
 "imported_formats": [ "s3tc", "etc" ],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://player/Guns/muzzleFlash_test.png"
-dest_files=[ "res://.import/muzzleFlash_test.png-d2c8962acd68b33db74bbad111f74c4e.s3tc.stex", "res://.import/muzzleFlash_test.png-d2c8962acd68b33db74bbad111f74c4e.etc.stex" ]
+source_file="res://player/guns/muzzleFlash_test.png"
+dest_files=[ "res://.import/muzzleFlash_test.png-9b882803ca519b472c87588db055d134.s3tc.stex", "res://.import/muzzleFlash_test.png-9b882803ca519b472c87588db055d134.etc.stex" ]
 
 [params]
 

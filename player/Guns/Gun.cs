@@ -1,6 +1,6 @@
 using Godot;
 
-public class Pistol : Spatial
+public class Gun : Spatial
 {
     [Export]
     public NodePath MuzzleFlashPath;
@@ -113,7 +113,8 @@ public class Pistol : Spatial
         Vector3 rayEnd = direction * 1000 + rayOrigin;
 
         PhysicsDirectSpaceState spaceState = GetWorld().DirectSpaceState;
-        Godot.Collections.Dictionary hit = spaceState.IntersectRay(rayOrigin, rayEnd);
+        uint collisionMask = 1; // 1000
+        Godot.Collections.Dictionary hit = spaceState.IntersectRay(rayOrigin, rayEnd, null, collisionMask);
 
         return hit;
     }

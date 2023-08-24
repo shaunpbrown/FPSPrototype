@@ -2,8 +2,8 @@
 
 importer="texture"
 type="StreamTexture"
-path.s3tc="res://.import/bullethole_test.png-24d905955d2463f525f1cc501e2b2c6b.s3tc.stex"
-path.etc="res://.import/bullethole_test.png-24d905955d2463f525f1cc501e2b2c6b.etc.stex"
+path.s3tc="res://.import/bullethole_test.png-644b3fa89359ccce9141a2e8a55df8a2.s3tc.stex"
+path.etc="res://.import/bullethole_test.png-644b3fa89359ccce9141a2e8a55df8a2.etc.stex"
 metadata={
 "imported_formats": [ "s3tc", "etc" ],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://player/Guns/bullethole_test.png"
-dest_files=[ "res://.import/bullethole_test.png-24d905955d2463f525f1cc501e2b2c6b.s3tc.stex", "res://.import/bullethole_test.png-24d905955d2463f525f1cc501e2b2c6b.etc.stex" ]
+source_file="res://player/guns/bullethole_test.png"
+dest_files=[ "res://.import/bullethole_test.png-644b3fa89359ccce9141a2e8a55df8a2.s3tc.stex", "res://.import/bullethole_test.png-644b3fa89359ccce9141a2e8a55df8a2.etc.stex" ]
 
 [params]
 
