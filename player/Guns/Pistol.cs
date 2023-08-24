@@ -17,6 +17,8 @@ public class Pistol : Spatial
     private Spatial _bulletHole;
     private CPUParticles _bulletSplash;
     private float _fireCooldown;
+    private Player _player;
+    private AnimationPlayer _animationPlayer;
 
     public override void _Ready()
     {
@@ -30,6 +32,9 @@ public class Pistol : Spatial
 
         _bulletHole = GetNode<Spatial>(BulletHolePath);
         _bulletHole.Hide();
+
+        _player = GetTree().Root.FindNode("Player", true, false) as Player;
+        _animationPlayer = GetNode<AnimationPlayer>("AnimationPlayerEvents");
     }
 
     public override void _Process(float delta)
@@ -50,10 +55,19 @@ public class Pistol : Spatial
         return _fireCooldown <= 0;
     }
 
-    public void FireBullet(Vector3 origin, Vector3 direction)
+    public void PullTrigger()
     {
-        if (!CanFireBullet())
-            return;
+        if (CanFireBullet())
+        {
+            _animationPlayer.Play("Fire");
+        }
+    }
+
+    public void FireBullet()
+    {
+        var playerHead = _player.GetNode<Spatial>("Head");
+        var origin = playerHead.GlobalTransform.origin;
+        var direction = -playerHead.GlobalTransform.basis.z.Normalized();
 
         _fireCooldown = 0.3f;
         _muzzleFlash.Show();

@@ -46,7 +46,7 @@ public class Player : KinematicBody
 		if (Input.IsActionJustPressed("shoot"))
 		{
 			var pistol = GetNode<Pistol>("Head/GunHolder/Pistol");
-			pistol.FireBullet(_head.GlobalTranslation, -_head.GlobalTransform.basis.z);
+			pistol.PullTrigger();
 		}
 
 		_velocity.y += Gravity * delta;
