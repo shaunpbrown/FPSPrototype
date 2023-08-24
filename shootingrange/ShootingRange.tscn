@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://shootingrange/prototypeTexture.jpg" type="Texture" id=1]
 [ext_resource path="res://shootingrange/TargetSpawner.cs" type="Script" id=2]
 [ext_resource path="res://shootingrange/Target.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/3D Models/wall.glb" type="PackedScene" id=4]
 [ext_resource path="res://assets/3D Models/ground divider.glb" type="PackedScene" id=5]
+[ext_resource path="res://assets/3D Models/modular_v2.tscn" type="PackedScene" id=6]
 
 [sub_resource type="ProceduralSky" id=1]
 
@@ -31,10 +32,11 @@ albedo_texture = ExtResource( 1 )
 environment = SubResource( 3 )
 
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
-transform = Transform( 0.866025, -0.358279, 0.348764, 0.25, 0.914355, 0.318519, -0.433013, -0.188654, 0.881425, 0, 5.45741, 0 )
+transform = Transform( 0.976144, 0.0718572, 0.204889, -0.214032, 0.159762, 0.963674, 0.0365135, -0.984537, 0.17133, 0, 25.4574, 0 )
 light_energy = 0.5
 shadow_enabled = true
 shadow_color = Color( 0.454902, 0.454902, 0.454902, 1 )
+shadow_reverse_cull_face = true
 
 [node name="Floor" type="CSGBox" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0 )
@@ -95,17 +97,23 @@ depth = 1.0
 material = SubResource( 2 )
 
 [node name="TargetSpawner" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.51, -10 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -10 )
 script = ExtResource( 2 )
 Target = ExtResource( 3 )
 
 [node name="SpawnArea" type="CSGBox" parent="TargetSpawner"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0409799, 0.0588937, -0.0470181 )
 visible = false
 width = 8.0
 height = 5.0
-depth = 0.2
+depth = 0.1
+
+[node name="modular_v2" parent="." instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -37 )
 
 [node name="Walls" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -23 )
+visible = false
 
 [node name="wall" parent="Walls" instance=ExtResource( 4 )]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 14, 0, -7 )

@@ -18,8 +18,8 @@ public class TargetSpawner : Spatial
     {
         var point = new Vector3
         {
-            x = (float)GD.RandRange(-_spawnArea.Width, _spawnArea.Width),
-            y = (float)GD.RandRange(-_spawnArea.Height, _spawnArea.Height),
+            x = (float)GD.RandRange(-_spawnArea.Width, _spawnArea.Width) / 2f,
+            y = (float)GD.RandRange(-_spawnArea.Height, _spawnArea.Height) / 2f,
             z = 0
         };
 
