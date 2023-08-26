@@ -19,7 +19,7 @@ public class Player : KinematicBody
 
 	public override void _Input(InputEvent @event)
 	{
-		if (IsUsingPrinter)
+		if (IsUsingPrinter || Input.MouseMode != Input.MouseModeEnum.Captured)
 			return;
 
 		if (@event is InputEventMouseMotion eventMouseMotion)
@@ -110,7 +110,7 @@ public class Player : KinematicBody
 
 	public void SetInteractText(string text)
 	{
-		var interactText = GetNode<Label>("CanvasLayer/Panel/Label");
+		var interactText = GetNode<Label>("CanvasLayer/Panel/InteractText");
 		interactText.Text = text;
 	}
 }

@@ -11,6 +11,8 @@ public class Gun : Spatial
     [Export]
     public NodePath BulletHolePath;
 
+    public GunStats GunStats = new GunStats();
+
     private float _muzzleTimer;
     private Spatial _muzzleFlash;
     private Spatial _bullet;
@@ -65,44 +67,70 @@ public class Gun : Spatial
 
     public void FireBullet()
     {
-        var playerHead = _player.GetNode<Spatial>("Head");
-        var origin = playerHead.GlobalTransform.origin;
-        var direction = -playerHead.GlobalTransform.basis.z.Normalized();
-
-        _fireCooldown = 0.3f;
-        _muzzleFlash.Show();
-        _muzzleTimer = 0.1f;
-
-        var clonedBullet = _bullet.Duplicate() as Bullet;
-        var mainScene = GetTree().Root.FindNode("Main", true, false);
-        mainScene.AddChild(clonedBullet);
-        clonedBullet.GlobalTranslation = origin;
-        clonedBullet.LookAt(origin + direction, Vector3.Up);
-        clonedBullet.Translate(Vector3.Right * 0.5f + Vector3.Down * 0.2f);
-        clonedBullet.Show();
-
-        var hit = BulletRayCast(origin, direction);
-        if (hit.Count > 0)
+        for (int i = 0; i < GunStats.Projectiles; i++)
         {
-            var hitPoint = (Vector3)hit["position"];
+            var playerHead = _player.GetNode<Spatial>("Head");
+            var origin = playerHead.GlobalTransform.origin;
+            var direction = -playerHead.GlobalTransform.basis.z.Normalized();
 
-            var clonedBulletSplash = _bulletSplash.Duplicate() as CPUParticles;
-            mainScene.AddChild(clonedBulletSplash);
-            clonedBulletSplash.GlobalTranslation = hitPoint;
-            clonedBulletSplash.Emitting = true;
+            var maxSpreadAngle = GunStats.Spread / 20;
+            float yaw = (float)GD.RandRange(-maxSpreadAngle, maxSpreadAngle);
+            direction = direction.Rotated(Vector3.Up, Mathf.Deg2Rad(yaw));
+            float pitch = (float)GD.RandRange(-maxSpreadAngle, maxSpreadAngle);
+            direction = direction.Rotated(Vector3.Right, Mathf.Deg2Rad(pitch));
 
-            var hitEntity = hit["collider"] as Spatial;
-            var hitNormal = (Vector3)hit["normal"];
+            _fireCooldown = GunStats.GetGunFireRateInSeconds();
+            _muzzleFlash.Show();
+            _muzzleTimer = 0.1f;
 
-            var clonedBulletHole = _bulletHole.Duplicate() as Spatial;
-            hitEntity.AddChild(clonedBulletHole);
-            clonedBulletHole.GlobalTransform = new Transform(new Quat(), hitPoint + hitNormal * .01f).LookingAt(hitPoint + hitNormal, (Vector3.Up + Vector3.Forward).Normalized());
-            clonedBulletHole.Show();
+            var mainScene = GetTree().Root.FindNode("Main", true, false);
 
-            if (hitEntity is IShootable shootable)
+            var clonedBullet = default(Bullet);
+            if (i < 5) // lags with too many bullets
             {
-                clonedBullet.MaxDistance = (hitPoint - origin).Length();
-                shootable.Shot(hitPoint);
+                clonedBullet = _bullet.Duplicate() as Bullet;
+                mainScene.AddChild(clonedBullet);
+                clonedBullet.GlobalTranslation = origin;
+                clonedBullet.LookAt(origin + direction, Vector3.Up);
+                clonedBullet.Translate(Vector3.Right * 0.5f + Vector3.Down * 0.2f);
+                clonedBullet.Show();
+            }
+
+            var hit = BulletRayCast(origin, direction);
+            if (hit.Count > 0)
+            {
+                var hitPoint = (Vector3)hit["position"];
+
+                var clonedBulletSplash = _bulletSplash.Duplicate() as CPUParticles;
+                mainScene.AddChild(clonedBulletSplash);
+                clonedBulletSplash.GlobalTranslation = hitPoint;
+                clonedBulletSplash.Emitting = true;
+
+                var hitEntity = hit["collider"] as Spatial;
+                var hitNormal = (Vector3)hit["normal"];
+
+                var clonedBulletHole = _bulletHole.Duplicate() as Spatial;
+                hitEntity.AddChild(clonedBulletHole);
+                clonedBulletHole.GlobalTransform = new Transform(new Quat(), hitPoint + hitNormal * .01f).LookingAt(hitPoint + hitNormal, (Vector3.Up + Vector3.Forward).Normalized());
+                clonedBulletHole.Show();
+
+                if (hitEntity is IShootable shootable)
+                {
+                    if (clonedBullet != null)
+                        clonedBullet.MaxDistance = (hitPoint - origin).Length();
+                    shootable.Shot(hitPoint);
+                }
+            }
+        }
+
+        var player = GetTree().Root.FindNode("Player", true, false) as Player;
+        if (player != null)
+        {
+            var gun = player.GetNode<Gun>("Head/GunHolder/Gun");
+            if (gun != null)
+            {
+                var head = player.GetNode<Spatial>("Head");
+                head.RotateX(Mathf.Deg2Rad(gun.GunStats.GetGunRecoilInDegrees()));
             }
         }
     }
