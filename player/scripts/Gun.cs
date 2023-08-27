@@ -12,6 +12,7 @@ public class Gun : Spatial
     public NodePath BulletHolePath;
 
     public GunStats GunStats = new GunStats();
+    public GunMods GunMods;
 
     private float _muzzleTimer;
     private Spatial _muzzleFlash;
@@ -37,6 +38,8 @@ public class Gun : Spatial
 
         _player = GetTree().Root.FindNode("Player", true, false) as Player;
         _animationPlayer = GetNode<AnimationPlayer>("AnimationPlayerEvents");
+
+        GunMods = new GunMods(this);
     }
 
     public override void _Process(float delta)

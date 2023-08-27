@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Godot;
 
 public class Printer : Spatial, IInteractable
@@ -13,7 +14,9 @@ public class Printer : Spatial, IInteractable
     private bool _isGunInHolder;
     private bool _isPlayerExiting;
     private Vector2 _lastMousePos = new Vector2();
-
+    private CanvasLayer _printerUI;
+    private List<UpgradeCard> _upgradeCards = new List<UpgradeCard>();
+    private Spatial _currentHoloMod;
 
     public override void _Ready()
     {
@@ -25,6 +28,20 @@ public class Printer : Spatial, IInteractable
         _isOpen = false;
         _isClosed = true;
         _topBox.Translation = new Vector3(0, 1.5f, 0);
+
+        _printerUI = GetNode<CanvasLayer>("PrinterUI");
+        _printerUI.Visible = false;
+        _upgradeCards.Add(GetNode<UpgradeCard>("PrinterUI/Panel/UpgradeCard1"));
+        _upgradeCards.Add(GetNode<UpgradeCard>("PrinterUI/Panel/UpgradeCard2"));
+        _upgradeCards.Add(GetNode<UpgradeCard>("PrinterUI/Panel/UpgradeCard3"));
+        foreach (var card in _upgradeCards)
+        {
+            card.SelectedAction = UpgradeCardSelected;
+        }
+
+        //temp
+        _upgradeCards[0].ModName = "Accuracy";
+        _upgradeCards[1].ModName = "Rocket Launcher";
     }
 
     public override void _Process(float delta)
@@ -71,6 +88,7 @@ public class Printer : Spatial, IInteractable
                     ReparentNode(camera, _player.GetNode<Spatial>("Head"));
 
                     Input.MouseMode = Input.MouseModeEnum.Captured;
+                    _printerUI.Visible = false;
                 }
             }
         }
@@ -95,7 +113,7 @@ public class Printer : Spatial, IInteractable
 
         _isBeingUsed = true;
         _player.IsUsingPrinter = true;
-        _player.SetInteractText("Press E to exit printer");
+        _player.SetInteractText("");
     }
 
     public void PutGunInHolder(float delta)
@@ -109,6 +127,7 @@ public class Printer : Spatial, IInteractable
             _isGunInHolder = true;
             Input.MouseMode = Input.MouseModeEnum.Visible;
             camera.Translation = Vector3.Zero;
+            _printerUI.Visible = true;
         }
 
         MoveTowardsOrigin(camera, delta * 3f);
@@ -191,5 +210,36 @@ public class Printer : Spatial, IInteractable
                 }
             }
         }
+    }
+
+    public void UpgradeCardSelected(UpgradeCard selectedCard)
+    {
+        var gun = _gunHolder.GetNode<Gun>("Gun");
+        if (gun == null)
+            return;
+
+        if (_currentHoloMod != null)
+        {
+            _currentHoloMod.Visible = false;
+            _currentHoloMod = null;
+        }
+
+        foreach (var card in _upgradeCards)
+        {
+            if (card != selectedCard)
+                card.Pressed = false;
+        }
+
+        if (string.IsNullOrEmpty(selectedCard.ModName))
+            return;
+
+        var holoMod = gun.GunMods.GetNode(selectedCard.ModName + "HOLO", gun) as Spatial;
+        holoMod.Visible = true;
+        _currentHoloMod = holoMod;
+    }
+
+    public void UpgradeCardConfirmed(int i)
+    {
+
     }
 }

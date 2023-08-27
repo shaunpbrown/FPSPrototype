@@ -6,7 +6,7 @@
 [ext_resource path="res://assets/3D Models/wall.glb" type="PackedScene" id=4]
 [ext_resource path="res://assets/3D Models/ground divider.glb" type="PackedScene" id=5]
 [ext_resource path="res://assets/3D Models/modular_v2.tscn" type="PackedScene" id=6]
-[ext_resource path="res://player/printer/Printer.tscn" type="PackedScene" id=7]
+[ext_resource path="res://printer/Printer.tscn" type="PackedScene" id=7]
 
 [sub_resource type="ProceduralSky" id=1]
 
@@ -227,7 +227,7 @@ transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -12, 0, -
 [node name="Printer" parent="." instance=ExtResource( 7 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 0, -3.5 )
 
-[node name="CSGBox" type="CSGBox" parent="."]
+[node name="TestBox" type="CSGBox" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, -20 )
 use_collision = true
 width = 10.0

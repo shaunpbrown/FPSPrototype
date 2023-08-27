@@ -1,9 +1,9 @@
 [gd_scene load_steps=16 format=2]
 
-[ext_resource path="res://assets/3D Models/Gun_v2.glb" type="PackedScene" id=1]
-[ext_resource path="res://player/guns/BulletSplash.cs" type="Script" id=2]
-[ext_resource path="res://player/guns/Gun.cs" type="Script" id=3]
-[ext_resource path="res://player/guns/Bullet.cs" type="Script" id=4]
+[ext_resource path="res://assets/3D Models/Gun_v3.glb" type="PackedScene" id=1]
+[ext_resource path="res://player/scripts/BulletSplash.cs" type="Script" id=2]
+[ext_resource path="res://player/scripts/Gun.cs" type="Script" id=3]
+[ext_resource path="res://player/scripts/Bullet.cs" type="Script" id=4]
 [ext_resource path="res://player/guns/muzzleFlash_test.png" type="Texture" id=5]
 [ext_resource path="res://player/guns/bullethole_test.png" type="Texture" id=6]
 
@@ -42,29 +42,29 @@ albedo_texture = ExtResource( 6 )
 [sub_resource type="Animation" id=11]
 resource_name = "Fire"
 length = 0.417
-tracks/0/type = "animation"
-tracks/0/path = NodePath("AnimationPlayer")
+tracks/0/type = "method"
+tracks/0/path = NodePath("..")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"clips": PoolStringArray( "Fire 01" ),
-"times": PoolRealArray( 0 )
-}
-tracks/1/type = "method"
-tracks/1/path = NodePath("..")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
 "times": PoolRealArray( 0.2 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [  ],
 "method": "FireBullet"
 } ]
+}
+tracks/1/type = "animation"
+tracks/1/path = NodePath("AnimationPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"clips": PoolStringArray( "Fire 01" ),
+"times": PoolRealArray( 0 )
 }
 
 [node name="Pistol" type="Spatial"]
@@ -74,6 +74,20 @@ BulletPath = NodePath("Bullet")
 BulletSplashPath = NodePath("BulletSplash")
 BulletHolePath = NodePath("BulletHole")
 
+[node name="Gun_v3" parent="." instance=ExtResource( 1 )]
+transform = Transform( -0.15, 0, -1.31134e-08, 0, 0.15, 0, 1.31134e-08, 0, -0.15, 0, 0, 0 )
+
+[node name="Skeleton" parent="Gun_v3/Armature" index="0"]
+bones/0/bound_children = [ NodePath("BoneAttachment3"), NodePath("BoneAttachment4"), NodePath("BoneAttachment5"), NodePath("BoneAttachment6"), NodePath("BoneAttachment7"), NodePath("BoneAttachment8"), NodePath("BoneAttachment9"), NodePath("BoneAttachment10"), NodePath("BoneAttachment11") ]
+bones/1/bound_children = [ NodePath("BoneAttachment") ]
+bones/2/bound_children = [ NodePath("BoneAttachment2") ]
+
+[node name="BoneAttachment" parent="Gun_v3/Armature/Skeleton" index="0"]
+transform = Transform( 1, 0, -5.6426e-07, -5.6426e-07, 0, -1, 0, 1, 0, 4.94635e-17, 0.986388, -1.76825 )
+
+[node name="BoneAttachment2" parent="Gun_v3/Armature/Skeleton" index="1"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.107088, 0.723046, 0.114658 )
+
 [node name="MuzzleFlash" type="CSGMesh" parent="."]
 transform = Transform( -0.15, 0, -1.31133e-08, 0, 0.15, 0, 1.31133e-08, 0, -0.15, -0.0471936, 0.37774, -0.614985 )
 mesh = SubResource( 1 )
@@ -82,15 +96,6 @@ material = SubResource( 2 )
 [node name="Light" type="OmniLight" parent="MuzzleFlash"]
 transform = Transform( 6.66667, 0, 5.68434e-14, 0, 6.66667, 0, -5.68434e-14, 0, 6.66667, 1.99486, 1.40485, -1.51591 )
 omni_range = 10.0
-
-[node name="Gun_v2" parent="." instance=ExtResource( 1 )]
-transform = Transform( -0.15, 0, -1.31134e-08, 0, 0.15, 0, 1.31134e-08, 0, -0.15, 0, 0, 0 )
-
-[node name="BoneAttachment" parent="Gun_v2/Armature/Skeleton" index="0"]
-transform = Transform( 1, 0, -5.6426e-07, -5.6426e-07, 0, -1, 0, 1, 0, 2.32604e-14, 0.986388, -1.76825 )
-
-[node name="BoneAttachment2" parent="Gun_v2/Armature/Skeleton" index="1"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.107088, 0.723046, -0.366393 )
 
 [node name="Bullet" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00249481, 0.37628, -0.64534 )
@@ -124,7 +129,7 @@ mesh = SubResource( 10 )
 material = SubResource( 9 )
 
 [node name="AnimationPlayerEvents" type="AnimationPlayer" parent="."]
-root_node = NodePath("../Gun_v2")
+root_node = NodePath("../Gun_v3")
 anims/Fire = SubResource( 11 )
 
-[editable path="Gun_v2"]
+[editable path="Gun_v3"]
