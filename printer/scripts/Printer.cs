@@ -43,7 +43,7 @@ public class Printer : Spatial, IInteractable
         confirmButton.Connect("pressed", this, nameof(UpgradeCardConfirmed));
 
         //temp
-        _upgradeCards[0].ModName = "Accuracy";
+        _upgradeCards[0].ModName = "Red Dot";
         _upgradeCards[1].ModName = "Rocket Launcher";
     }
 

@@ -5,7 +5,7 @@ public class GunMods
 {
     public List<string> ModNames = new List<string>{
         "Rocket Launcher",
-        "Accuracy",
+        "Red Dot",
     };
 
     private Gun _gun;

@@ -80,10 +80,10 @@ bones/1/bound_children = [ NodePath("BoneAttachment") ]
 bones/2/bound_children = [ NodePath("BoneAttachment2") ]
 
 [node name="BoneAttachment" parent="Gun_v3/Armature/Skeleton" index="0"]
-transform = Transform( 1, 0, -5.6426e-07, -5.6426e-07, 0, -1, 0, 1, 0, 2.32604e-14, 0.986388, -1.76825 )
+transform = Transform( 1, 0, -5.6426e-07, -5.6426e-07, 0, -1, 0, 1, 0, 4.94635e-17, 0.986388, -1.76825 )
 
 [node name="BoneAttachment2" parent="Gun_v3/Armature/Skeleton" index="1"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.107088, 0.723046, -0.370151 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.107088, 0.723046, 0.114658 )
 
 [node name="MuzzleFlash" type="CSGMesh" parent="Gun_v3/Armature/Skeleton/BoneAttachment9" index="1"]
 transform = Transform( 0.355056, 0, -2.34479e-13, 0, 0.355056, 0, 2.34479e-13, 0, 0.355056, 0.111709, 0.819748, 1.4557 )
