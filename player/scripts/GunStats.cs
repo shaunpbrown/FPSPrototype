@@ -3,7 +3,7 @@ using Godot;
 public class GunStats
 {
     public int Spread;
-    public int FireRate = 90;
+    public int FireRate = 80;
     public int Projectiles = 1;
     public int Recoil;
 

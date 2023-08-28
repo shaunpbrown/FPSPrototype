@@ -13,7 +13,7 @@ public class Gun : Spatial
 
     public override void _Ready()
     {
-        _muzzleFlash = GetNode<Spatial>("MuzzleFlash");
+        _muzzleFlash = GetNode<Spatial>("Gun_v3/Armature/Skeleton/BoneAttachment9/MuzzleFlash");
         _muzzleFlash.Hide();
 
         var bullet = GetNode<Spatial>("Bullet") as Bullet;
@@ -55,6 +55,7 @@ public class Gun : Spatial
     {
         if (CanFireBullet())
         {
+            _animationPlayer.Stop();
             _animationPlayer.Play("Fire");
         }
     }

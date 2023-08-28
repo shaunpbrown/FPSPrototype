@@ -42,7 +42,7 @@ albedo_texture = ExtResource( 6 )
 
 [sub_resource type="Animation" id=11]
 resource_name = "Fire"
-length = 0.417
+length = 0.5
 tracks/0/type = "method"
 tracks/0/path = NodePath("..")
 tracks/0/interp = 1
@@ -50,7 +50,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0.2 ),
+"times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [  ],
@@ -64,7 +64,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"clips": PoolStringArray( "Fire 01" ),
+"clips": PoolStringArray( "Fire2" ),
 "times": PoolRealArray( 0 )
 }
 
@@ -75,22 +75,22 @@ script = ExtResource( 3 )
 transform = Transform( -0.15, 0, -1.31134e-08, 0, 0.15, 0, 1.31134e-08, 0, -0.15, 0, 0, 0 )
 
 [node name="Skeleton" parent="Gun_v3/Armature" index="0"]
-bones/0/bound_children = [ NodePath("BoneAttachment3"), NodePath("BoneAttachment4"), NodePath("BoneAttachment5"), NodePath("BoneAttachment6"), NodePath("BoneAttachment7"), NodePath("BoneAttachment8"), NodePath("BoneAttachment9"), NodePath("BoneAttachment10"), NodePath("BoneAttachment11") ]
+bones/0/bound_children = [ NodePath("BoneAttachment3"), NodePath("BoneAttachment4"), NodePath("BoneAttachment5"), NodePath("BoneAttachment6"), NodePath("BoneAttachment7"), NodePath("BoneAttachment8"), NodePath("BoneAttachment9"), NodePath("BoneAttachment10"), NodePath("BoneAttachment11"), NodePath("BoneAttachment12"), NodePath("BoneAttachment13") ]
 bones/1/bound_children = [ NodePath("BoneAttachment") ]
 bones/2/bound_children = [ NodePath("BoneAttachment2") ]
 
 [node name="BoneAttachment" parent="Gun_v3/Armature/Skeleton" index="0"]
-transform = Transform( 1, 0, -5.6426e-07, -5.6426e-07, 0, -1, 0, 1, 0, 4.94635e-17, 0.986388, -1.76825 )
+transform = Transform( 1, 0, -5.6426e-07, -5.6426e-07, 0, -1, 0, 1, 0, 2.32604e-14, 0.986388, -1.76825 )
 
 [node name="BoneAttachment2" parent="Gun_v3/Armature/Skeleton" index="1"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.107088, 0.723046, 0.114658 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.107088, 0.723046, -0.370151 )
 
-[node name="MuzzleFlash" type="CSGMesh" parent="."]
-transform = Transform( -0.15, 0, -1.31133e-08, 0, 0.15, 0, 1.31133e-08, 0, -0.15, -0.0471936, 0.37774, -0.614985 )
+[node name="MuzzleFlash" type="CSGMesh" parent="Gun_v3/Armature/Skeleton/BoneAttachment9" index="1"]
+transform = Transform( 0.355056, 0, -2.34479e-13, 0, 0.355056, 0, 2.34479e-13, 0, 0.355056, 0.111709, 0.819748, 1.4557 )
 mesh = SubResource( 1 )
 material = SubResource( 2 )
 
-[node name="Light" type="OmniLight" parent="MuzzleFlash"]
+[node name="Light" type="OmniLight" parent="Gun_v3/Armature/Skeleton/BoneAttachment9/MuzzleFlash"]
 transform = Transform( 6.66667, 0, 5.68434e-14, 0, 6.66667, 0, -5.68434e-14, 0, 6.66667, 1.99486, 1.40485, -1.51591 )
 omni_range = 10.0
 
