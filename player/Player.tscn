@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://player/scripts/Player.cs" type="Script" id=1]
 [ext_resource path="res://player/guns/Gun.tscn" type="PackedScene" id=2]
@@ -12,8 +12,6 @@ radius = 0.5
 
 [sub_resource type="StyleBoxFlat" id=3]
 bg_color = Color( 0.6, 0.6, 0.6, 0.392157 )
-
-[sub_resource type="ImageTexture" id=4]
 
 [node name="Player" type="KinematicBody"]
 script = ExtResource( 1 )
@@ -65,7 +63,6 @@ align = 1
 valign = 1
 
 [node name="DebugPanel" type="Panel" parent="CanvasLayer/Panel"]
-visible = false
 margin_left = 25.0
 margin_top = 29.0
 margin_right = 228.0
@@ -185,10 +182,3 @@ margin_top = -21.0
 margin_right = 58.5
 margin_bottom = -7.0
 text = "Press Alt to adjust"
-
-[node name="TextureButton" type="TextureButton" parent="CanvasLayer"]
-margin_left = 520.0
-margin_top = 208.0
-margin_right = 560.0
-margin_bottom = 248.0
-texture_normal = SubResource( 4 )
