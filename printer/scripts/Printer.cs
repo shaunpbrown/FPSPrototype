@@ -94,10 +94,10 @@ public class Printer : Spatial, IInteractable
     public void Interact(Player player)
     {
         var gun = player.GetNode<Gun>("Head/GunHolder/Gun");
-        ReparentNode(gun, _gunHolder);
+        NodeHelper.ReparentNode(gun, _gunHolder);
 
         var camera = player.GetNode<Camera>("Head/Camera");
-        ReparentNode(camera, _cameraHolder);
+        NodeHelper.ReparentNode(camera, _cameraHolder);
 
         _isBeingUsed = true;
         _player.IsUsingPrinter = true;
@@ -160,14 +160,6 @@ public class Printer : Spatial, IInteractable
         target.GlobalTransform = new Transform(newRotation, newPosition);
     }
 
-    public void ReparentNode(Spatial node, Spatial parent)
-    {
-        var globalTransform = node.GlobalTransform;
-        node.GetParent().RemoveChild(node);
-        parent.AddChild(node);
-        node.GlobalTransform = globalTransform;
-    }
-
     public void OpenAndCloseUpdate(float delta)
     {
         var playerInteractRayHit = _player.InteractRayCast();
@@ -221,7 +213,7 @@ public class Printer : Spatial, IInteractable
         if (string.IsNullOrEmpty(selectedCard.ModName))
             return;
 
-        var holoMod = gun.GunMods.GetNode(selectedCard.ModName + "HOLO", gun) as Spatial;
+        var holoMod = NodeHelper.GetChildNode(selectedCard.ModName + "HOLO", gun) as Spatial;
         holoMod.Visible = true;
         _currentHoloMod = holoMod;
     }
@@ -231,7 +223,7 @@ public class Printer : Spatial, IInteractable
         var gun = _gunHolder.GetNode<Gun>("Gun");
         if (_currentHoloMod != null)
         {
-            var mod = gun.GunMods.GetNode(_currentHoloMod.Name.Replace("HOLO", ""), gun) as Spatial;
+            var mod = NodeHelper.GetChildNode(_currentHoloMod.Name.Replace("HOLO", ""), gun) as Spatial;
             mod.Visible = true;
             _currentHoloMod.Visible = false;
             _currentHoloMod = null;
@@ -240,10 +232,10 @@ public class Printer : Spatial, IInteractable
         _isPlayerExiting = true;
         _isGunInHolder = false;
 
-        ReparentNode(gun, _player.GetNode<Spatial>("Head/GunHolder"));
+        NodeHelper.ReparentNode(gun, _player.GetNode<Spatial>("Head/GunHolder"));
 
         var camera = _cameraHolder.GetNode<Camera>("Camera");
-        ReparentNode(camera, _player.GetNode<Spatial>("Head"));
+        NodeHelper.ReparentNode(camera, _player.GetNode<Spatial>("Head"));
 
         Input.MouseMode = Input.MouseModeEnum.Captured;
         _printerUI.Visible = false;

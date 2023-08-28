@@ -20,54 +20,49 @@ public class GunMods
     {
         foreach (string modName in ModNames)
         {
-            Node modNode = GetNode(modName, _gun);
+            Node modNode = NodeHelper.GetChildNode(modName, _gun);
             if (modNode != null && modNode is Spatial modSpatial)
             {
                 var holoMod = modNode.Duplicate() as Spatial;
                 modNode.GetParent().AddChild(holoMod);
                 holoMod.Visible = false;
                 holoMod.Name = modName + "HOLO";
-                HologramMaterialHelper.ConvertToGreenHologram(holoMod);
+                ConvertToGreenHologram(holoMod);
                 modSpatial.Visible = false;
             }
         }
     }
 
-    public void ShowGunMod(string modName)
+    public static void ConvertToGreenHologram(Node node)
     {
-        Node modNode = GetNode(modName, _gun);
-        if (modNode != null && modNode is Spatial modSpatial)
-        {
-            modSpatial.Visible = true;
-            HologramMaterialHelper.ConvertToGreenHologram(modSpatial);
-        }
-    }
+        ShaderMaterial greenHologramMaterial = new ShaderMaterial();
+        Shader shader = new Shader();
+        shader.Code = _greenHologramShaderCode;
+        greenHologramMaterial.Shader = shader;
 
-    public void HideGunMod(string modName)
-    {
-        Node modNode = GetNode(modName, _gun);
-        if (modNode != null && modNode is Spatial modSpatial)
+        if (node is MeshInstance meshInstance)
         {
-            modSpatial.Visible = false;
-        }
-    }
-
-    public Node GetNode(string nodeName, Node node)
-    {
-        if (node.Name == nodeName)
-        {
-            return node;
+            meshInstance.SetSurfaceMaterial(0, greenHologramMaterial);
         }
 
         foreach (Node child in node.GetChildren())
         {
-            Node foundNode = GetNode(nodeName, child);
-            if (foundNode != null)
-            {
-                return foundNode;
-            }
+            ConvertToGreenHologram(child);
+        }
+    }
+
+    private static readonly string _greenHologramShaderCode = @"
+        shader_type spatial;
+
+        void vertex() {
+            UV.x += TIME * 0.1;
         }
 
-        return null;
-    }
+        void fragment() {
+            vec3 color = vec3(0.0, 0.8, 0.0);
+            float wave = 0.45 * sin(UV.x * 10.0 + TIME) + 0.55;
+            ALBEDO = color + vec3(0.0, 0.0, 1.0) * wave;
+            EMISSION = color * wave * 0.5;
+        }
+    ";
 }
