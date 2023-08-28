@@ -2,39 +2,30 @@ using Godot;
 
 public class Gun : Spatial
 {
-    [Export]
-    public NodePath MuzzleFlashPath;
-    [Export]
-    public NodePath BulletPath;
-    [Export]
-    public NodePath BulletSplashPath;
-    [Export]
-    public NodePath BulletHolePath;
-
     public GunStats GunStats = new GunStats();
     public GunMods GunMods;
 
     private float _muzzleTimer;
     private Spatial _muzzleFlash;
-    private Spatial _bullet;
-    private Spatial _bulletHole;
-    private CPUParticles _bulletSplash;
     private float _fireCooldown;
     private Player _player;
     private AnimationPlayer _animationPlayer;
 
     public override void _Ready()
     {
-        _muzzleFlash = GetNode<Spatial>(MuzzleFlashPath);
+        _muzzleFlash = GetNode<Spatial>("MuzzleFlash");
         _muzzleFlash.Hide();
 
-        _bullet = GetNode<Spatial>(BulletPath);
-        _bullet.Hide();
+        var bullet = GetNode<Spatial>("Bullet") as Bullet;
+        Bullet.InitializePool(bullet);
+        bullet.Hide();
 
-        _bulletSplash = GetNode<CPUParticles>(BulletSplashPath);
+        var bulletSplash = GetNode<CPUParticles>("BulletSplash") as BulletSplash;
+        BulletSplash.InitializePool(bulletSplash);
 
-        _bulletHole = GetNode<Spatial>(BulletHolePath);
-        _bulletHole.Hide();
+        var bulletHole = GetNode<Spatial>("BulletHole") as BulletHole;
+        BulletHole.InitializePool(bulletHole);
+        bulletHole.Hide();
 
         _player = GetTree().Root.FindNode("Player", true, false) as Player;
         _animationPlayer = GetNode<AnimationPlayer>("AnimationPlayerEvents");
@@ -86,13 +77,10 @@ public class Gun : Spatial
             _muzzleFlash.Show();
             _muzzleTimer = 0.1f;
 
-            var mainScene = GetTree().Root.FindNode("Main", true, false);
-
             var clonedBullet = default(Bullet);
-            if (i < 5) // lags with too many bullets
+            if (i < 5)
             {
-                clonedBullet = _bullet.Duplicate() as Bullet;
-                mainScene.AddChild(clonedBullet);
+                clonedBullet = Bullet.GetBullet();
                 clonedBullet.GlobalTranslation = origin;
                 clonedBullet.LookAt(origin + direction, Vector3.Up);
                 clonedBullet.Translate(Vector3.Right * 0.5f + Vector3.Down * 0.2f);
@@ -104,16 +92,15 @@ public class Gun : Spatial
             {
                 var hitPoint = (Vector3)hit["position"];
 
-                var clonedBulletSplash = _bulletSplash.Duplicate() as CPUParticles;
-                mainScene.AddChild(clonedBulletSplash);
+                var clonedBulletSplash = BulletSplash.GetBulletSplash();
                 clonedBulletSplash.GlobalTranslation = hitPoint;
                 clonedBulletSplash.Emitting = true;
 
                 var hitEntity = hit["collider"] as Spatial;
                 var hitNormal = (Vector3)hit["normal"];
 
-                var clonedBulletHole = _bulletHole.Duplicate() as Spatial;
-                hitEntity.AddChild(clonedBulletHole);
+                var clonedBulletHole = BulletHole.GetBulletHole();
+                NodeHelper.ReparentNode(clonedBulletHole, hitEntity);
                 clonedBulletHole.GlobalTransform = new Transform(new Quat(), hitPoint + hitNormal * .01f).LookingAt(hitPoint + hitNormal, (Vector3.Up + Vector3.Forward).Normalized());
                 clonedBulletHole.Show();
 

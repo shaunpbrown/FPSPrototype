@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://assets/3D Models/Gun_v3.glb" type="PackedScene" id=1]
 [ext_resource path="res://player/scripts/BulletSplash.cs" type="Script" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://player/scripts/Bullet.cs" type="Script" id=4]
 [ext_resource path="res://player/guns/muzzleFlash_test.png" type="Texture" id=5]
 [ext_resource path="res://player/guns/bullethole_test.png" type="Texture" id=6]
+[ext_resource path="res://player/scripts/BulletHole.cs" type="Script" id=7]
 
 [sub_resource type="QuadMesh" id=1]
 size = Vector2( 8, 8 )
@@ -69,10 +70,6 @@ tracks/1/keys = {
 
 [node name="Pistol" type="Spatial"]
 script = ExtResource( 3 )
-MuzzleFlashPath = NodePath("MuzzleFlash")
-BulletPath = NodePath("Bullet")
-BulletSplashPath = NodePath("BulletSplash")
-BulletHolePath = NodePath("BulletHole")
 
 [node name="Gun_v3" parent="." instance=ExtResource( 1 )]
 transform = Transform( -0.15, 0, -1.31134e-08, 0, 0.15, 0, 1.31134e-08, 0, -0.15, 0, 0, 0 )
@@ -127,6 +124,7 @@ script = ExtResource( 2 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.534929, -4.44695 )
 mesh = SubResource( 10 )
 material = SubResource( 9 )
+script = ExtResource( 7 )
 
 [node name="AnimationPlayerEvents" type="AnimationPlayer" parent="."]
 root_node = NodePath("../Gun_v3")
