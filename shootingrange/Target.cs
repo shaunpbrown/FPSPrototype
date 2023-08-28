@@ -6,6 +6,12 @@ public class Target : StaticBody, IShootable
     {
         var spawner = GetTree().Root.FindNode("TargetSpawner", true, false) as TargetSpawner;
         spawner.SpawnTarget();
-        QueueFree();
+        RemoveTarget();
+    }
+
+    public void RemoveTarget()
+    {
+        BulletHole.RemoveBulletHoles(this);
+        CallDeferred("queue_free");
     }
 }

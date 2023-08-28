@@ -25,4 +25,14 @@ public class BulletHole : Spatial
 
         return bulletHole;
     }
+
+    public static void RemoveBulletHoles(Node node)
+    {
+        var mainScene = node.GetTree().Root.FindNode("Main", true, false) as Spatial;
+        foreach (var bulletHole in NodeHelper.GetChildren<BulletHole>(node))
+        {
+            NodeHelper.ReparentNode(bulletHole, mainScene);
+            bulletHole.Visible = false;
+        }
+    }
 }
