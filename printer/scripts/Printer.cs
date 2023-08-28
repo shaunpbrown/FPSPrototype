@@ -39,6 +39,9 @@ public class Printer : Spatial, IInteractable
             card.SelectedAction = UpgradeCardSelected;
         }
 
+        var confirmButton = GetNode<Button>("PrinterUI/Panel/ConfirmButton");
+        confirmButton.Connect("pressed", this, nameof(UpgradeCardConfirmed));
+
         //temp
         _upgradeCards[0].ModName = "Accuracy";
         _upgradeCards[1].ModName = "Rocket Launcher";
@@ -75,21 +78,6 @@ public class Printer : Spatial, IInteractable
                     gun.RotateY(rotationRadians.y * delta * rotateSpeed);
                 }
                 _lastMousePos = GetViewport().GetMousePosition();
-
-                if (Input.IsActionJustPressed("interact"))
-                {
-                    _isPlayerExiting = true;
-                    _isGunInHolder = false;
-
-                    var gun = _gunHolder.GetNode<Gun>("Gun");
-                    ReparentNode(gun, _player.GetNode<Spatial>("Head/GunHolder"));
-
-                    var camera = _cameraHolder.GetNode<Camera>("Camera");
-                    ReparentNode(camera, _player.GetNode<Spatial>("Head"));
-
-                    Input.MouseMode = Input.MouseModeEnum.Captured;
-                    _printerUI.Visible = false;
-                }
             }
         }
         else
@@ -238,8 +226,26 @@ public class Printer : Spatial, IInteractable
         _currentHoloMod = holoMod;
     }
 
-    public void UpgradeCardConfirmed(int i)
+    public void UpgradeCardConfirmed()
     {
+        var gun = _gunHolder.GetNode<Gun>("Gun");
+        if (_currentHoloMod != null)
+        {
+            var mod = gun.GunMods.GetNode(_currentHoloMod.Name.Replace("HOLO", ""), gun) as Spatial;
+            mod.Visible = true;
+            _currentHoloMod.Visible = false;
+            _currentHoloMod = null;
+        }
 
+        _isPlayerExiting = true;
+        _isGunInHolder = false;
+
+        ReparentNode(gun, _player.GetNode<Spatial>("Head/GunHolder"));
+
+        var camera = _cameraHolder.GetNode<Camera>("Camera");
+        ReparentNode(camera, _player.GetNode<Spatial>("Head"));
+
+        Input.MouseMode = Input.MouseModeEnum.Captured;
+        _printerUI.Visible = false;
     }
 }

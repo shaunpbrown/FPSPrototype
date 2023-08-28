@@ -121,3 +121,14 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 texture = ExtResource( 1 )
 stretch_mode = 5
+
+[node name="ConfirmButton" type="Button" parent="PrinterUI/Panel"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -83.5
+margin_top = -100.0
+margin_right = 83.5
+margin_bottom = -43.0
+text = "Confirm"
