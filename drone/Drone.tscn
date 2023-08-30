@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://drone/Drone.cs" type="Script" id=1]
 [ext_resource path="res://assets/3D Models/Drone/Drone.glb" type="PackedScene" id=2]
@@ -8,6 +8,34 @@ radius = 0.5
 
 [sub_resource type="BoxShape" id=5]
 extents = Vector3( 0.4, 0.2, 0.2 )
+
+[sub_resource type="Animation" id=6]
+resource_name = "Falling"
+length = 0.5
+tracks/0/type = "animation"
+tracks/0/path = NodePath("AnimationPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"clips": PoolStringArray( "Falling" ),
+"times": PoolRealArray( 0 )
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "FinishFalling"
+length = 0.5
+tracks/0/type = "animation"
+tracks/0/path = NodePath("AnimationPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"clips": PoolStringArray( "FinishFalling" ),
+"times": PoolRealArray( 0 )
+}
 
 [sub_resource type="Animation" id=4]
 resource_name = "Fire"
@@ -58,64 +86,64 @@ script = ExtResource( 1 )
 transform = Transform( -0.15, 0, -1.31134e-08, 0, 0.15, 0, 1.31134e-08, 0, -0.15, 0, 0, 0 )
 
 [node name="BoneAttachment" parent="Drone/Armature/Skeleton" index="0"]
-transform = Transform( 0.226781, 0.97356, -0.0274183, 0.741788, -0.190897, -0.64289, -0.631127, 0.125456, -0.765465, 1.59095, 2.11968, -0.14503 )
+transform = Transform( -0.415929, -0.148565, -0.897178, 0.113431, 0.970385, -0.213274, 0.902295, -0.190475, -0.386759, 1.53087, 1.96738, -0.0991045 )
 
 [node name="BoneAttachment2" parent="Drone/Armature/Skeleton" index="1"]
-transform = Transform( 0.226781, 0.97356, -0.0274183, 0.741788, -0.190897, -0.64289, -0.631127, 0.125456, -0.765465, 1.59095, 2.11968, -0.14503 )
+transform = Transform( -0.415929, -0.148565, -0.897178, 0.113431, 0.970385, -0.213274, 0.902295, -0.190475, -0.386759, 1.53087, 1.96738, -0.0991045 )
 
 [node name="BoneAttachment3" parent="Drone/Armature/Skeleton" index="2"]
-transform = Transform( 0.226781, 0.97356, -0.0274183, 0.741788, -0.190897, -0.64289, -0.631127, 0.125456, -0.765465, 1.59095, 2.11968, -0.14503 )
+transform = Transform( -0.415929, -0.148565, -0.897178, 0.113431, 0.970385, -0.213274, 0.902295, -0.190475, -0.386759, 1.53087, 1.96738, -0.0991045 )
 
 [node name="BoneAttachment4" parent="Drone/Armature/Skeleton" index="3"]
-transform = Transform( 0.226781, 0.97356, -0.0274183, 0.741788, -0.190897, -0.64289, -0.631127, 0.125456, -0.765465, 1.59095, 2.11968, -0.14503 )
+transform = Transform( -0.415929, -0.148565, -0.897178, 0.113431, 0.970385, -0.213274, 0.902295, -0.190475, -0.386759, 1.53087, 1.96738, -0.0991045 )
 
 [node name="BoneAttachment5" parent="Drone/Armature/Skeleton" index="4"]
-transform = Transform( 0.0616072, -0.865077, -0.497843, 0.867985, -0.199813, 0.454618, -0.492754, -0.460128, 0.738564, -1.60101, 2.15634, -0.210846 )
+transform = Transform( 0.109171, 0.330772, -0.937376, 0.308897, 0.885034, 0.348278, 0.944809, -0.327573, -0.00555479, -1.63994, 2.31732, -0.232323 )
 
 [node name="BoneAttachment6" parent="Drone/Armature/Skeleton" index="5"]
-transform = Transform( 0.0616072, -0.865077, -0.497843, 0.867985, -0.199813, 0.454618, -0.492754, -0.460128, 0.738564, -1.60101, 2.15634, -0.210846 )
+transform = Transform( 0.109171, 0.330772, -0.937376, 0.308897, 0.885034, 0.348278, 0.944809, -0.327573, -0.00555479, -1.63994, 2.31732, -0.232323 )
 
 [node name="BoneAttachment7" parent="Drone/Armature/Skeleton" index="6"]
-transform = Transform( 0.0616072, -0.865077, -0.497843, 0.867985, -0.199813, 0.454618, -0.492754, -0.460128, 0.738564, -1.60101, 2.15634, -0.210846 )
+transform = Transform( 0.109171, 0.330772, -0.937376, 0.308897, 0.885034, 0.348278, 0.944809, -0.327573, -0.00555479, -1.63994, 2.31732, -0.232323 )
 
 [node name="BoneAttachment8" parent="Drone/Armature/Skeleton" index="7"]
-transform = Transform( 0.0616072, -0.865077, -0.497843, 0.867985, -0.199813, 0.454618, -0.492754, -0.460128, 0.738564, -1.60101, 2.15634, -0.210846 )
+transform = Transform( 0.109171, 0.330772, -0.937376, 0.308897, 0.885034, 0.348278, 0.944809, -0.327573, -0.00555479, -1.63994, 2.31732, -0.232323 )
 
 [node name="BoneAttachment9" parent="Drone/Armature/Skeleton" index="8"]
-transform = Transform( 0.0616072, -0.865077, -0.497843, 0.867985, -0.199813, 0.454618, -0.492754, -0.460128, 0.738564, -1.60101, 2.15634, -0.210846 )
+transform = Transform( 0.109171, 0.330772, -0.937376, 0.308897, 0.885034, 0.348278, 0.944809, -0.327573, -0.00555479, -1.63994, 2.31732, -0.232323 )
 
 [node name="BoneAttachment10" parent="Drone/Armature/Skeleton" index="9"]
-transform = Transform( 1, 2.50948e-07, -6.98419e-08, -1.63534e-07, 0.0239005, -0.999714, -2.01384e-07, 0.999714, 0.0239004, -3.72529e-09, -0.806309, 0.76698 )
+transform = Transform( 0.873823, -0.054629, -0.483166, -0.455805, -0.438079, -0.774809, -0.169338, 0.897275, -0.407704, -0.359089, -0.761339, 0.852983 )
 
 [node name="BoneAttachment11" parent="Drone/Armature/Skeleton" index="10"]
-transform = Transform( 1, 2.50948e-07, -6.98419e-08, -1.63534e-07, 0.0239005, -0.999714, -2.01384e-07, 0.999714, 0.0239004, -3.72529e-09, -0.806309, 0.76698 )
+transform = Transform( 0.873823, -0.054629, -0.483166, -0.455805, -0.438079, -0.774809, -0.169338, 0.897275, -0.407704, -0.359089, -0.761339, 0.852983 )
 
 [node name="BoneAttachment12" parent="Drone/Armature/Skeleton" index="11"]
-transform = Transform( 1, 2.50948e-07, -6.98419e-08, -1.63534e-07, 0.0239005, -0.999714, -2.01384e-07, 0.999714, 0.0239004, -3.72529e-09, -0.806309, 0.76698 )
+transform = Transform( 0.873823, -0.054629, -0.483166, -0.455805, -0.438079, -0.774809, -0.169338, 0.897275, -0.407704, -0.359089, -0.761339, 0.852983 )
 
 [node name="BoneAttachment13" parent="Drone/Armature/Skeleton" index="12"]
-transform = Transform( 0.999939, -0.0110628, -0.000177947, -0.0100256, -0.899138, -0.43755, 0.0046806, 0.437525, -0.899194, 0.0197297, 0.797235, -0.0133125 )
+transform = Transform( 0.99375, -0.108257, -0.0272172, -0.108611, -0.881444, -0.45963, 0.0257676, 0.459713, -0.887693, -0.166022, 0.810649, 0.0331186 )
 
 [node name="BoneAttachment14" parent="Drone/Armature/Skeleton" index="13"]
-transform = Transform( 0.999939, -0.0110628, -0.000177947, -0.0100256, -0.899138, -0.43755, 0.0046806, 0.437525, -0.899194, 0.0197297, 0.797235, -0.0133125 )
+transform = Transform( 0.99375, -0.108257, -0.0272172, -0.108611, -0.881444, -0.45963, 0.0257676, 0.459713, -0.887693, -0.166022, 0.810649, 0.0331186 )
 
 [node name="BoneAttachment15" parent="Drone/Armature/Skeleton" index="14"]
-transform = Transform( 0.999939, -0.0110628, -0.000177947, -0.0100256, -0.899138, -0.43755, 0.0046806, 0.437525, -0.899194, 0.0197297, 0.797235, -0.0133125 )
+transform = Transform( 0.99375, -0.108257, -0.0272172, -0.108611, -0.881444, -0.45963, 0.0257676, 0.459713, -0.887693, -0.166022, 0.810649, 0.0331186 )
 
 [node name="BoneAttachment16" parent="Drone/Armature/Skeleton" index="15"]
-transform = Transform( -0.00633705, 0.00530991, -0.999966, -0.0940649, -0.995555, -0.0046903, -0.995546, 0.094032, 0.00680839, 0.00992381, 2.63575, -0.186963 )
+transform = Transform( 0.00251508, -0.0952747, -0.995448, -0.119958, -0.988292, 0.0942867, -0.992776, 0.119174, -0.0139145, 0.00992381, 2.63575, -0.186963 )
 
 [node name="BoneAttachment17" parent="Drone/Armature/Skeleton" index="16"]
-transform = Transform( -0.00633705, 0.00530991, -0.999966, -0.0940649, -0.995555, -0.0046903, -0.995546, 0.094032, 0.00680839, 0.00992381, 2.63575, -0.186963 )
+transform = Transform( 0.00251508, -0.0952747, -0.995448, -0.119958, -0.988292, 0.0942867, -0.992776, 0.119174, -0.0139145, 0.00992381, 2.63575, -0.186963 )
 
 [node name="BoneAttachment18" parent="Drone/Armature/Skeleton" index="17"]
-transform = Transform( -0.00633705, 0.00530991, -0.999966, -0.0940649, -0.995555, -0.0046903, -0.995546, 0.094032, 0.00680839, 0.00992381, 2.63575, -0.186963 )
+transform = Transform( 0.00251508, -0.0952747, -0.995448, -0.119958, -0.988292, 0.0942867, -0.992776, 0.119174, -0.0139145, 0.00992381, 2.63575, -0.186963 )
 
 [node name="BoneAttachment19" parent="Drone/Armature/Skeleton" index="18"]
-transform = Transform( -0.00633705, 0.00530991, -0.999966, -0.0940649, -0.995555, -0.0046903, -0.995546, 0.094032, 0.00680839, 0.00992381, 2.63575, -0.186963 )
+transform = Transform( 0.00251508, -0.0952747, -0.995448, -0.119958, -0.988292, 0.0942867, -0.992776, 0.119174, -0.0139145, 0.00992381, 2.63575, -0.186963 )
 
 [node name="BoneAttachment20" parent="Drone/Armature/Skeleton" index="19"]
-transform = Transform( -0.00633705, 0.00530991, -0.999966, -0.0940649, -0.995555, -0.0046903, -0.995546, 0.094032, 0.00680839, 0.00992381, 2.63575, -0.186963 )
+transform = Transform( 0.00251508, -0.0952747, -0.995448, -0.119958, -0.988292, 0.0942867, -0.992776, 0.119174, -0.0139145, 0.00992381, 2.63575, -0.186963 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0231106, 0.19042 )
@@ -131,7 +159,9 @@ shape = SubResource( 5 )
 
 [node name="AnimationPlayerEvents" type="AnimationPlayer" parent="."]
 root_node = NodePath("../Drone")
-autoplay = "Idle"
+autoplay = "Falling"
+anims/Falling = SubResource( 6 )
+anims/FinishFalling = SubResource( 7 )
 anims/Fire = SubResource( 4 )
 anims/Hit = SubResource( 2 )
 anims/Idle = SubResource( 3 )

@@ -2,12 +2,12 @@
 
 importer="scene"
 type="PackedScene"
-path="res://.import/Drone.glb-e765aea5e6b756b9498cccdbfed5a0f5.scn"
+path="res://.import/test_export.gltf-20a2cfb2201d968b366bbc6829630275.scn"
 
 [deps]
 
-source_file="res://assets/3D Models/Drone/Drone.glb"
-dest_files=[ "res://.import/Drone.glb-e765aea5e6b756b9498cccdbfed5a0f5.scn" ]
+source_file="res://assets/3D Models/_Throwaway/test_export.gltf"
+dest_files=[ "res://.import/test_export.gltf-20a2cfb2201d968b366bbc6829630275.scn" ]
 
 [params]
 
@@ -29,7 +29,7 @@ meshes/lightmap_texel_size=0.1
 skins/use_named_skins=true
 external_files/store_in_subdir=false
 animation/import=true
-animation/fps=24.0
+animation/fps=15
 animation/filter_script=""
 animation/storage=false
 animation/keep_custom_tracks=false
