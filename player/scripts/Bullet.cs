@@ -44,6 +44,7 @@ public class Bullet : Spatial
         bullet.MaxDistance = 500f;
         bullet.Visible = true;
         bullet._currentDistance = 0f;
+        bullet.Speed = 300f;
 
         return bullet;
     }

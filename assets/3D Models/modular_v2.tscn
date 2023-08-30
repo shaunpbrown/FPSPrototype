@@ -1,11 +1,24 @@
 [gd_scene load_steps=12 format=2]
 
-[ext_resource path="res://assets/3D Models/Dark Grey.material" type="Material" id=1]
 [ext_resource path="res://assets/Materials/Metal.material" type="Material" id=2]
 [ext_resource path="res://assets/Materials/Dark Grey.material" type="Material" id=3]
 [ext_resource path="res://assets/Materials/Warm Grey.material" type="Material" id=4]
-[ext_resource path="res://assets/3D Models/Metal.material" type="Material" id=5]
 [ext_resource path="res://assets/3D Models/Warm Grey.material" type="Material" id=6]
+
+[sub_resource type="SpatialMaterial" id=6]
+resource_name = "Dark Grey"
+vertex_color_use_as_albedo = true
+params_cull_mode = 2
+albedo_color = Color( 0.293326, 0.293326, 0.293326, 1 )
+roughness = 0.5
+
+[sub_resource type="SpatialMaterial" id=7]
+resource_name = "Metal"
+vertex_color_use_as_albedo = true
+params_cull_mode = 2
+albedo_color = Color( 0.34385, 0.345504, 0.393325, 1 )
+metallic = 0.606299
+roughness = 0.255906
 
 [sub_resource type="ArrayMesh" id=1]
 resource_name = "modular_v2_Cube009"
@@ -28,7 +41,7 @@ surfaces/1 = {
 "blend_shape_data": [  ],
 "format": 2194711,
 "index_count": 1584,
-"material": ExtResource( 1 ),
+"material": SubResource( 6 ),
 "primitive": 4,
 "skeleton_aabb": [  ],
 "vertex_count": 575
@@ -40,7 +53,7 @@ surfaces/2 = {
 "blend_shape_data": [  ],
 "format": 2194711,
 "index_count": 3168,
-"material": ExtResource( 5 ),
+"material": SubResource( 7 ),
 "primitive": 4,
 "skeleton_aabb": [  ],
 "vertex_count": 1396
@@ -97,7 +110,7 @@ surfaces/1 = {
 "blend_shape_data": [  ],
 "format": 2194711,
 "index_count": 198,
-"material": ExtResource( 1 ),
+"material": SubResource( 6 ),
 "primitive": 4,
 "skeleton_aabb": [  ],
 "vertex_count": 67
@@ -109,7 +122,7 @@ surfaces/2 = {
 "blend_shape_data": [  ],
 "format": 2194711,
 "index_count": 396,
-"material": ExtResource( 5 ),
+"material": SubResource( 7 ),
 "primitive": 4,
 "skeleton_aabb": [  ],
 "vertex_count": 177
@@ -136,7 +149,7 @@ surfaces/1 = {
 "blend_shape_data": [  ],
 "format": 2194711,
 "index_count": 198,
-"material": ExtResource( 1 ),
+"material": SubResource( 6 ),
 "primitive": 4,
 "skeleton_aabb": [  ],
 "vertex_count": 93
@@ -148,7 +161,7 @@ surfaces/2 = {
 "blend_shape_data": [  ],
 "format": 2194711,
 "index_count": 396,
-"material": ExtResource( 5 ),
+"material": SubResource( 7 ),
 "primitive": 4,
 "skeleton_aabb": [  ],
 "vertex_count": 182

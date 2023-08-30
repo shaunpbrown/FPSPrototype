@@ -2,12 +2,12 @@
 
 importer="scene"
 type="PackedScene"
-path="res://.import/DroneV2.glb-1c8e4c45ac493d879e4dbc8808d1ac45.scn"
+path="res://.import/Gun.glb-084f5169d4b3195e8cf4f32485acc03b.scn"
 
 [deps]
 
-source_file="res://assets/3D Models/DroneV2.glb"
-dest_files=[ "res://.import/DroneV2.glb-1c8e4c45ac493d879e4dbc8808d1ac45.scn" ]
+source_file="res://assets/3D Models/Gun/Gun.glb"
+dest_files=[ "res://.import/Gun.glb-084f5169d4b3195e8cf4f32485acc03b.scn" ]
 
 [params]
 
@@ -29,7 +29,7 @@ meshes/lightmap_texel_size=0.1
 skins/use_named_skins=true
 external_files/store_in_subdir=false
 animation/import=true
-animation/fps=15
+animation/fps=24.0
 animation/filter_script=""
 animation/storage=false
 animation/keep_custom_tracks=false

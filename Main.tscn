@@ -11,4 +11,4 @@
 [node name="Player" parent="." instance=ExtResource( 2 )]
 
 [node name="Drone" parent="." instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.77447, 2.40932, -8.68238 )
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -2.77447, 2.40932, -8.68238 )

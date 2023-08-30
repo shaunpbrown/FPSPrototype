@@ -2,12 +2,12 @@
 
 importer="scene"
 type="PackedScene"
-path="res://.import/Gun_v3.glb-40fbd01d9f315ad1c48a2c215905cffd.scn"
+path="res://.import/Target.glb-92830a0c03d8b56393d21687e9eb857c.scn"
 
 [deps]
 
-source_file="res://assets/3D Models/Gun_v3.glb"
-dest_files=[ "res://.import/Gun_v3.glb-40fbd01d9f315ad1c48a2c215905cffd.scn" ]
+source_file="res://assets/3D Models/Target.glb"
+dest_files=[ "res://.import/Target.glb-92830a0c03d8b56393d21687e9eb857c.scn" ]
 
 [params]
 
@@ -29,7 +29,7 @@ meshes/lightmap_texel_size=0.1
 skins/use_named_skins=true
 external_files/store_in_subdir=false
 animation/import=true
-animation/fps=24.0
+animation/fps=15
 animation/filter_script=""
 animation/storage=false
 animation/keep_custom_tracks=false

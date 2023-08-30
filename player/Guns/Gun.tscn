@@ -1,6 +1,6 @@
 [gd_scene load_steps=17 format=2]
 
-[ext_resource path="res://assets/3D Models/Gun_v3.glb" type="PackedScene" id=1]
+[ext_resource path="res://assets/3D Models/Gun/Gun.glb" type="PackedScene" id=1]
 [ext_resource path="res://player/scripts/BulletSplash.cs" type="Script" id=2]
 [ext_resource path="res://player/scripts/Gun.cs" type="Script" id=3]
 [ext_resource path="res://player/scripts/Bullet.cs" type="Script" id=4]

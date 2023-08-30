@@ -3,7 +3,7 @@ using Godot;
 public class Player : KinematicBody
 {
 	public float MouseSensitivity = 0.005f;
-	public float MovementSpeed = 5.0f;
+	public float MovementSpeed = 6.0f;
 	public float JumpStrength = 5.0f;
 	public float Gravity = -9.8f;
 	public bool IsUsingPrinter;

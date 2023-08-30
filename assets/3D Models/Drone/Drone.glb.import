@@ -2,12 +2,12 @@
 
 importer="scene"
 type="PackedScene"
-path="res://.import/Target_v1.glb-6538e48ff992d6ec80ef2545c5a8017a.scn"
+path="res://.import/Drone.glb-e765aea5e6b756b9498cccdbfed5a0f5.scn"
 
 [deps]
 
-source_file="res://assets/3D Models/Target_v1.glb"
-dest_files=[ "res://.import/Target_v1.glb-6538e48ff992d6ec80ef2545c5a8017a.scn" ]
+source_file="res://assets/3D Models/Drone/Drone.glb"
+dest_files=[ "res://.import/Drone.glb-e765aea5e6b756b9498cccdbfed5a0f5.scn" ]
 
 [params]
 

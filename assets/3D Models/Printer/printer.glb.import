@@ -2,12 +2,12 @@
 
 importer="scene"
 type="PackedScene"
-path="res://.import/Gun_v2.glb-6f98cf520539e81fcbc50e77890a529c.scn"
+path="res://.import/printer.glb-23ac8c1b1a725a178a484ea486f8d10a.scn"
 
 [deps]
 
-source_file="res://assets/3D Models/Gun_v2.glb"
-dest_files=[ "res://.import/Gun_v2.glb-6f98cf520539e81fcbc50e77890a529c.scn" ]
+source_file="res://assets/3D Models/Printer/printer.glb"
+dest_files=[ "res://.import/printer.glb-23ac8c1b1a725a178a484ea486f8d10a.scn" ]
 
 [params]
 
