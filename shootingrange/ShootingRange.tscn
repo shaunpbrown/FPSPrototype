@@ -1552,6 +1552,6 @@ depth = 1.0
 material = SubResource( 2 )
 
 [node name="DroneSpawner" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -7.9175 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -39.8417 )
 script = ExtResource( 4 )
 DroneScene = ExtResource( 5 )

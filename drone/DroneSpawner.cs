@@ -6,9 +6,21 @@ public class DroneSpawner : Spatial
     [Export]
     PackedScene DroneScene;
 
-    public override void _Ready()
+    private float _timer;
+    private float _spawnInterval = 5f;
+    private int _spawnCount = 5;
+
+    public override void _Process(float delta)
     {
-        SpawnDrone();
+        if (_timer < _spawnInterval)
+            _timer += delta;
+
+        if (_spawnCount > 0 && _timer > _spawnInterval)
+        {
+            _timer = 0;
+            _spawnCount--;
+            SpawnDrone();
+        }
     }
 
     public void SpawnDrone()
@@ -17,5 +29,10 @@ public class DroneSpawner : Spatial
         var mainScene = GetTree().Root.FindNode("Main", true, false);
         mainScene.CallDeferred("add_child", drone);
         drone.CallDeferred("set_translation", GlobalTransform.origin + Vector3.Up * 20);
+    }
+
+    public void SetSpawnCount(int count)
+    {
+        _spawnCount = count;
     }
 }

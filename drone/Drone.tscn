@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://drone/Drone.cs" type="Script" id=1]
 [ext_resource path="res://assets/3D Models/Drone/Drone.glb" type="PackedScene" id=2]
@@ -8,6 +8,20 @@ radius = 0.5
 
 [sub_resource type="BoxShape" id=5]
 extents = Vector3( 0.4, 0.2, 0.2 )
+
+[sub_resource type="Animation" id=9]
+resource_name = "Backward"
+length = 0.5
+tracks/0/type = "animation"
+tracks/0/path = NodePath("AnimationPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"clips": PoolStringArray( "Backward" ),
+"times": PoolRealArray( 0 )
+}
 
 [sub_resource type="Animation" id=6]
 resource_name = "Falling"
@@ -51,6 +65,20 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 )
 }
 
+[sub_resource type="Animation" id=8]
+resource_name = "Forward"
+length = 0.5
+tracks/0/type = "animation"
+tracks/0/path = NodePath("AnimationPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"clips": PoolStringArray( "Forward" ),
+"times": PoolRealArray( 0 )
+}
+
 [sub_resource type="Animation" id=2]
 resource_name = "Hit"
 tracks/0/type = "animation"
@@ -78,6 +106,9 @@ tracks/0/keys = {
 "clips": PoolStringArray( "Idle" ),
 "times": PoolRealArray( 0 )
 }
+
+[sub_resource type="BoxShape" id=10]
+extents = Vector3( 0.5, 0.5, 2 )
 
 [node name="Drone" type="KinematicBody"]
 script = ExtResource( 1 )
@@ -160,13 +191,21 @@ shape = SubResource( 5 )
 [node name="AnimationPlayerEvents" type="AnimationPlayer" parent="."]
 root_node = NodePath("../Drone")
 autoplay = "Falling"
+anims/Backward = SubResource( 9 )
 anims/Falling = SubResource( 6 )
 anims/FinishFalling = SubResource( 7 )
 anims/Fire = SubResource( 4 )
+anims/Forward = SubResource( 8 )
 anims/Hit = SubResource( 2 )
 anims/Idle = SubResource( 3 )
 
 [node name="GunBarrel" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0717295, -0.799683 )
+
+[node name="LiftArea" type="Area" parent="."]
+
+[node name="CollisionShape" type="CollisionShape" parent="LiftArea"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.153521, 0 )
+shape = SubResource( 10 )
 
 [editable path="Drone"]
