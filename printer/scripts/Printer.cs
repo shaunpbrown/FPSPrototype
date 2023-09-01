@@ -6,7 +6,6 @@ public class Printer : Spatial, IInteractable
     private float _openCloseSpeed = 4f;
     private Spatial _gunHolder;
     private Spatial _cameraHolder;
-    private Spatial _topBox;
     private bool _isOpen;
     private bool _isClosed;
     private Player _player;
@@ -17,6 +16,7 @@ public class Printer : Spatial, IInteractable
     private CanvasLayer _printerUI;
     private List<UpgradeCard> _upgradeCards = new List<UpgradeCard>();
     private Spatial _currentHoloMod;
+    private AnimationPlayer _animationPlayer;
 
     public override void _Ready()
     {
@@ -24,10 +24,8 @@ public class Printer : Spatial, IInteractable
 
         _gunHolder = GetNode<Spatial>("GunHolder");
         _cameraHolder = GetNode<Spatial>("CameraHolder");
-        _topBox = GetNode<Spatial>("Top");
         _isOpen = false;
-        _isClosed = true;
-        _topBox.Translation = new Vector3(0, 1.5f, 0);
+        _isClosed = false;
 
         _printerUI = GetNode<CanvasLayer>("PrinterUI");
         _printerUI.Visible = false;
@@ -41,6 +39,10 @@ public class Printer : Spatial, IInteractable
 
         var confirmButton = GetNode<Button>("PrinterUI/Panel/ConfirmButton");
         confirmButton.Connect("pressed", this, nameof(UpgradeCardConfirmed));
+
+        _animationPlayer = GetNode<AnimationPlayer>("printer/AnimationPlayer");
+        _animationPlayer.Play("Printer Open");
+        _animationPlayer.PlaybackSpeed = 0;
 
         //temp
         _upgradeCards[0].ModName = "Red Dot";
@@ -58,6 +60,9 @@ public class Printer : Spatial, IInteractable
             }
             else if (!_isGunInHolder)
             {
+                _animationPlayer.Seek(1, true);
+                _isOpen = true;
+                _isClosed = false;
                 PutGunInHolder(delta);
             }
             else
@@ -169,12 +174,13 @@ public class Printer : Spatial, IInteractable
             _isClosed = false;
             if (!_isOpen)
             {
-                _topBox.Translate(Vector3.Up * _openCloseSpeed * delta);
-                if (_topBox.Translation.y >= 2.5f)
+                var newTime = _animationPlayer.CurrentAnimationPosition + delta * 2;
+                if (newTime >= _animationPlayer.CurrentAnimationLength)
                 {
-                    _topBox.Translation = new Vector3(0, 2.5f, 0);
+                    newTime = _animationPlayer.CurrentAnimationLength;
                     _isOpen = true;
                 }
+                _animationPlayer.Seek(newTime, true);
             }
         }
         else
@@ -182,12 +188,13 @@ public class Printer : Spatial, IInteractable
             _isOpen = false;
             if (!_isClosed)
             {
-                _topBox.Translate(Vector3.Down * _openCloseSpeed * delta);
-                if (_topBox.Translation.y <= 1.5f)
+                var newTime = _animationPlayer.CurrentAnimationPosition - delta;
+                if (newTime <= 0)
                 {
-                    _topBox.Translation = new Vector3(0, 1.5f, 0);
+                    newTime = 0;
                     _isClosed = true;
                 }
+                _animationPlayer.Seek(newTime, true);
             }
         }
     }

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://shootingrange/prototypeTexture.jpg" type="Texture" id=1]
 [ext_resource path="res://shootingrange/TargetSpawner.cs" type="Script" id=2]
@@ -7,7 +7,6 @@
 [ext_resource path="res://drone/Drone.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/3D Models/modular_v2.tscn" type="PackedScene" id=6]
 [ext_resource path="res://printer/Printer.tscn" type="PackedScene" id=7]
-[ext_resource path="res://assets/3D Models/Printer/printer.glb" type="PackedScene" id=8]
 
 [sub_resource type="ProceduralSky" id=1]
 
@@ -114,10 +113,7 @@ material = SubResource( 2 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -37 )
 
 [node name="Printer" parent="." instance=ExtResource( 7 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 0, -3.5 )
-
-[node name="printer" parent="." instance=ExtResource( 8 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.57055, 0, -3.4275 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 0, -3.5 )
 
 [node name="BlockCover" type="Spatial" parent="."]
 

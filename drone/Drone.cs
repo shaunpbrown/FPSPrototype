@@ -44,7 +44,7 @@ public class Drone : KinematicBody, IShootable
         switch (_state)
         {
             case DroneState.Idle:
-                if (_target != null)
+                if (_target != null && _animationPlayer.CurrentAnimation != "FinishFalling")
                 {
                     if (GlobalTranslation.DistanceTo(_target.GlobalTranslation) > 12)
                     {
@@ -62,6 +62,7 @@ public class Drone : KinematicBody, IShootable
                 if (GlobalTranslation.y <= 2)
                 {
                     _state = DroneState.Idle;
+                    _animationPlayer.Stop();
                     _animationPlayer.Play("FinishFalling");
                 }
                 break;
