@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://drone/Drone.tscn" type="PackedScene" id=1]
+[ext_resource path="res://drone/DroneSpawner.cs" type="Script" id=2]
+[ext_resource path="res://drone/DroneBullet.cs" type="Script" id=3]
+
+[sub_resource type="SpatialMaterial" id=1]
+flags_unshaded = true
+albedo_color = Color( 1, 0.937255, 0, 1 )
+
+[node name="DroneSpawner" type="Spatial"]
+script = ExtResource( 2 )
+DroneScene = ExtResource( 1 )
+
+[node name="DroneBullet" type="Spatial" parent="."]
+visible = false
+script = ExtResource( 3 )
+
+[node name="BulletObject" type="CSGSphere" parent="DroneBullet"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 50, 0, 0, 0 )
+radius = 0.02
+smooth_faces = false
+material = SubResource( 1 )

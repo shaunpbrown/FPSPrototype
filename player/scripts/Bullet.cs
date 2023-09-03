@@ -6,8 +6,8 @@ public class Bullet : Spatial
     private static int _poolIndex = 0;
 
     public Vector3 Target;
-    public float Speed = 300f;
-    public float MaxDistance = 500f;
+    public float Speed;
+    public float MaxDistance;
 
     private float _currentDistance;
 

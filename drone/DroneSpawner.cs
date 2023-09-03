@@ -7,8 +7,14 @@ public class DroneSpawner : Spatial
     PackedScene DroneScene;
 
     private float _timer;
-    private float _spawnInterval = 5f;
+    private float _spawnInterval = 5;
     private int _spawnCount = 5;
+
+    public override void _Ready()
+    {
+        var droneBullet = GetNode<DroneBullet>("DroneBullet");
+        DroneBullet.InitializePool(droneBullet);
+    }
 
     public override void _Process(float delta)
     {

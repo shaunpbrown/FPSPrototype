@@ -4,7 +4,9 @@ public class Drone : KinematicBody, IShootable
 {
     private AnimationPlayer _animationPlayer;
     private Spatial _gunBarrel;
-    private float _fireCooldown = 2f;
+    private float _targetingTimer;
+    private float _fireCooldownTimer;
+    private float _firingTimer;
     private Spatial _target;
     private float _speed = 5f;
     private int _health = 3;
@@ -29,11 +31,11 @@ public class Drone : KinematicBody, IShootable
         _gunBarrel = GetNode<Spatial>("GunBarrel");
         _liftArea = GetNode<Area>("LiftArea");
 
-        _target = GetTree().Root.FindNode("Player", true, false) as Spatial;
+        var player = GetTree().Root.FindNode("Player", true, false) as Spatial;
+        _target = player.GetNode<Spatial>("Head");
 
         _state = DroneState.Falling;
         _animationPlayer.Play("Falling");
-
     }
 
     public override void _Process(float delta)
@@ -44,6 +46,13 @@ public class Drone : KinematicBody, IShootable
         switch (_state)
         {
             case DroneState.Idle:
+                _targetingTimer += delta;
+                if (_targetingTimer >= 2)
+                {
+                    _targetingTimer = 0;
+                    _state = DroneState.Firing;
+                }
+
                 if (_target != null && _animationPlayer.CurrentAnimation != "FinishFalling")
                 {
                     if (GlobalTranslation.DistanceTo(_target.GlobalTranslation) > 12)
@@ -61,14 +70,32 @@ public class Drone : KinematicBody, IShootable
             case DroneState.Falling:
                 if (GlobalTranslation.y <= 2)
                 {
-                    _state = DroneState.Idle;
+                    _state = DroneState.Firing;
                     _animationPlayer.Stop();
-                    _animationPlayer.Play("FinishFalling");
+                    _animationPlayer.Play("Idle");
                 }
                 break;
             case DroneState.Hit:
+                _targetingTimer = 0;
                 break;
             case DroneState.Firing:
+                _firingTimer += delta;
+                if (_firingTimer >= 3)
+                {
+                    _firingTimer = 0;
+                    _state = DroneState.Idle;
+                    _animationPlayer.Play("Idle");
+                }
+
+                _fireCooldownTimer += delta;
+                if (_fireCooldownTimer >= .15f)
+                {
+                    _fireCooldownTimer = 0;
+                    _animationPlayer.Stop();
+                    _animationPlayer.Play("Fire");
+                    FireBullet();
+                }
+
                 break;
             case DroneState.MovingForward:
                 if (_target != null)
@@ -104,6 +131,7 @@ public class Drone : KinematicBody, IShootable
                 break;
         }
     }
+
     public override void _PhysicsProcess(float delta)
     {
         switch (_state)
@@ -154,7 +182,6 @@ public class Drone : KinematicBody, IShootable
         }
     }
 
-
     public void AnimationEnded(string animationName)
     {
         switch (_state)
@@ -172,6 +199,9 @@ public class Drone : KinematicBody, IShootable
                 _state = DroneState.Idle;
                 _animationPlayer.Play("Idle");
                 break;
+            case DroneState.Firing:
+                _animationPlayer.Play("Fire");
+                break;
             default:
                 _animationPlayer.Play("Idle");
                 break;
@@ -180,9 +210,11 @@ public class Drone : KinematicBody, IShootable
 
     public void FireBullet()
     {
-        var bullet = Bullet.GetBullet();
+        var randomDegrees = Mathf.Deg2Rad(GD.Randf() * 6);
+        var bullet = DroneBullet.GetBullet();
         bullet.GlobalTransform = _gunBarrel.GlobalTransform;
-        bullet.Speed = 100;
+        bullet.RotateY((GD.Randf() * 2 - 1) * randomDegrees);
+        bullet.RotateX((GD.Randf() * 2 - 1) * randomDegrees);
         bullet.Show();
         _animationPlayer.Stop();
         _animationPlayer.Play("Fire");
