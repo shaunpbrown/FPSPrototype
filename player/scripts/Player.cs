@@ -10,10 +10,12 @@ public class Player : KinematicBody
 
 	private Vector3 _velocity = new Vector3();
 	private Spatial _head;
+	private Gun _gun;
 
 	public override void _Ready()
 	{
 		_head = GetNode<Spatial>("Head");
+		_gun = GetNode<Gun>("Head/GunHolder/Gun");
 		Input.MouseMode = Input.MouseModeEnum.Captured;
 	}
 
@@ -72,7 +74,8 @@ public class Player : KinematicBody
 		if (Input.IsActionPressed("move_right"))
 			direction += Transform.basis.x;
 
-		if (Input.IsActionJustPressed("shoot"))
+		if (Input.IsActionJustPressed("shoot")
+		|| (_gun.GunMods.IsModEquipped("Rate of fire") && Input.IsActionPressed("shoot")))
 		{
 			var gun = GetNode<Gun>("Head/GunHolder/Gun");
 			gun.PullTrigger();

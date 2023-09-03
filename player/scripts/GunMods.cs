@@ -10,7 +10,7 @@ public class GunMods
         "Rate of fire",
     };
 
-    public bool[] IsModEquiped;
+    public bool[] _isModEquiped;
 
     private Gun _gun;
 
@@ -18,7 +18,7 @@ public class GunMods
     {
         _gun = gun;
         HideAllGunMods();
-        IsModEquiped = new bool[ModNames.Count];
+        _isModEquiped = new bool[ModNames.Count];
     }
 
     public void HideAllGunMods()
@@ -44,22 +44,31 @@ public class GunMods
         if (index == -1)
             return;
 
-        IsModEquiped[index] = true;
+        _isModEquiped[index] = true;
 
         switch (name)
         {
             case "Rocket Launcher":
                 break;
             case "Rate of fire":
-                _gun.GunStats.FireRate += 40;
+                _gun.GunStats.FireRate += 10;
                 break;
             case "Shotgun":
                 _gun.GunStats.Projectiles += 5;
-                _gun.GunStats.Spread += 30;
+                _gun.GunStats.Spread += 60;
                 break;
             default:
                 break;
         }
+    }
+
+    public bool IsModEquipped(string name)
+    {
+        int index = ModNames.IndexOf(name);
+        if (index == -1)
+            return false;
+
+        return _isModEquiped[index];
     }
 
     public static void ConvertToGreenHologram(Node node)
