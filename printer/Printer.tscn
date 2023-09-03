@@ -70,6 +70,7 @@ texture_normal = ExtResource( 2 )
 texture_pressed = ExtResource( 3 )
 texture_hover = ExtResource( 4 )
 script = ExtResource( 8 )
+ModName = "Rate of fire"
 
 [node name="Foreground" type="TextureRect" parent="PrinterUI/Panel/UpgradeCard1"]
 anchor_right = 1.0
@@ -97,6 +98,7 @@ texture_normal = ExtResource( 2 )
 texture_pressed = ExtResource( 3 )
 texture_hover = ExtResource( 4 )
 script = ExtResource( 8 )
+ModName = "Rocket Launcher"
 
 [node name="Foreground" type="TextureRect" parent="PrinterUI/Panel/UpgradeCard2"]
 anchor_right = 1.0
@@ -124,6 +126,7 @@ texture_normal = ExtResource( 2 )
 texture_pressed = ExtResource( 3 )
 texture_hover = ExtResource( 4 )
 script = ExtResource( 8 )
+ModName = "Shotgun"
 
 [node name="Foreground" type="TextureRect" parent="PrinterUI/Panel/UpgradeCard3"]
 anchor_right = 1.0

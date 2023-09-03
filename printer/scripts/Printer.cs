@@ -43,10 +43,6 @@ public class Printer : Spatial, IInteractable
 		_animationPlayer = GetNode<AnimationPlayer>("printer/AnimationPlayer");
 		_animationPlayer.Play("Printer Open");
 		_animationPlayer.PlaybackSpeed = 0;
-
-		//temp
-		_upgradeCards[0].ModName = "Red Dot";
-		_upgradeCards[1].ModName = "Rocket Launcher";
 	}
 
 	public override void _Process(float delta)
@@ -230,7 +226,9 @@ public class Printer : Spatial, IInteractable
 		var gun = _gunHolder.GetNode<Gun>("Gun");
 		if (_currentHoloMod != null)
 		{
-			var mod = NodeHelper.GetChildNode(_currentHoloMod.Name.Replace("HOLO", ""), gun) as Spatial;
+			var modName = _currentHoloMod.Name.Replace("HOLO", "");
+			var mod = NodeHelper.GetChildNode(modName, gun) as Spatial;
+			gun.GunMods.EquipMod(modName);
 			mod.Visible = true;
 			_currentHoloMod.Visible = false;
 			_currentHoloMod = null;

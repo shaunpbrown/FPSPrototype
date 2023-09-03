@@ -5,6 +5,7 @@ public class UpgradeCard : TextureButton
 {
     public Action<UpgradeCard> SelectedAction;
 
+    [Export]
     public string ModName { get; set; }
 
     public override void _Ready()

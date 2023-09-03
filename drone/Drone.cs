@@ -70,7 +70,7 @@ public class Drone : KinematicBody, IShootable
             case DroneState.Falling:
                 if (GlobalTranslation.y <= 2)
                 {
-                    _state = DroneState.Firing;
+                    _state = DroneState.Idle;
                     _animationPlayer.Stop();
                     _animationPlayer.Play("Idle");
                 }

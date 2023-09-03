@@ -6,7 +6,11 @@ public class GunMods
     public List<string> ModNames = new List<string>{
         "Rocket Launcher",
         "Red Dot",
+        "Shotgun",
+        "Rate of fire",
     };
+
+    public bool[] IsModEquiped;
 
     private Gun _gun;
 
@@ -14,6 +18,7 @@ public class GunMods
     {
         _gun = gun;
         HideAllGunMods();
+        IsModEquiped = new bool[ModNames.Count];
     }
 
     public void HideAllGunMods()
@@ -30,6 +35,30 @@ public class GunMods
                 ConvertToGreenHologram(holoMod);
                 modSpatial.Visible = false;
             }
+        }
+    }
+
+    public void EquipMod(string name)
+    {
+        int index = ModNames.IndexOf(name);
+        if (index == -1)
+            return;
+
+        IsModEquiped[index] = true;
+
+        switch (name)
+        {
+            case "Rocket Launcher":
+                break;
+            case "Rate of fire":
+                _gun.GunStats.FireRate += 40;
+                break;
+            case "Shotgun":
+                _gun.GunStats.Projectiles += 5;
+                _gun.GunStats.Spread += 30;
+                break;
+            default:
+                break;
         }
     }
 
