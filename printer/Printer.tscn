@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://printer/ui/UpgradeFrame_StatFrame.png" type="Texture" id=1]
 [ext_resource path="res://printer/ui/UpgradeFrame_NormalBG.png" type="Texture" id=2]
@@ -12,6 +12,8 @@
 [ext_resource path="res://printer/ui/RocketLauncher.png" type="Texture" id=10]
 [ext_resource path="res://printer/ui/Ability_text.png" type="Texture" id=11]
 [ext_resource path="res://printer/ui/Confirm_button.png" type="Texture" id=12]
+[ext_resource path="res://printer/ui/Confirm_button_Select.png" type="Texture" id=13]
+[ext_resource path="res://printer/ui/Confirm_button_Hover.png" type="Texture" id=14]
 
 [sub_resource type="BoxShape" id=6]
 extents = Vector3( 0.7, 1.5, 0.7 )
@@ -140,19 +142,21 @@ anchor_bottom = 1.0
 texture = ExtResource( 6 )
 stretch_mode = 5
 
-[node name="ConfirmButton" type="Button" parent="PrinterUI/Panel"]
-self_modulate = Color( 1, 1, 1, 0 )
+[node name="ConfirmButton" type="TextureButton" parent="PrinterUI/Panel"]
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -83.5
+margin_left = -567.0
 margin_top = -100.0
-margin_right = 83.5
+margin_right = 594.0
 margin_bottom = -43.0
-text = "Confirm"
+texture_normal = ExtResource( 12 )
+texture_pressed = ExtResource( 13 )
+texture_hover = ExtResource( 14 )
 
 [node name="TextureRect" type="TextureRect" parent="PrinterUI/Panel/ConfirmButton"]
+visible = false
 margin_left = -438.5
 margin_top = 11.0
 margin_right = 600.5

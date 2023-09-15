@@ -37,7 +37,7 @@ public class Printer : Spatial, IInteractable
 			card.SelectedAction = UpgradeCardSelected;
 		}
 
-		var confirmButton = GetNode<Button>("PrinterUI/Panel/ConfirmButton");
+		var confirmButton = GetNode<TextureButton>("PrinterUI/Panel/ConfirmButton");
 		confirmButton.Connect("pressed", this, nameof(UpgradeCardConfirmed));
 
 		_animationPlayer = GetNode<AnimationPlayer>("printer/AnimationPlayer");
