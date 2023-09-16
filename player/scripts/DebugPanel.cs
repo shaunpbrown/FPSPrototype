@@ -30,9 +30,9 @@ public class DebugPanel : Panel
         _recoilSlider.Connect("value_changed", this, nameof(SetPlayerGunStats));
 
         _fireRateSlider = GetNode<HSlider>("FireRate/HSlider");
-        _fireRateSlider.Value = gun.GunStats.FireRate;
+        _fireRateSlider.Value = gun.GunStats.FireCooldown;
         _fireRateLabel = GetNode<Label>("FireRate/Label");
-        _fireRateLabel.Text = $"{gun.GunStats.GetGunFireRateInSeconds():F2}s";
+        _fireRateLabel.Text = $"{gun.GunStats.FireCooldown:F2}s";
         _fireRateSlider.Connect("value_changed", this, nameof(SetPlayerGunStats));
 
         _projectilesSlider = GetNode<HSlider>("Projectiles/HSlider");
@@ -51,14 +51,14 @@ public class DebugPanel : Panel
             {
                 Spread = (int)_spreadSlider.Value,
                 Recoil = (int)_recoilSlider.Value,
-                FireRate = (int)_fireRateSlider.Value,
+                FireCooldown = (int)_fireRateSlider.Value,
                 Projectiles = (int)_projectilesSlider.Value
             };
 
 
             _spreadLabel.Text = $"{(int)_spreadSlider.Value}";
             _projectilesLabel.Text = $"{(int)_projectilesSlider.Value}";
-            _fireRateLabel.Text = $"{gun.GunStats.GetGunFireRateInSeconds():F2}s";
+            _fireRateLabel.Text = $"{gun.GunStats.FireCooldown:F2}s";
             _recoilLabel.Text = $"{gun.GunStats.GetGunRecoilInDegrees():F2}\u00B0";
         }
     }

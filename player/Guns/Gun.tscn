@@ -75,10 +75,31 @@ script = ExtResource( 3 )
 transform = Transform( -0.15, 0, -1.31134e-08, 0, 0.15, 0, 1.31134e-08, 0, -0.15, 0, 0, 0 )
 
 [node name="BoneAttachment" parent="Gun_v3/Armature/Skeleton" index="0"]
-transform = Transform( 1, 0, -5.6426e-07, -5.6426e-07, 0, -1, 0, 1, 0, 4.94635e-17, 0.986388, -1.76825 )
+transform = Transform( 1, 0, -5.6426e-07, -5.6426e-07, 0, -1, 0, 2.09165, 0, 2.32604e-14, 0.986388, -1.87362 )
 
 [node name="BoneAttachment2" parent="Gun_v3/Armature/Skeleton" index="1"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.107088, 0.723046, 0.114658 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 2.09165, 0.107088, 0.723046, 1.06823 )
+
+[node name="BoneAttachment3" parent="Gun_v3/Armature/Skeleton" index="2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 2.09165, 0, 0, 1.82493 )
+
+[node name="BoneAttachment4" parent="Gun_v3/Armature/Skeleton" index="3"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 2.09165, 0, 0, 1.82493 )
+
+[node name="BoneAttachment5" parent="Gun_v3/Armature/Skeleton" index="4"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 2.09165, 0, 0, 1.82493 )
+
+[node name="BoneAttachment6" parent="Gun_v3/Armature/Skeleton" index="5"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 2.09165, 0, 0, 1.82493 )
+
+[node name="BoneAttachment7" parent="Gun_v3/Armature/Skeleton" index="6"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 2.09165, 0, 0, 1.82493 )
+
+[node name="BoneAttachment8" parent="Gun_v3/Armature/Skeleton" index="7"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 2.09165, 0, 0, 1.82493 )
+
+[node name="BoneAttachment9" parent="Gun_v3/Armature/Skeleton" index="8"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 2.09165, 0, 0, 1.82493 )
 
 [node name="MuzzleFlash" type="CSGMesh" parent="Gun_v3/Armature/Skeleton/BoneAttachment9" index="1"]
 transform = Transform( 0.355056, 0, -2.34479e-13, 0, 0.355056, 0, 2.34479e-13, 0, 0.355056, 0.111709, 0.819748, 1.4557 )
@@ -88,6 +109,24 @@ material = SubResource( 2 )
 [node name="Light" type="OmniLight" parent="Gun_v3/Armature/Skeleton/BoneAttachment9/MuzzleFlash"]
 transform = Transform( 6.66667, 0, 5.68434e-14, 0, 6.66667, 0, -5.68434e-14, 0, 6.66667, 1.99486, 1.40485, -1.51591 )
 omni_range = 10.0
+
+[node name="BoneAttachment10" parent="Gun_v3/Armature/Skeleton" index="9"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 2.09165, 0, 0, 1.82493 )
+
+[node name="BoneAttachment11" parent="Gun_v3/Armature/Skeleton" index="10"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 2.09165, 0, 0, 1.82493 )
+
+[node name="BoneAttachment12" parent="Gun_v3/Armature/Skeleton" index="11"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 2.09165, 0, 0, 1.82493 )
+
+[node name="BoneAttachment13" parent="Gun_v3/Armature/Skeleton" index="12"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 2.09165, 0, 0, 1.82493 )
+
+[node name="BoneAttachment14" parent="Gun_v3/Armature/Skeleton" index="13"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 2.09165, 0, 0, 1.82493 )
+
+[node name="BoneAttachment15" parent="Gun_v3/Armature/Skeleton" index="14"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 2.09165, 0, 0, 1.82493 )
 
 [node name="Bullet" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00249481, 0.37628, -0.64534 )

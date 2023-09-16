@@ -51,7 +51,7 @@ public class GunMods
             case "Rocket Launcher":
                 break;
             case "Rate of fire":
-                _gun.GunStats.FireRate += 10;
+                _gun.GunStats.FireCooldown += 10;
                 break;
             case "Shotgun":
                 _gun.GunStats.Projectiles += 5;

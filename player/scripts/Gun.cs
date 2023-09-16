@@ -74,7 +74,7 @@ public class Gun : Spatial
 			float pitch = (float)GD.RandRange(-maxSpreadAngle, maxSpreadAngle);
 			direction = direction.Rotated(Vector3.Right, Mathf.Deg2Rad(pitch));
 
-			_fireCooldown = GunStats.GetGunFireRateInSeconds();
+			_fireCooldown = GunStats.FireCooldown;
 			_muzzleFlash.Show();
 			_muzzleTimer = 0.1f;
 
