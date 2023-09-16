@@ -1,5 +1,4 @@
 using Godot;
-using System;
 
 public class TargetSpawner : Spatial
 {
@@ -7,11 +6,30 @@ public class TargetSpawner : Spatial
     public PackedScene Target;
 
     private CSGBox _spawnArea;
+    private int _hitTargets;
+    private int _maxTargetCount = 10;
 
     public override void _Ready()
     {
         _spawnArea = GetNode<CSGBox>("SpawnArea");
         SpawnTarget();
+    }
+
+    public void TargetHit()
+    {
+        _hitTargets++;
+
+        var player = GetTree().Root.FindNode("Player", true, false) as Player;
+        player.RoundInformation.SetObjective($"SHOOT TARGETS \n {_hitTargets} / {_maxTargetCount}");
+
+        if (_hitTargets < _maxTargetCount)
+        {
+            SpawnTarget();
+        }
+        else
+        {
+            player.RoundInformation.FinishRound();
+        }
     }
 
     public void SpawnTarget()

@@ -8,8 +8,8 @@ public class Drone : KinematicBody, IShootable
     private float _fireCooldownTimer;
     private float _firingTimer;
     private Spatial _target;
-    private float _speed = 5f;
-    private int _health = 3;
+    private float _speed = 8f;
+    private int _health = 5;
     private Area _liftArea;
     private enum DroneState
     {
@@ -227,12 +227,17 @@ public class Drone : KinematicBody, IShootable
 
     public void Shot(Vector3 hitPoint)
     {
+        if (_health <= 0)
+            return;
+
         _animationPlayer.Stop();
         _animationPlayer.Play("Hit");
         _state = DroneState.Hit;
         _health--;
         if (_health <= 0)
         {
+            var droneSpawner = GetTree().Root.FindNode("DroneSpawner", true, false) as DroneSpawner;
+            droneSpawner.DroneDestroyed(this);
             _state = DroneState.Dead;
             BulletHole.RemoveBulletHoles(this);
             CallDeferred("queue_free");

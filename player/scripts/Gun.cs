@@ -100,10 +100,10 @@ public class Gun : Spatial
 				var hitEntity = hit["collider"] as Spatial;
 				var hitNormal = (Vector3)hit["normal"];
 
-				var clonedBulletHole = BulletHole.GetBulletHole();
-				NodeHelper.ReparentNode(clonedBulletHole, hitEntity);
-				clonedBulletHole.GlobalTransform = new Transform(new Quat(), hitPoint + hitNormal * .01f).LookingAt(hitPoint + hitNormal, (Vector3.Up + Vector3.Forward).Normalized());
-				clonedBulletHole.Show();
+				//				var clonedBulletHole = BulletHole.GetBulletHole();
+				//				NodeHelper.ReparentNode(clonedBulletHole, hitEntity);
+				//				clonedBulletHole.GlobalTransform = new Transform(new Quat(), hitPoint + hitNormal * .01f).LookingAt(hitPoint + hitNormal, (Vector3.Up + Vector3.Forward).Normalized());
+				//				clonedBulletHole.Show();
 
 				if (hitEntity is IShootable shootable)
 				{
@@ -121,7 +121,7 @@ public class Gun : Spatial
 			if (gun != null)
 			{
 				var head = player.GetNode<Spatial>("Head");
-				head.RotateX(Mathf.Deg2Rad(gun.GunStats.GetGunRecoilInDegrees()));
+				head.RotateX(Mathf.Deg2Rad(gun.GunStats.Recoil));
 			}
 		}
 	}

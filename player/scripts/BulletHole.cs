@@ -10,9 +10,9 @@ public class BulletHole : Spatial
         var mainScene = bulletHole.GetTree().Root.FindNode("Main", true, false);
         for (int i = 0; i < _pool.Length; i++)
         {
-            var newBulletSplash = bulletHole.Duplicate() as BulletHole;
-            mainScene.CallDeferred("add_child", newBulletSplash);
-            _pool[i] = newBulletSplash;
+            var newBulletHole = bulletHole.Duplicate() as BulletHole;
+            mainScene.CallDeferred("add_child", newBulletHole);
+            _pool[i] = newBulletHole;
         }
     }
 
@@ -22,6 +22,15 @@ public class BulletHole : Spatial
         _poolIndex++;
         if (_poolIndex >= _pool.Length)
             _poolIndex = 0;
+
+        if (bulletHole == null)
+        {
+            var mainScene = bulletHole.GetTree().Root.FindNode("Main", true, false);
+            var newBulletHole = bulletHole.Duplicate() as BulletHole;
+            mainScene.AddChild(newBulletHole);
+            _pool[_poolIndex] = newBulletHole;
+            bulletHole = newBulletHole;
+        }
 
         return bulletHole;
     }

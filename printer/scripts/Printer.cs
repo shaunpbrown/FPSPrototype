@@ -3,6 +3,8 @@ using Godot;
 
 public class Printer : Spatial, IInteractable
 {
+	public bool IsLocked = true;
+
 	private float _openCloseSpeed = 4f;
 	private Spatial _gunHolder;
 	private Spatial _cameraHolder;
@@ -49,7 +51,6 @@ public class Printer : Spatial, IInteractable
 	{
 		if (_isBeingUsed)
 		{
-
 			if (_isPlayerExiting)
 			{
 				GiveGunBackToPlayer(delta);
@@ -89,11 +90,17 @@ public class Printer : Spatial, IInteractable
 
 	public string GetInteractText()
 	{
+		if (IsLocked)
+			return "Printer is locked until you complete objective";
+
 		return "Press E to use printer";
 	}
 
 	public void Interact(Player player)
 	{
+		if (IsLocked)
+			return;
+
 		var gun = player.GetNode<Gun>("Head/GunHolder/Gun");
 		NodeHelper.ReparentNode(gun, _gunHolder);
 
@@ -232,6 +239,8 @@ public class Printer : Spatial, IInteractable
 			mod.Visible = true;
 			_currentHoloMod.Visible = false;
 			_currentHoloMod = null;
+
+			_player.RoundInformation.StartNextRound();
 		}
 
 		_isPlayerExiting = true;

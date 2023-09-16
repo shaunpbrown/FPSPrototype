@@ -7,10 +7,16 @@ public class Player : KinematicBody
 	public float JumpStrength = 5.0f;
 	public float Gravity = -9.8f;
 	public bool IsUsingPrinter;
+	public RoundInformation RoundInformation;
 
 	private Vector3 _velocity = new Vector3();
 	private Spatial _head;
 	private Gun _gun;
+
+	public Player() : base()
+	{
+		RoundInformation = new RoundInformation(this);
+	}
 
 	public override void _Ready()
 	{
