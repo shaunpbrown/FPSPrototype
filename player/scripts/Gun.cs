@@ -63,7 +63,7 @@ public class Gun : Spatial
 		if (CanFireBullet())
 		{
 			_animationPlayer.Stop();
-			_animationPlayer.Play("Fire");
+			_animationPlayer.Play(GunStats.FireAnimation);
 		}
 	}
 

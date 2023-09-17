@@ -258,18 +258,25 @@ public class Printer : Spatial, IInteractable
 		_printerUI.Visible = false;
 	}
 
-	public void ShuffleCards()
+	public bool ShuffleCards()
 	{
 		var gun = GetTree().Root.FindNode("Gun", true, false) as Gun;
 		var usedMods = new List<string>();
 		var mod1Name = gun.GunMods.GetRandomModName(usedMods);
+		if (string.IsNullOrEmpty(mod1Name))
+			return false;
 		usedMods.Add(mod1Name);
 		_upgradeCards[0].SetCard(mod1Name);
 		var mod2Name = gun.GunMods.GetRandomModName(usedMods);
+		if (string.IsNullOrEmpty(mod2Name))
+			return false;
 		usedMods.Add(mod2Name);
 		_upgradeCards[1].SetCard(mod2Name);
 		var mod3Name = gun.GunMods.GetRandomModName(usedMods);
+		if (string.IsNullOrEmpty(mod3Name))
+			return false;
 		usedMods.Add(mod3Name);
 		_upgradeCards[2].SetCard(mod3Name);
+		return true;
 	}
 }

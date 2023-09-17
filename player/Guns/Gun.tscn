@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://assets/3D Models/Gun/Gun.glb" type="PackedScene" id=1]
 [ext_resource path="res://player/scripts/BulletSplash.cs" type="Script" id=2]
@@ -40,6 +40,34 @@ flags_transparent = true
 params_cull_mode = 1
 albedo_texture = ExtResource( 6 )
 
+[sub_resource type="Animation" id=12]
+resource_name = "AutoFire"
+length = 0.5
+tracks/0/type = "method"
+tracks/0/path = NodePath("..")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "FireBullet"
+} ]
+}
+tracks/1/type = "animation"
+tracks/1/path = NodePath("AnimationPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"clips": PoolStringArray( "AutoFire" ),
+"times": PoolRealArray( 0 )
+}
+
 [sub_resource type="Animation" id=11]
 resource_name = "Fire"
 length = 0.5
@@ -75,18 +103,18 @@ script = ExtResource( 3 )
 transform = Transform( -0.15, 0, -1.31134e-08, 0, 0.15, 0, 1.31134e-08, 0, -0.15, 0, 0, 0 )
 
 [node name="Skeleton" parent="Gun_v3/Armature" index="0"]
-bones/0/bound_children = [ NodePath("BoneAttachment3"), NodePath("BoneAttachment4"), NodePath("BoneAttachment5"), NodePath("BoneAttachment6"), NodePath("BoneAttachment7"), NodePath("BoneAttachment8"), NodePath("BoneAttachment9"), NodePath("BoneAttachment10"), NodePath("BoneAttachment11"), NodePath("BoneAttachment12"), NodePath("BoneAttachment13"), NodePath("BoneAttachment14"), NodePath("BoneAttachment15"), NodePath("BoneAttachment16"), NodePath("BoneAttachment17"), NodePath("BoneAttachment18"), NodePath("BoneAttachment19"), NodePath("BoneAttachment20"), NodePath("BoneAttachment21"), NodePath("BoneAttachment22") ]
+bones/0/bound_children = [ NodePath("BoneAttachment3"), NodePath("BoneAttachment4"), NodePath("BoneAttachment5"), NodePath("BoneAttachment6"), NodePath("BoneAttachment7"), NodePath("BoneAttachment8"), NodePath("BoneAttachment9"), NodePath("BoneAttachment10"), NodePath("BoneAttachment11"), NodePath("BoneAttachment12"), NodePath("BoneAttachment13"), NodePath("BoneAttachment14"), NodePath("BoneAttachment15"), NodePath("BoneAttachment16"), NodePath("BoneAttachment17"), NodePath("BoneAttachment18"), NodePath("BoneAttachment19"), NodePath("BoneAttachment20"), NodePath("BoneAttachment21"), NodePath("BoneAttachment22"), NodePath("BoneAttachment23") ]
 bones/1/bound_children = [ NodePath("BoneAttachment") ]
 bones/2/bound_children = [ NodePath("BoneAttachment2") ]
 
 [node name="BoneAttachment" parent="Gun_v3/Armature/Skeleton" index="0"]
-transform = Transform( 1, 0, -5.6426e-07, -5.6426e-07, 0, -1, 0, 1, 0, 4.94635e-17, 0.986388, -1.76825 )
+transform = Transform( 1, 0, -5.6426e-07, -5.6426e-07, 0, -1, 0, 1, 0, 2.32604e-14, 0.986388, -1.76825 )
 
 [node name="Cube002" parent="Gun_v3/Armature/Skeleton/BoneAttachment" index="0"]
 transform = Transform( 0.355056, -2.22916e-07, 0, 0, -6.35275e-22, 0.355056, -2.22916e-07, -0.355056, 0, 2.23028e-07, 1.76825, 0.355235 )
 
 [node name="BoneAttachment2" parent="Gun_v3/Armature/Skeleton" index="1"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.107088, 0.723046, 0.114658 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.107088, 0.723046, -0.370151 )
 
 [node name="MuzzleFlash" type="CSGMesh" parent="Gun_v3/Armature/Skeleton/BoneAttachment9" index="1"]
 transform = Transform( 0.355056, 0, -2.34479e-13, 0, 0.355056, 0, 2.34479e-13, 0, 0.355056, 0.111709, 0.819748, 1.4557 )
@@ -132,6 +160,7 @@ script = ExtResource( 7 )
 
 [node name="AnimationPlayerEvents" type="AnimationPlayer" parent="."]
 root_node = NodePath("../Gun_v3")
+anims/AutoFire = SubResource( 12 )
 anims/Fire = SubResource( 11 )
 
 [editable path="Gun_v3"]

@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Godot;
 using System.Linq;
+using System;
 
 public class GunMods
 {
@@ -74,12 +75,13 @@ public class GunMods
                 _gun.GunStats.FireCooldown -= .2f;
                 _gun.GunStats.Recoil += 1;
                 _gun.GunStats.Spread += 30;
+                _gun.GunStats.FireAnimation = "AutoFire";
                 break;
             case "Red Dot":
-                _gun.GunStats.Spread -= 10;
+                _gun.GunStats.Spread -= 15;
                 break;
             case "CoolingBlock":
-                _gun.GunStats.FireCooldown -= .2f;
+                _gun.GunStats.FireCooldown -= .05f;
                 break;
             case "BarrelExtension":
                 _gun.GunStats.Recoil -= 5;
@@ -91,7 +93,7 @@ public class GunMods
                 break;
             case "Stock":
                 _gun.GunStats.Recoil -= 5;
-                _gun.GunStats.Spread -= 5;
+                _gun.GunStats.Spread -= 10;
                 break;
             case "ElectricRounds":
                 break;
@@ -99,11 +101,11 @@ public class GunMods
                 _gun.GunStats.Spread -= 5;
                 break;
             case "GripPads":
-                _gun.GunStats.FireCooldown -= .1f;
+                _gun.GunStats.FireCooldown -= .05f;
                 _gun.GunStats.Recoil -= 5;
                 break;
             case "RoundLoader":
-                _gun.GunStats.FireCooldown -= .1f;
+                _gun.GunStats.FireCooldown -= .05f;
                 break;
             default:
                 break;
@@ -143,6 +145,9 @@ public class GunMods
             filter = new List<string>();
 
         var filtered = ModNames.Where((name, index) => !IsModEquipped(name) && !filter.Contains(name)).ToList();
+        if (filtered.Count == 0)
+            return null;
+
         var val = filtered[(int)(GD.Randf() * filtered.Count)];
         return val;
     }

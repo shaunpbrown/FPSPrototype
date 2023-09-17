@@ -88,7 +88,11 @@ public class RoundInformation
 
         if (RoundNumber != 1)
         {
-            _printer.ShuffleCards();
+            if (!_printer.ShuffleCards())
+            {
+                StartNextRound();
+                return;
+            }
         }
 
         SetObjective("UPGRADE GUN USING PRINTER");
