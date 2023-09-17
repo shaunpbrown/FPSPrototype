@@ -16,8 +16,8 @@ public class GunMods
         "MagExtension",
         "Stock",
         "ElectricRounds",
-        "Mod8",
-        "Mod9",
+        "Flashlight",
+        "GripPads",
         "Mod10",
     };
 

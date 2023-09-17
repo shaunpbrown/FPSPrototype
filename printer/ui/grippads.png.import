@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/mod9.png-a587986a81ffe1db304933fc273eb15d.stex"
+path="res://.import/grippads.png-e5cbbbeb7caf75b1290521cc11ec6b4b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://printer/ui/mod9.png"
-dest_files=[ "res://.import/mod9.png-a587986a81ffe1db304933fc273eb15d.stex" ]
+source_file="res://printer/ui/grippads.png"
+dest_files=[ "res://.import/grippads.png-e5cbbbeb7caf75b1290521cc11ec6b4b.stex" ]
 
 [params]
 
