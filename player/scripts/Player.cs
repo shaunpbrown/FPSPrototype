@@ -19,6 +19,7 @@ public class Player : KinematicBody
 	private Texture _hitMarkerTexture;
 	private Texture _crosshairTexture;
 	private float _hitMarkerTimer;
+	private bool _isTitleSreenOpen = true;
 
 	public Player() : base()
 	{
@@ -40,6 +41,9 @@ public class Player : KinematicBody
 
 	public override void _Input(InputEvent @event)
 	{
+		if (_isTitleSreenOpen)
+			return;
+
 		if (IsUsingPrinter || Input.MouseMode != Input.MouseModeEnum.Captured)
 			return;
 
@@ -53,6 +57,9 @@ public class Player : KinematicBody
 
 	public override void _Process(float delta)
 	{
+		if (_isTitleSreenOpen)
+			return;
+
 		_gunCamera.GlobalTransform = _headCamera.GlobalTransform;
 
 		if (_hitMarkerTimer > 0)
@@ -85,6 +92,9 @@ public class Player : KinematicBody
 
 	public override void _PhysicsProcess(float delta)
 	{
+		if (_isTitleSreenOpen)
+			return;
+
 		if (Input.IsActionPressed("app_exit"))
 			GetTree().Quit();
 
@@ -155,5 +165,10 @@ public class Player : KinematicBody
 	public void TakeDamage(Vector3 hitPoint)
 	{
 		_health.TakeDamage(1);
+	}
+
+	public void CloseTitleScreen()
+	{
+		_isTitleSreenOpen = false;
 	}
 }
