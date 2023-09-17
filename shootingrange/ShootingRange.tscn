@@ -1008,14 +1008,6 @@ height = 1.0
 depth = 1.0
 material = SubResource( 2 )
 
-[node name="CSGBox12" type="CSGBox" parent="BlockCover/BigBarrier8"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1.5, -0.5 )
-use_collision = true
-width = 1.0
-height = 1.0
-depth = 1.0
-material = SubResource( 2 )
-
 [node name="CSGBox13" type="CSGBox" parent="BlockCover/BigBarrier8"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1.5, -0.5 )
 use_collision = true
@@ -1034,14 +1026,6 @@ material = SubResource( 2 )
 
 [node name="CSGBox15" type="CSGBox" parent="BlockCover/BigBarrier8"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 2.5, 0.5 )
-use_collision = true
-width = 1.0
-height = 1.0
-depth = 1.0
-material = SubResource( 2 )
-
-[node name="CSGBox16" type="CSGBox" parent="BlockCover/BigBarrier8"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 2.5, -0.5 )
 use_collision = true
 width = 1.0
 height = 1.0
@@ -1719,7 +1703,7 @@ depth = 1.0
 material = SubResource( 2 )
 
 [node name="DroneSpawner" parent="." instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0632896, 2.4974, -55.3843 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.32786, 0, -10.0179 )
 
 [node name="Lights" type="Spatial" parent="."]
 

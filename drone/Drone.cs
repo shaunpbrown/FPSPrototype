@@ -8,7 +8,7 @@ public class Drone : KinematicBody, IShootable
     private float _fireCooldownTimer;
     private float _firingTimer;
     private Spatial _target;
-    private float _speed = 8f;
+    private float _speed = 6f;
     private int _health = 5;
     private Area _liftArea;
     private enum DroneState
@@ -68,7 +68,7 @@ public class Drone : KinematicBody, IShootable
                 }
                 break;
             case DroneState.Falling:
-                if (GlobalTranslation.y <= 2)
+                if (GlobalTranslation.y <= 4.5f)
                 {
                     _state = DroneState.Idle;
                     _animationPlayer.Stop();
@@ -139,7 +139,7 @@ public class Drone : KinematicBody, IShootable
             case DroneState.Idle:
                 break;
             case DroneState.Falling:
-                MoveAndSlide(Vector3.Down * 15, Vector3.Up);
+                MoveAndSlide(Vector3.Down * 8, Vector3.Up);
                 break;
             case DroneState.Hit:
                 break;

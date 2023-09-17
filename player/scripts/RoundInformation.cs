@@ -2,6 +2,7 @@ using Godot;
 public class RoundInformation
 {
     public int RoundNumber = 1;
+    public int DronesDestroyed;
 
     private Player _player;
     private Label _objectiveLabel;
@@ -76,7 +77,7 @@ public class RoundInformation
                 _droneSpawner.MaxSpawnCount = 20;
                 _droneSpawner.MaxAliveCount = 5;
                 _droneSpawner.SpawnInterval = .5f;
-                SetObjective($"DESTROY DRONES\n 0/{_droneSpawner.MaxSpawnCount}");
+                SetObjective($"SURVIVE AS LONG AS POSSIBLE\nDRONES DESTROYED: {_player.RoundInformation.DronesDestroyed}");
                 break;
         }
     }
