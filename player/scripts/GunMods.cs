@@ -13,7 +13,7 @@ public class GunMods
         "Red Dot",
         "CoolingBlock",
         "BarrelExtension",
-        "Mod5",
+        "MagExtension",
         "Mod6",
         "Mod7",
         "Mod8",
