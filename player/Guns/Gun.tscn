@@ -75,7 +75,7 @@ script = ExtResource( 3 )
 transform = Transform( -0.15, 0, -1.31134e-08, 0, 0.15, 0, 1.31134e-08, 0, -0.15, 0, 0, 0 )
 
 [node name="Skeleton" parent="Gun_v3/Armature" index="0"]
-bones/0/bound_children = [ NodePath("BoneAttachment3"), NodePath("BoneAttachment4"), NodePath("BoneAttachment5"), NodePath("BoneAttachment6"), NodePath("BoneAttachment7"), NodePath("BoneAttachment8"), NodePath("BoneAttachment9"), NodePath("BoneAttachment10"), NodePath("BoneAttachment11"), NodePath("BoneAttachment12"), NodePath("BoneAttachment13"), NodePath("BoneAttachment14"), NodePath("BoneAttachment15"), NodePath("BoneAttachment16"), NodePath("BoneAttachment17") ]
+bones/0/bound_children = [ NodePath("BoneAttachment3"), NodePath("BoneAttachment4"), NodePath("BoneAttachment5"), NodePath("BoneAttachment6"), NodePath("BoneAttachment7"), NodePath("BoneAttachment8"), NodePath("BoneAttachment9"), NodePath("BoneAttachment10"), NodePath("BoneAttachment11"), NodePath("BoneAttachment12"), NodePath("BoneAttachment13"), NodePath("BoneAttachment14"), NodePath("BoneAttachment15"), NodePath("BoneAttachment16"), NodePath("BoneAttachment17"), NodePath("BoneAttachment18"), NodePath("BoneAttachment19") ]
 bones/1/bound_children = [ NodePath("BoneAttachment") ]
 bones/2/bound_children = [ NodePath("BoneAttachment2") ]
 
@@ -85,35 +85,28 @@ transform = Transform( 1, 0, -5.6426e-07, -5.6426e-07, 0, -1, 0, 1, 0, 4.94635e-
 [node name="Cube002" parent="Gun_v3/Armature/Skeleton/BoneAttachment" index="0"]
 transform = Transform( 0.355056, -2.22916e-07, 0, 0, -6.35275e-22, 0.355056, -2.22916e-07, -0.355056, 0, 2.23028e-07, 1.76825, 0.355235 )
 
-[node name="Mod6" type="CSGBox" parent="Gun_v3/Armature/Skeleton/BoneAttachment" index="1"]
-transform = Transform( 1, -5.6426e-07, 0, 0, 4.74583e-21, 1, -5.6426e-07, -1, 3.38813e-21, 0.379122, 2.86458, 0.49632 )
-layers = 2
-width = 0.374706
-height = 0.497865
-depth = 0.383598
-
-[node name="Mod7" type="CSGBox" parent="Gun_v3/Armature/Skeleton/BoneAttachment" index="2"]
+[node name="Mod7" type="CSGBox" parent="Gun_v3/Armature/Skeleton/BoneAttachment" index="1"]
 transform = Transform( 1, -5.6426e-07, 0, 0, 4.74583e-21, 1, -5.6426e-07, -1, 3.38813e-21, 0.379122, 2.31136, 0.49632 )
 layers = 2
 width = 0.374706
 height = 0.497865
 depth = 0.383598
 
-[node name="Mod8" type="CSGBox" parent="Gun_v3/Armature/Skeleton/BoneAttachment" index="3"]
+[node name="Mod8" type="CSGBox" parent="Gun_v3/Armature/Skeleton/BoneAttachment" index="2"]
 transform = Transform( 1, -5.6426e-07, 0, 0, 4.74583e-21, 1, -5.6426e-07, -1, 3.38813e-21, 0.379123, 1.76029, 0.49632 )
 layers = 2
 width = 0.374706
 height = 0.497865
 depth = 0.383598
 
-[node name="Mod9" type="CSGBox" parent="Gun_v3/Armature/Skeleton/BoneAttachment" index="4"]
+[node name="Mod9" type="CSGBox" parent="Gun_v3/Armature/Skeleton/BoneAttachment" index="3"]
 transform = Transform( 1, -5.6426e-07, 0, 0, 4.74583e-21, 1, -5.6426e-07, -1, 3.38813e-21, 0.379123, 1.13355, 0.49632 )
 layers = 2
 width = 0.374706
 height = 0.497865
 depth = 0.383598
 
-[node name="Mod10" type="CSGBox" parent="Gun_v3/Armature/Skeleton/BoneAttachment" index="5"]
+[node name="Mod10" type="CSGBox" parent="Gun_v3/Armature/Skeleton/BoneAttachment" index="4"]
 transform = Transform( 1, -5.6426e-07, 0, 0, 4.74583e-21, 1, -5.6426e-07, -1, 3.38813e-21, 0.379123, 0.630368, 0.49632 )
 layers = 2
 width = 0.374706

@@ -14,7 +14,7 @@ public class GunMods
         "CoolingBlock",
         "BarrelExtension",
         "MagExtension",
-        "Mod6",
+        "Stock",
         "Mod7",
         "Mod8",
         "Mod9",
