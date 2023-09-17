@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/mod10.png-e15126c1624e38e3ecc75904d4b1f03d.stex"
+path="res://.import/roundloader.png-b0e36010f7bc182f9a534878d3196598.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://printer/ui/mod10.png"
-dest_files=[ "res://.import/mod10.png-e15126c1624e38e3ecc75904d4b1f03d.stex" ]
+source_file="res://printer/ui/roundloader.png"
+dest_files=[ "res://.import/roundloader.png-b0e36010f7bc182f9a534878d3196598.stex" ]
 
 [params]
 

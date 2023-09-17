@@ -18,7 +18,7 @@ public class GunMods
         "ElectricRounds",
         "Flashlight",
         "GripPads",
-        "Mod10",
+        "RoundLoader",
     };
 
     public bool[] _isModEquiped;
