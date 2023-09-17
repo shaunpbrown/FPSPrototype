@@ -1,14 +1,17 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://player/scripts/Player.cs" type="Script" id=1]
 [ext_resource path="res://player/guns/Gun.tscn" type="PackedScene" id=2]
 [ext_resource path="res://player/crosshair_simple.png" type="Texture" id=3]
 [ext_resource path="res://assets/Fonts/BebasNeue-Regular.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://player/blood.png" type="Texture" id=5]
 
 [sub_resource type="CapsuleShape" id=1]
 radius = 0.5
 
 [sub_resource type="StyleBoxEmpty" id=2]
+
+[sub_resource type="CanvasItemMaterial" id=4]
 
 [sub_resource type="DynamicFont" id=3]
 size = 32
@@ -59,6 +62,13 @@ fov = 55.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 custom_styles/panel = SubResource( 2 )
+
+[node name="Blood" type="TextureRect" parent="CanvasLayer/Panel"]
+material = SubResource( 4 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 5 )
+expand = true
 
 [node name="Crosshair" type="TextureRect" parent="CanvasLayer/Panel"]
 anchor_left = 0.5

@@ -32,6 +32,11 @@ public class DroneBullet : Spatial
                 clonedBulletHole.GlobalTransform = new Transform(new Quat(), hitPoint + hitNormal * .01f).LookingAt(hitPoint + hitNormal, (Vector3.Up + Vector3.Forward).Normalized());
                 clonedBulletHole.Show();
 
+                if (hitEntity is Player player)
+                {
+                    player.TakeDamage(hitPoint);
+                }
+
                 Visible = false;
             }
 

@@ -7,6 +7,9 @@ public class Target : StaticBody, IShootable
         var spawner = GetTree().Root.FindNode("TargetSpawner", true, false) as TargetSpawner;
         spawner.TargetHit();
         RemoveTarget();
+
+        var player = GetTree().Root.FindNode("Player", true, false) as Player;
+        player.HitMarker();
     }
 
     public void RemoveTarget()

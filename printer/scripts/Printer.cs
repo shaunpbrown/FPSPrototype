@@ -113,6 +113,7 @@ public class Printer : Spatial, IInteractable
 		_isBeingUsed = true;
 		_player.IsUsingPrinter = true;
 		_player.SetInteractText("");
+		_player.GetNode<Panel>("CanvasLayer/Panel").Visible = false;
 	}
 
 	public void PutGunInHolder(float delta)
@@ -157,6 +158,8 @@ public class Printer : Spatial, IInteractable
 		{
 			camera.Translation = Vector3.Zero;
 		}
+
+		_player.GetNode<Panel>("CanvasLayer/Panel").Visible = true;
 	}
 
 	public void MoveTowardsOrigin(Spatial target, float weight)

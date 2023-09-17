@@ -14,6 +14,11 @@ public class Player : KinematicBody
 	private Spatial _gunCamera;
 	private Spatial _headCamera;
 	private Gun _gun;
+	private Health _health;
+	private TextureRect _crosshair;
+	private Texture _hitMarkerTexture;
+	private Texture _crosshairTexture;
+	private float _hitMarkerTimer;
 
 	public Player() : base()
 	{
@@ -24,8 +29,12 @@ public class Player : KinematicBody
 	{
 		_head = GetNode<Spatial>("Head");
 		_gun = GetNode<Gun>("Head/GunHolder/Gun");
+		_health = new Health(this);
 		_gunCamera = GetNode<Spatial>("CanvasLayer/ViewportContainer/Viewport/GunCamera");
 		_headCamera = GetNode<Spatial>("Head/Camera");
+		_crosshair = GetNode<TextureRect>("CanvasLayer/Panel/Crosshair");
+		_crosshairTexture = _crosshair.Texture;
+		_hitMarkerTexture = GD.Load<Texture>("res://player/crosshair_simple_hitconfirm.png");
 		Input.MouseMode = Input.MouseModeEnum.Captured;
 	}
 
@@ -46,8 +55,16 @@ public class Player : KinematicBody
 	{
 		_gunCamera.GlobalTransform = _headCamera.GlobalTransform;
 
+		if (_hitMarkerTimer > 0)
+			_hitMarkerTimer -= delta;
+		else if (_crosshair.Texture != null)
+			_crosshair.Texture = _crosshairTexture;
+
 		if (IsUsingPrinter)
 			return;
+
+
+		_health.HealthProcess(delta);
 
 		var rayHit = InteractRayCast();
 		if (rayHit.Count > 0)
@@ -123,9 +140,20 @@ public class Player : KinematicBody
 		return hit;
 	}
 
+	public void HitMarker()
+	{
+		_crosshair.Texture = _hitMarkerTexture;
+		_hitMarkerTimer = 0.1f;
+	}
+
 	public void SetInteractText(string text)
 	{
 		var interactText = GetNode<Label>("CanvasLayer/Panel/InteractText");
 		interactText.Text = text;
+	}
+
+	public void TakeDamage(Vector3 hitPoint)
+	{
+		_health.TakeDamage(1);
 	}
 }

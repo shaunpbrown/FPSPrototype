@@ -242,5 +242,8 @@ public class Drone : KinematicBody, IShootable
             BulletHole.RemoveBulletHoles(this);
             CallDeferred("queue_free");
         }
+
+        var player = GetTree().Root.FindNode("Player", true, false) as Player;
+        player.HitMarker();
     }
 }
