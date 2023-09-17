@@ -82,6 +82,9 @@ public class Gun : Spatial
 			direction = direction.Rotated(Vector3.Right, Mathf.Deg2Rad(pitch));
 
 			_fireCooldown = GunStats.FireCooldown;
+			if (_fireCooldown <= 0.01f)
+				_fireCooldown = 0.01f;
+
 			_muzzleFlash.Show();
 			_muzzleTimer = 0.1f;
 
@@ -128,7 +131,7 @@ public class Gun : Spatial
 			if (gun != null)
 			{
 				var head = player.GetNode<Spatial>("Head");
-				head.RotateX(Mathf.Deg2Rad(gun.GunStats.Recoil));
+				head.RotateX(Mathf.Deg2Rad(gun.GunStats.Recoil > 0 ? gun.GunStats.Recoil : 0));
 			}
 		}
 	}

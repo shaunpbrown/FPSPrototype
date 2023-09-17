@@ -6,8 +6,8 @@ public class GunMods
 {
     public List<string> ModNames = new List<string>{
         "Rocket Launcher",
-        "RocketLauncher2",
-        "RocketLauncher3",
+//        "RocketLauncher2",
+        //"RocketLauncher3",
         "Shotgun",
         "Rate of fire",
         "Red Dot",
@@ -61,15 +61,49 @@ public class GunMods
         {
             case "Rocket Launcher":
                 break;
-            case "Rate of fire":
-                _gun.GunStats.FireCooldown -= .2f;
-                _gun.GunStats.Recoil += 1;
-                _gun.GunStats.Spread += 30;
+            case "RocketLauncher2":
+                break;
+            case "RocketLauncher3":
                 break;
             case "Shotgun":
                 _gun.GunStats.Projectiles += 5;
                 _gun.GunStats.Spread += 60;
                 _gun.GunStats.Recoil += 5;
+                break;
+            case "Rate of fire":
+                _gun.GunStats.FireCooldown -= .2f;
+                _gun.GunStats.Recoil += 1;
+                _gun.GunStats.Spread += 30;
+                break;
+            case "Red Dot":
+                _gun.GunStats.Spread -= 10;
+                break;
+            case "CoolingBlock":
+                _gun.GunStats.FireCooldown -= .2f;
+                break;
+            case "BarrelExtension":
+                _gun.GunStats.Recoil -= 5;
+                break;
+            case "MagExtension":
+                _gun.GunStats.Projectiles += 2;
+                _gun.GunStats.Spread += 10;
+                _gun.GunStats.Recoil += 3;
+                break;
+            case "Stock":
+                _gun.GunStats.Recoil -= 5;
+                _gun.GunStats.Spread -= 5;
+                break;
+            case "ElectricRounds":
+                break;
+            case "Flashlight":
+                _gun.GunStats.Spread -= 5;
+                break;
+            case "GripPads":
+                _gun.GunStats.FireCooldown -= .1f;
+                _gun.GunStats.Recoil -= 5;
+                break;
+            case "RoundLoader":
+                _gun.GunStats.FireCooldown -= .1f;
                 break;
             default:
                 break;
