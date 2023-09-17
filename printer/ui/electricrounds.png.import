@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/mod14.png-0914a549daa79af0c2a0f579f19df4e4.stex"
+path="res://.import/electricrounds.png-65260f7f16863be27f4bb49ef8ce7c46.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://printer/ui/mod14.png"
-dest_files=[ "res://.import/mod14.png-0914a549daa79af0c2a0f579f19df4e4.stex" ]
+source_file="res://printer/ui/electricrounds.png"
+dest_files=[ "res://.import/electricrounds.png-65260f7f16863be27f4bb49ef8ce7c46.stex" ]
 
 [params]
 

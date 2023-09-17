@@ -15,7 +15,7 @@ public class GunMods
         "BarrelExtension",
         "MagExtension",
         "Stock",
-        "Mod7",
+        "ElectricRounds",
         "Mod8",
         "Mod9",
         "Mod10",
@@ -108,7 +108,7 @@ public class GunMods
         if (filter == null)
             filter = new List<string>();
 
-        var filtered = ModNames.Where((name, index) => index > 3 && !IsModEquipped(name) && !filter.Contains(name)).ToList();
+        var filtered = ModNames.Where((name, index) => !IsModEquipped(name) && !filter.Contains(name)).ToList();
         var val = filtered[(int)(GD.Randf() * filtered.Count)];
         return val;
     }
