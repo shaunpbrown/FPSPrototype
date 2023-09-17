@@ -41,7 +41,7 @@ public class Player : KinematicBody
 
 	public override void _Input(InputEvent @event)
 	{
-		if (_isTitleSreenOpen)
+		if (_isTitleSreenOpen || _health.IsDead())
 			return;
 
 		if (IsUsingPrinter || Input.MouseMode != Input.MouseModeEnum.Captured)
@@ -57,9 +57,11 @@ public class Player : KinematicBody
 
 	public override void _Process(float delta)
 	{
-		if (_isTitleSreenOpen)
+		if (_isTitleSreenOpen || _health.IsDead())
+		{
+			_health.DeathProcess(delta);
 			return;
-
+		}
 		_gunCamera.GlobalTransform = _headCamera.GlobalTransform;
 
 		if (_hitMarkerTimer > 0)
@@ -69,7 +71,6 @@ public class Player : KinematicBody
 
 		if (IsUsingPrinter)
 			return;
-
 
 		_health.HealthProcess(delta);
 
@@ -92,7 +93,7 @@ public class Player : KinematicBody
 
 	public override void _PhysicsProcess(float delta)
 	{
-		if (_isTitleSreenOpen)
+		if (_isTitleSreenOpen || _health.IsDead())
 			return;
 
 		if (Input.IsActionPressed("app_exit"))

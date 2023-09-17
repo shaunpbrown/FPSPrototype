@@ -1,3 +1,4 @@
+using System.Runtime.Remoting.Messaging;
 using Godot;
 
 public class Health
@@ -10,6 +11,8 @@ public class Health
     private float _lastTakenDamageTimer;
     private float _healTimer;
     private float _invincibilityTimer;
+    private Vector3 _headDeathHeight;
+    private float _deadTimer;
 
     public Health(Player player)
     {
@@ -42,6 +45,23 @@ public class Health
 
     }
 
+    public void DeathProcess(float delta)
+    {
+        if (IsDead())
+        {
+            var head = _player.GetNode<Spatial>("Head");
+            if (head.GlobalTranslation.y > .5f)
+                head.GlobalTranslation = head.GlobalTranslation.LinearInterpolate(_headDeathHeight, delta * 2);
+
+            _deadTimer += delta;
+            if (_deadTimer > 10)
+            {
+                string currentScenePath = _player.GetTree().CurrentScene.Filename;
+                _player.GetTree().ChangeScene(currentScenePath);
+            }
+        }
+    }
+
     public void TakeDamage(int damage)
     {
         if (IsDead() || _invincibilityTimer > 0)
@@ -50,7 +70,6 @@ public class Health
         _lastTakenDamageTimer = 2f;
         _invincibilityTimer = .2f;
         CurrentHealth -= damage;
-        GD.Print(CurrentHealth);
         AdjustBloodAlpha(1 - (CurrentHealth / (float)MaxHealth));
         if (CurrentHealth <= 0)
             Die();
@@ -62,7 +81,6 @@ public class Health
             return;
 
         CurrentHealth += heal;
-        GD.Print(CurrentHealth);
         AdjustBloodAlpha(1 - (CurrentHealth / (float)MaxHealth));
     }
 
@@ -70,7 +88,7 @@ public class Health
 
     public void Die()
     {
-        GD.Print("YOU HAVE DIED");
+        _headDeathHeight = _player.GetNode<Spatial>("Head").GlobalTranslation + Vector3.Down;
     }
 
     private void AdjustBloodAlpha(float alpha)
