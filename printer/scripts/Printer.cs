@@ -46,7 +46,8 @@ public class Printer : Spatial, IInteractable
 		_animationPlayer.Play("Printer Open");
 		_animationPlayer.PlaybackSpeed = 0;
 
-		_upgradeCards[0].SetCard("Rocket Launcher");
+		//_upgradeCards[0].SetCard("Rocket Launcher");
+		_upgradeCards[0].SetCard("MagExtension");
 		_upgradeCards[1].SetCard("Shotgun");
 		_upgradeCards[2].SetCard("Rate of fire");
 	}
