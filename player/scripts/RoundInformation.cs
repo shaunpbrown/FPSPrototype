@@ -39,6 +39,7 @@ public class RoundInformation
             case 4:
                 _droneSpawner.MaxSpawnCount = 6;
                 _droneSpawner.MaxAliveCount = 4;
+                _droneSpawner.SpawnInterval = .1f;
                 SetObjective($"DESTROY DRONES\n 0/{_droneSpawner.MaxSpawnCount}");
                 break;
             case 5:

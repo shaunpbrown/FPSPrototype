@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/mod2.png-eb63c6d4761d4c358993c5db944b374b.stex"
+path="res://.import/coolingblock.png-126857aea3dd8407b3c8726110b2699f.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://printer/ui/mod2.png"
-dest_files=[ "res://.import/mod2.png-eb63c6d4761d4c358993c5db944b374b.stex" ]
+source_file="res://printer/ui/coolingblock.png"
+dest_files=[ "res://.import/coolingblock.png-126857aea3dd8407b3c8726110b2699f.stex" ]
 
 [params]
 
