@@ -7,7 +7,7 @@ max_value = 2.0
 _data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), -3.67273, 0.0, 0, 0 ]
 
 [node name="Rocket Smoke" type="CPUParticles"]
-transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+transform = Transform( 0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0 )
 amount = 24
 explosiveness = 0.12
 mesh = SubResource( 1 )

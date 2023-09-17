@@ -7,7 +7,7 @@ public class GunMods
 {
     public List<string> ModNames = new List<string>{
         "Rocket Launcher",
-//        "RocketLauncher2",
+        //"RocketLauncher2",
         //"RocketLauncher3",
         "Shotgun",
         "Rate of fire",
@@ -16,7 +16,7 @@ public class GunMods
         "BarrelExtension",
         "MagExtension",
         "Stock",
-        "ElectricRounds",
+        //"ElectricRounds",
         "Flashlight",
         "GripPads",
         "RoundLoader",
