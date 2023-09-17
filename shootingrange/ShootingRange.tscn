@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://shootingrange/prototypeTexture.jpg" type="Texture" id=1]
 [ext_resource path="res://shootingrange/TargetSpawner.cs" type="Script" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://printer/Printer.tscn" type="PackedScene" id=7]
 [ext_resource path="res://assets/3D Models/Environment/Triple Crate.tscn" type="PackedScene" id=8]
 [ext_resource path="res://assets/3D Models/Environment/Single Pillar.tscn" type="PackedScene" id=9]
+[ext_resource path="res://assets/3D Models/Environment/Quad Crate.tscn" type="PackedScene" id=10]
 
 [sub_resource type="ProceduralSky" id=1]
 
@@ -43,7 +44,7 @@ shadow_color = Color( 0.454902, 0.454902, 0.454902, 1 )
 shadow_reverse_cull_face = true
 
 [node name="TargetSpawner" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -10 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -9.11127 )
 script = ExtResource( 2 )
 Target = ExtResource( 3 )
 
@@ -121,22 +122,170 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 0, -3.5 )
 [node name="Single Crate" parent="Cover" instance=ExtResource( 5 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 2.72728, -0.00509572, -3.51004 )
 
+[node name="Single Crate13" parent="Cover" instance=ExtResource( 5 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 7.24665, -0.00509572, -10.276 )
+
+[node name="Single Crate28" parent="Cover" instance=ExtResource( 5 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.42368, -0.00509572, -10.276 )
+
+[node name="Single Crate29" parent="Cover" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 3.5307, -0.00509572, -11.4518 )
+
 [node name="Single Crate2" parent="Cover" instance=ExtResource( 5 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1.62472, -0.00509572, -3.51004 )
+
+[node name="Single Crate14" parent="Cover" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 5.05316, -0.00509572, -21.7942 )
+
+[node name="Single Crate27" parent="Cover" instance=ExtResource( 5 )]
+transform = Transform( -2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, 5.05316, 0.968873, -21.7942 )
+
+[node name="Single Crate15" parent="Cover" instance=ExtResource( 5 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 6.83608, -0.00509572, -20.1864 )
+
+[node name="Single Crate16" parent="Cover" instance=ExtResource( 5 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1.70089, -0.00509572, -31.063 )
 
 [node name="Single Crate3" parent="Cover" instance=ExtResource( 5 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.496227, -0.00509572, -3.51004 )
 
+[node name="Single Crate8" parent="Cover" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, -6.58332, -0.00509572, 2.26974 )
+
+[node name="Single Crate9" parent="Cover" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, -5.45482, -0.00509572, 2.26974 )
+
+[node name="Single Crate17" parent="Cover" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, -5.53422, -0.00509572, -34.6331 )
+
+[node name="Single Crate18" parent="Cover" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, -4.40573, -0.00509572, -34.6331 )
+
+[node name="Single Crate19" parent="Cover" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, -5.53422, -0.00509572, -35.7114 )
+
+[node name="Single Crate20" parent="Cover" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, -4.40573, -0.00509572, -35.7114 )
+
+[node name="Single Crate21" parent="Cover" instance=ExtResource( 5 )]
+transform = Transform( 3.0598e-07, 0, -1, 0, 1, 0, 1, 0, 3.0598e-07, -4.40573, 1.01603, -35.7114 )
+
+[node name="Single Crate22" parent="Cover" instance=ExtResource( 5 )]
+transform = Transform( -1, 0, -2.62268e-07, 0, 1, 0, 2.62268e-07, 0, -1, -4.40573, 1.01603, -34.5787 )
+
+[node name="Single Crate23" parent="Cover" instance=ExtResource( 5 )]
+transform = Transform( -1, 0, -2.62268e-07, 0, 1, 0, 2.62268e-07, 0, -1, -5.53422, 1.01603, -34.5588 )
+
+[node name="Single Crate24" parent="Cover" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 3.49691e-07, 0, 1, 0, -3.49691e-07, 0, 1, -4.40573, 1.94614, -35.7114 )
+
+[node name="Single Crate25" parent="Cover" instance=ExtResource( 5 )]
+transform = Transform( -1, 0, -2.62268e-07, 0, 1, 0, 2.62268e-07, 0, -1, -4.40573, 1.94614, -34.5787 )
+
+[node name="Single Crate26" parent="Cover" instance=ExtResource( 5 )]
+transform = Transform( -1, 0, -2.62268e-07, 0, 1, 0, 2.62268e-07, 0, -1, -5.53422, 1.94614, -34.5588 )
+
+[node name="Single Crate10" parent="Cover" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, -6.58332, 0.981681, 2.26974 )
+
+[node name="Single Crate11" parent="Cover" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, -5.45482, 0.981681, 2.26974 )
+
+[node name="Single Crate12" parent="Cover" instance=ExtResource( 5 )]
+transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -5.45482, 1.97628, 2.26974 )
+
+[node name="Single Crate4" parent="Cover" instance=ExtResource( 5 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -5.22309, -0.00509572, 17.4821 )
+
+[node name="Single Crate7" parent="Cover" instance=ExtResource( 5 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -4.12106, -0.00509572, 17.4821 )
+
+[node name="Single Crate5" parent="Cover" instance=ExtResource( 5 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -6.32565, -0.00509572, 17.4821 )
+
+[node name="Single Crate6" parent="Cover" instance=ExtResource( 5 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -7.45414, -0.00509572, 17.4821 )
+
 [node name="Triple Crate" parent="Cover" instance=ExtResource( 8 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1.60606, 0, -3.52228 )
+
+[node name="Triple Crate3" parent="Cover" instance=ExtResource( 8 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 2.51768, 0, -10.3164 )
+
+[node name="Triple Crate4" parent="Cover" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 1.4427, 0, -11.4983 )
+
+[node name="Single Crate30" parent="Cover" instance=ExtResource( 5 )]
+transform = Transform( 1.31135e-07, 0, -1, 0, 1, 0, 1, 0, 1.31135e-07, -10.7757, -0.00509572, -10.4311 )
+
+[node name="Single Crate31" parent="Cover" instance=ExtResource( 5 )]
+transform = Transform( 1.31135e-07, 0, -1, 0, 1, 0, 1, 0, 1.31135e-07, -10.7757, -0.00509572, -4.37075 )
+
+[node name="Triple Crate10" parent="Cover" instance=ExtResource( 8 )]
+transform = Transform( 1.31135e-07, 0, -1, 0, 1, 0, 1, 0, 1.31135e-07, -10.7292, 0, -12.519 )
+
+[node name="Triple Crate5" parent="Cover" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 0.361923, 0, -31.1391 )
 
 [node name="Triple Crate2" parent="Cover" instance=ExtResource( 8 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 3.28402, 0, 5.4988 )
 
+[node name="Triple Crate6" parent="Cover" instance=ExtResource( 8 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 10.0865, 0, 5.4988 )
+
+[node name="Triple Crate7" parent="Cover" instance=ExtResource( 8 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 10.0865, 0, -23.493 )
+
+[node name="Triple Crate8" parent="Cover" instance=ExtResource( 8 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 10.0865, 0, -26.7232 )
+
+[node name="Triple Crate9" parent="Cover" instance=ExtResource( 8 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 10.0865, 1.03784, -26.7232 )
+
 [node name="Single Pillar" parent="Cover" instance=ExtResource( 9 )]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 5.43912, -4.76837e-07, 5.46413 )
 
+[node name="Single Pillar4" parent="Cover" instance=ExtResource( 9 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 4.56435, -4.76837e-07, -20.5309 )
+
+[node name="Single Pillar6" parent="Cover" instance=ExtResource( 9 )]
+transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 3.5572, -4.76837e-07, -29.6469 )
+
+[node name="Single Pillar7" parent="Cover" instance=ExtResource( 9 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.50567, -4.76837e-07, -31.0763 )
+
+[node name="Single Pillar8" parent="Cover" instance=ExtResource( 9 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 6.31334, -4.76837e-07, -48.046 )
+
+[node name="Single Pillar5" parent="Cover" instance=ExtResource( 9 )]
+transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 7.32152, -4.76837e-07, -21.5801 )
+
+[node name="Single Pillar3" parent="Cover" instance=ExtResource( 9 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -6.61494, -4.76837e-07, 3.55479 )
+
+[node name="Single Pillar2" parent="Cover" instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, 2.96179, -4.76837e-07, 12.3743 )
+
+[node name="Quad Crate" parent="Cover" instance=ExtResource( 10 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1.02909, -4.7684e-07, 13.4981 )
+
+[node name="Quad Crate2" parent="Cover" instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.9221, -4.7684e-07, 12.2851 )
+
+[node name="Quad Crate3" parent="Cover" instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.32463, -4.7684e-07, -11.4883 )
+
+[node name="Quad Crate4" parent="Cover" instance=ExtResource( 10 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.718198, -4.7684e-07, -10.9896 )
+
+[node name="Quad Crate5" parent="Cover" instance=ExtResource( 10 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5.28568, -4.7684e-07, -23.9897 )
+
+[node name="modular_v2" parent="." instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.237234, -3.8147e-06, -36.8914 )
+
 [node name="BlockCover" type="Spatial" parent="."]
+visible = false
 
 [node name="Barrier2" type="Spatial" parent="BlockCover"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -11 )
@@ -1571,9 +1720,6 @@ material = SubResource( 2 )
 
 [node name="DroneSpawner" parent="." instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0632896, 2.4974, -55.3843 )
-
-[node name="modular_v2" parent="." instance=ExtResource( 6 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.237234, -3.8147e-06, -36.8914 )
 
 [node name="Lights" type="Spatial" parent="."]
 
