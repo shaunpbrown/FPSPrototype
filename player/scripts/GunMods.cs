@@ -6,24 +6,19 @@ public class GunMods
 {
     public List<string> ModNames = new List<string>{
         "Rocket Launcher",
+        "RocketLauncher2",
+        "RocketLauncher3",
         "Shotgun",
         "Rate of fire",
         "Red Dot",
         "CoolingBlock",
         "BarrelExtension",
-        "Mod3",
-        "Mod4",
         "Mod5",
         "Mod6",
         "Mod7",
         "Mod8",
         "Mod9",
         "Mod10",
-        "Mod11",
-        "Mod12",
-        "Mod13",
-        "Mod14",
-        "Mod15",
     };
 
     public bool[] _isModEquiped;
