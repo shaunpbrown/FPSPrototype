@@ -1,16 +1,15 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://printer/ui/UpgradeFrame_StatFrame.png" type="Texture" id=1]
 [ext_resource path="res://printer/ui/UpgradeFrame_NormalBG.png" type="Texture" id=2]
 [ext_resource path="res://printer/ui/UpgradeFrame_SelectedBG.png" type="Texture" id=3]
 [ext_resource path="res://printer/ui/UpgradeFrame_HoverBG.png" type="Texture" id=4]
-[ext_resource path="res://printer/ui/UpgradeFrame_AbilityFrame.png" type="Texture" id=5]
-[ext_resource path="res://printer/ui/Shotgun.png" type="Texture" id=6]
+[ext_resource path="res://printer/ui/rateoffire.png" type="Texture" id=5]
+[ext_resource path="res://printer/ui/shotgun.png" type="Texture" id=6]
 [ext_resource path="res://printer/scripts/Printer.cs" type="Script" id=7]
 [ext_resource path="res://printer/scripts/UpgradeCard.cs" type="Script" id=8]
 [ext_resource path="res://assets/3D Models/Printer/printer.glb" type="PackedScene" id=9]
-[ext_resource path="res://printer/ui/RocketLauncher.png" type="Texture" id=10]
-[ext_resource path="res://printer/ui/Ability_text.png" type="Texture" id=11]
+[ext_resource path="res://printer/ui/rocketlauncher.png" type="Texture" id=10]
 [ext_resource path="res://printer/ui/Confirm_button.png" type="Texture" id=12]
 [ext_resource path="res://printer/ui/Confirm_button_Select.png" type="Texture" id=13]
 [ext_resource path="res://printer/ui/Confirm_button_Hover.png" type="Texture" id=14]
@@ -26,11 +25,6 @@ collision_mask = 0
 script = ExtResource( 7 )
 
 [node name="printer" parent="." instance=ExtResource( 9 )]
-
-[node name="Skeleton" parent="printer/Armature" index="0"]
-bones/0/bound_children = [ NodePath("BoneAttachment3"), NodePath("BoneAttachment4"), NodePath("BoneAttachment5"), NodePath("BoneAttachment6"), NodePath("BoneAttachment7"), NodePath("BoneAttachment8"), NodePath("BoneAttachment9"), NodePath("BoneAttachment10"), NodePath("BoneAttachment11"), NodePath("BoneAttachment12"), NodePath("BoneAttachment13"), NodePath("BoneAttachment14"), NodePath("BoneAttachment15") ]
-bones/1/bound_children = [ NodePath("BoneAttachment2") ]
-bones/2/bound_children = [ NodePath("BoneAttachment") ]
 
 [node name="BoneAttachment" parent="printer/Armature/Skeleton" index="0"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.6688e-16, 1.9716, 0.6794 )
@@ -72,18 +66,17 @@ texture_normal = ExtResource( 2 )
 texture_pressed = ExtResource( 3 )
 texture_hover = ExtResource( 4 )
 script = ExtResource( 8 )
-ModName = "Rate of fire"
 
 [node name="Foreground" type="TextureRect" parent="PrinterUI/Panel/UpgradeCard1"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-texture = ExtResource( 5 )
+texture = ExtResource( 1 )
 stretch_mode = 5
 
-[node name="Ability Text" type="TextureRect" parent="PrinterUI/Panel/UpgradeCard1/Foreground"]
+[node name="Card" type="TextureRect" parent="PrinterUI/Panel/UpgradeCard1/Foreground"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-texture = ExtResource( 11 )
+texture = ExtResource( 5 )
 stretch_mode = 5
 
 [node name="UpgradeCard2" type="TextureButton" parent="PrinterUI/Panel"]
@@ -100,15 +93,14 @@ texture_normal = ExtResource( 2 )
 texture_pressed = ExtResource( 3 )
 texture_hover = ExtResource( 4 )
 script = ExtResource( 8 )
-ModName = "Rocket Launcher"
 
 [node name="Foreground" type="TextureRect" parent="PrinterUI/Panel/UpgradeCard2"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-texture = ExtResource( 5 )
+texture = ExtResource( 1 )
 stretch_mode = 5
 
-[node name="Ability Text" type="TextureRect" parent="PrinterUI/Panel/UpgradeCard2/Foreground"]
+[node name="Card" type="TextureRect" parent="PrinterUI/Panel/UpgradeCard2/Foreground"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 texture = ExtResource( 10 )
@@ -128,7 +120,6 @@ texture_normal = ExtResource( 2 )
 texture_pressed = ExtResource( 3 )
 texture_hover = ExtResource( 4 )
 script = ExtResource( 8 )
-ModName = "Shotgun"
 
 [node name="Foreground" type="TextureRect" parent="PrinterUI/Panel/UpgradeCard3"]
 anchor_right = 1.0
@@ -136,7 +127,7 @@ anchor_bottom = 1.0
 texture = ExtResource( 1 )
 stretch_mode = 5
 
-[node name="Ability Text" type="TextureRect" parent="PrinterUI/Panel/UpgradeCard3/Foreground"]
+[node name="Card" type="TextureRect" parent="PrinterUI/Panel/UpgradeCard3/Foreground"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 texture = ExtResource( 6 )
@@ -154,14 +145,5 @@ margin_bottom = -43.0
 texture_normal = ExtResource( 12 )
 texture_pressed = ExtResource( 13 )
 texture_hover = ExtResource( 14 )
-
-[node name="TextureRect" type="TextureRect" parent="PrinterUI/Panel/ConfirmButton"]
-visible = false
-margin_left = -438.5
-margin_top = 11.0
-margin_right = 600.5
-margin_bottom = 45.0
-texture = ExtResource( 12 )
-expand = true
 
 [editable path="printer"]

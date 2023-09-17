@@ -45,6 +45,10 @@ public class Printer : Spatial, IInteractable
 		_animationPlayer = GetNode<AnimationPlayer>("printer/AnimationPlayer");
 		_animationPlayer.Play("Printer Open");
 		_animationPlayer.PlaybackSpeed = 0;
+
+		_upgradeCards[0].SetCard("Rocket Launcher");
+		_upgradeCards[1].SetCard("Shotgun");
+		_upgradeCards[2].SetCard("Rate of fire");
 	}
 
 	public override void _Process(float delta)
@@ -64,7 +68,6 @@ public class Printer : Spatial, IInteractable
 			}
 			else
 			{
-
 				if (Input.IsMouseButtonPressed((int)ButtonList.Left))
 				{
 					var gun = _gunHolder.GetNode<Gun>("Gun");
@@ -253,5 +256,20 @@ public class Printer : Spatial, IInteractable
 
 		Input.MouseMode = Input.MouseModeEnum.Captured;
 		_printerUI.Visible = false;
+	}
+
+	public void ShuffleCards()
+	{
+		var gun = GetTree().Root.FindNode("Gun", true, false) as Gun;
+		var usedMods = new List<string>();
+		var mod1Name = gun.GunMods.GetRandomModName(usedMods);
+		usedMods.Add(mod1Name);
+		_upgradeCards[0].SetCard(mod1Name);
+		var mod2Name = gun.GunMods.GetRandomModName(usedMods);
+		usedMods.Add(mod2Name);
+		_upgradeCards[1].SetCard(mod2Name);
+		var mod3Name = gun.GunMods.GetRandomModName(usedMods);
+		usedMods.Add(mod3Name);
+		_upgradeCards[2].SetCard(mod3Name);
 	}
 }

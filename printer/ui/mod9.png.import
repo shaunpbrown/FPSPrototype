@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/rocketlauncher.png-fbf0820b84161e257727ea488ed6f34b.stex"
+path="res://.import/mod9.png-a587986a81ffe1db304933fc273eb15d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://printer/ui/rocketlauncher.png"
-dest_files=[ "res://.import/rocketlauncher.png-fbf0820b84161e257727ea488ed6f34b.stex" ]
+source_file="res://printer/ui/mod9.png"
+dest_files=[ "res://.import/mod9.png-a587986a81ffe1db304933fc273eb15d.stex" ]
 
 [params]
 

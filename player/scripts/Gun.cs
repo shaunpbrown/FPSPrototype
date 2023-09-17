@@ -31,6 +31,13 @@ public class Gun : Spatial
 		_animationPlayer = GetNode<AnimationPlayer>("AnimationPlayerEvents");
 
 		GunMods = new GunMods(this);
+
+		var gunModel = GetNode<Spatial>("Gun_v3");
+		var meshInstances = NodeHelper.GetChildren<MeshInstance>(gunModel);
+		foreach (var mesh in meshInstances)
+		{
+			mesh.Layers = 2;
+		}
 	}
 
 	public override void _Process(float delta)

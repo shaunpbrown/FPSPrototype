@@ -25,6 +25,8 @@ shape = SubResource( 1 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0 )
 
 [node name="Camera" type="Camera" parent="Head"]
+cull_mask = 1048573
+current = true
 fov = 55.0
 
 [node name="GunHolder" type="Spatial" parent="Head"]
@@ -34,6 +36,24 @@ transform = Transform( 1, 0, 0, 0, 0.999515, -0.0311491, 0, 0.0311491, 0.999515,
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 0.999999, 0, 0, 0 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ViewportContainer" type="ViewportContainer" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Viewport" type="Viewport" parent="CanvasLayer/ViewportContainer"]
+size = Vector2( 1024, 600 )
+transparent_bg = true
+handle_input_locally = false
+render_target_update_mode = 3
+
+[node name="GunCamera" type="Camera" parent="CanvasLayer/ViewportContainer/Viewport"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.73526, 0 )
+cull_mask = 2
+current = true
+fov = 55.0
 
 [node name="Panel" type="Panel" parent="CanvasLayer"]
 anchor_right = 1.0

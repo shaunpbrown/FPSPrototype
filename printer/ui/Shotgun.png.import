@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Shotgun.png-79741193eff3a4064feedb8c4b27f061.stex"
+path="res://.import/shotgun.png-faaa62af4fe28d3dfcb27ffa3d9d451d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://printer/ui/Shotgun.png"
-dest_files=[ "res://.import/Shotgun.png-79741193eff3a4064feedb8c4b27f061.stex" ]
+source_file="res://printer/ui/shotgun.png"
+dest_files=[ "res://.import/shotgun.png-faaa62af4fe28d3dfcb27ffa3d9d451d.stex" ]
 
 [params]
 

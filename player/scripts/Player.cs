@@ -11,6 +11,8 @@ public class Player : KinematicBody
 
 	private Vector3 _velocity = new Vector3();
 	private Spatial _head;
+	private Spatial _gunCamera;
+	private Spatial _headCamera;
 	private Gun _gun;
 
 	public Player() : base()
@@ -22,6 +24,8 @@ public class Player : KinematicBody
 	{
 		_head = GetNode<Spatial>("Head");
 		_gun = GetNode<Gun>("Head/GunHolder/Gun");
+		_gunCamera = GetNode<Spatial>("CanvasLayer/ViewportContainer/Viewport/GunCamera");
+		_headCamera = GetNode<Spatial>("Head/Camera");
 		Input.MouseMode = Input.MouseModeEnum.Captured;
 	}
 
@@ -40,6 +44,8 @@ public class Player : KinematicBody
 
 	public override void _Process(float delta)
 	{
+		_gunCamera.GlobalTransform = _headCamera.GlobalTransform;
+
 		if (IsUsingPrinter)
 			return;
 

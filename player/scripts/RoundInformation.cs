@@ -50,6 +50,11 @@ public class RoundInformation
         if (_printer == null)
             _printer = _player.GetTree().Root.FindNode("Printer", true, false) as Printer;
 
+        if (RoundNumber != 1)
+        {
+            _printer.ShuffleCards();
+        }
+
         SetObjective("UPGRADE GUN USING PRINTER");
         _printer.IsLocked = false;
 

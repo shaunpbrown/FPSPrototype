@@ -1,13 +1,29 @@
 using System.Collections.Generic;
 using Godot;
+using System.Linq;
 
 public class GunMods
 {
     public List<string> ModNames = new List<string>{
         "Rocket Launcher",
-        "Red Dot",
         "Shotgun",
         "Rate of fire",
+        "Red Dot",
+        "Mod1",
+        "Mod2",
+        "Mod3",
+        "Mod4",
+        "Mod5",
+        "Mod6",
+        "Mod7",
+        "Mod8",
+        "Mod9",
+        "Mod10",
+        "Mod11",
+        "Mod12",
+        "Mod13",
+        "Mod14",
+        "Mod15",
     };
 
     public bool[] _isModEquiped;
@@ -90,6 +106,16 @@ public class GunMods
         {
             ConvertToGreenHologram(child);
         }
+    }
+
+    public string GetRandomModName(List<string> filter = null)
+    {
+        if (filter == null)
+            filter = new List<string>();
+
+        var filtered = ModNames.Where((name, index) => index > 3 && !IsModEquipped(name) && !filter.Contains(name)).ToList();
+        var val = filtered[(int)(GD.Randf() * filtered.Count)];
+        return val;
     }
 
     private static readonly string _greenHologramShaderCode = @"

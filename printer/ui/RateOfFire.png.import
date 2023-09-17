@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/RateOfFire.png-902d0e1d0ed1531c8ffeec2128391c61.stex"
+path="res://.import/rateoffire.png-ab564db65101f9fa8499bf63c67bb611.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://printer/ui/RateOfFire.png"
-dest_files=[ "res://.import/RateOfFire.png-902d0e1d0ed1531c8ffeec2128391c61.stex" ]
+source_file="res://printer/ui/rateoffire.png"
+dest_files=[ "res://.import/rateoffire.png-ab564db65101f9fa8499bf63c67bb611.stex" ]
 
 [params]
 
