@@ -117,8 +117,12 @@ public class Player : KinematicBody
 		if (Input.IsActionJustPressed("shoot")
 		|| (_gun.GunMods.IsModEquipped("Rate of fire") && Input.IsActionPressed("shoot")))
 		{
-			var gun = GetNode<Gun>("Head/GunHolder/Gun");
-			gun.PullTrigger();
+			_gun.PullTrigger();
+		}
+
+		if (_gun.GunMods.IsModEquipped("Rocket Launcher") && Input.IsActionJustPressed("rocket") && _gun.CanFireRocket())
+		{
+			_gun.FireRockets();
 		}
 
 		_velocity.y += Gravity * delta;

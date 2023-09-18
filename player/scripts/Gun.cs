@@ -2,6 +2,8 @@ using Godot;
 
 public class Gun : Spatial
 {
+	[Export]
+	public PackedScene Rocket;
 	public GunStats GunStats = new GunStats();
 	public GunMods GunMods;
 
@@ -10,6 +12,8 @@ public class Gun : Spatial
 	private float _fireCooldown;
 	private Player _player;
 	private AnimationPlayer _animationPlayer;
+	private Rocket[] _rockets = new Rocket[3];
+	private float _rocketReloadTimer;
 
 	public override void _Ready()
 	{
@@ -38,6 +42,8 @@ public class Gun : Spatial
 		{
 			mesh.Layers = 2;
 		}
+
+		ReloadRockets();
 	}
 
 	public override void _Process(float delta)
@@ -51,11 +57,25 @@ public class Gun : Spatial
 
 		if (_fireCooldown > 0)
 			_fireCooldown -= delta;
+
+		if (_rocketReloadTimer > 0)
+		{
+			_rocketReloadTimer -= delta;
+			if (_rocketReloadTimer <= 0)
+			{
+				ReloadRockets();
+			}
+		}
 	}
 
 	public bool CanFireBullet()
 	{
 		return _fireCooldown <= 0;
+	}
+
+	public bool CanFireRocket()
+	{
+		return _rocketReloadTimer <= 0;
 	}
 
 	public void PullTrigger()
@@ -146,5 +166,34 @@ public class Gun : Spatial
 		Godot.Collections.Dictionary hit = spaceState.IntersectRay(rayOrigin, rayEnd, null, collisionMask);
 
 		return hit;
+	}
+
+	public void ReloadRockets()
+	{
+		for (int i = 0; i < 3; i++)
+		{
+			var rocketHolder = GetNode<Spatial>($"Gun_v3/Armature/Skeleton/BoneAttachment20/Rocket Launcher/RocketHolder{i + 1}");
+			var rocket = Rocket.Instance() as Rocket;
+			rocketHolder.AddChild(rocket);
+			rocket.Translation = Vector3.Zero;
+			rocket.Rotation = new Vector3(0, Mathf.Deg2Rad(180), 0);
+			rocket.Scale = Vector3.One;
+			_rockets[i] = rocket;
+		}
+	}
+
+	public void FireRockets()
+	{
+		for (int i = 0; i < 3; i++)
+		{
+			var rocket = _rockets[i];
+			if (rocket != null)
+			{
+				rocket.Fire();
+				_rockets[i] = null;
+			}
+		}
+
+		_rocketReloadTimer = 3;
 	}
 }

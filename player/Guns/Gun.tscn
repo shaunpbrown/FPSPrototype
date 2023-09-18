@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://assets/3D Models/Gun/Gun.glb" type="PackedScene" id=1]
 [ext_resource path="res://player/scripts/BulletSplash.cs" type="Script" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://player/guns/muzzleFlash_test.png" type="Texture" id=5]
 [ext_resource path="res://player/guns/bullethole_test.png" type="Texture" id=6]
 [ext_resource path="res://player/scripts/BulletHole.cs" type="Script" id=7]
+[ext_resource path="res://player/guns/Rocket.tscn" type="PackedScene" id=8]
 
 [sub_resource type="QuadMesh" id=1]
 size = Vector2( 8, 8 )
@@ -98,23 +99,19 @@ tracks/1/keys = {
 
 [node name="Pistol" type="Spatial"]
 script = ExtResource( 3 )
+Rocket = ExtResource( 8 )
 
 [node name="Gun_v3" parent="." instance=ExtResource( 1 )]
 transform = Transform( -0.15, 0, -1.31134e-08, 0, 0.15, 0, 1.31134e-08, 0, -0.15, 0, 0, 0 )
 
-[node name="Skeleton" parent="Gun_v3/Armature" index="0"]
-bones/0/bound_children = [ NodePath("BoneAttachment3"), NodePath("BoneAttachment4"), NodePath("BoneAttachment5"), NodePath("BoneAttachment6"), NodePath("BoneAttachment7"), NodePath("BoneAttachment8"), NodePath("BoneAttachment9"), NodePath("BoneAttachment10"), NodePath("BoneAttachment11"), NodePath("BoneAttachment12"), NodePath("BoneAttachment13"), NodePath("BoneAttachment14"), NodePath("BoneAttachment15"), NodePath("BoneAttachment16"), NodePath("BoneAttachment17"), NodePath("BoneAttachment18"), NodePath("BoneAttachment19"), NodePath("BoneAttachment20"), NodePath("BoneAttachment21"), NodePath("BoneAttachment22"), NodePath("BoneAttachment23") ]
-bones/1/bound_children = [ NodePath("BoneAttachment") ]
-bones/2/bound_children = [ NodePath("BoneAttachment2") ]
-
 [node name="BoneAttachment" parent="Gun_v3/Armature/Skeleton" index="0"]
-transform = Transform( 1, 0, -5.6426e-07, -5.6426e-07, 0, -1, 0, 1, 0, 2.32604e-14, 0.986388, -1.76825 )
+transform = Transform( 1, 0, -5.6426e-07, -5.6426e-07, 0, -1, 0, 1, 0, 4.94635e-17, 0.986388, -1.76825 )
 
 [node name="Cube002" parent="Gun_v3/Armature/Skeleton/BoneAttachment" index="0"]
 transform = Transform( 0.355056, -2.22916e-07, 0, 0, -6.35275e-22, 0.355056, -2.22916e-07, -0.355056, 0, 2.23028e-07, 1.76825, 0.355235 )
 
 [node name="BoneAttachment2" parent="Gun_v3/Armature/Skeleton" index="1"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.107088, 0.723046, -0.370151 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.107088, 0.723046, 0.114658 )
 
 [node name="MuzzleFlash" type="CSGMesh" parent="Gun_v3/Armature/Skeleton/BoneAttachment9" index="1"]
 transform = Transform( 0.355056, 0, -2.34479e-13, 0, 0.355056, 0, 2.34479e-13, 0, 0.355056, 0.111709, 0.819748, 1.4557 )
@@ -125,6 +122,15 @@ material = SubResource( 2 )
 transform = Transform( 6.66667, 0, 5.68434e-14, 0, 6.66667, 0, -5.68434e-14, 0, 6.66667, 1.99486, 1.40485, -1.51591 )
 layers = 3
 omni_range = 10.0
+
+[node name="RocketHolder1" type="Spatial" parent="Gun_v3/Armature/Skeleton/BoneAttachment20/Rocket Launcher" index="2"]
+transform = Transform( 1, 1.1618e-07, 6.80572e-08, -8.58961e-08, 0.161208, 0.98692, 1.03689e-07, -0.98692, 0.161208, -0.987429, 3.63678, 1.74033 )
+
+[node name="RocketHolder2" type="Spatial" parent="Gun_v3/Armature/Skeleton/BoneAttachment20/Rocket Launcher" index="3"]
+transform = Transform( 1, 1.1618e-07, 6.80572e-08, -8.58961e-08, 0.161208, 0.98692, 1.03689e-07, -0.98692, 0.161208, -0.948007, 3.73929, 0.993379 )
+
+[node name="RocketHolder3" type="Spatial" parent="Gun_v3/Armature/Skeleton/BoneAttachment20/Rocket Launcher" index="4"]
+transform = Transform( 1, 1.1618e-07, 6.80572e-08, -8.58961e-08, 0.161208, 0.98692, 1.03689e-07, -0.98692, 0.161208, -0.962728, 3.85557, 0.278926 )
 
 [node name="Bullet" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00249481, 0.37628, -0.64534 )

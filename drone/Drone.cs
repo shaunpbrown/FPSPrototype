@@ -236,14 +236,19 @@ public class Drone : KinematicBody, IShootable
         _health--;
         if (_health <= 0)
         {
-            var droneSpawner = GetTree().Root.FindNode("DroneSpawner", true, false) as DroneSpawner;
-            droneSpawner.DroneDestroyed(this);
-            _state = DroneState.Dead;
-            BulletHole.RemoveBulletHoles(this);
-            CallDeferred("queue_free");
+            Destroy();
         }
 
         var player = GetTree().Root.FindNode("Player", true, false) as Player;
         player.HitMarker();
+    }
+
+    public void Destroy()
+    {
+        var droneSpawner = GetTree().Root.FindNode("DroneSpawner", true, false) as DroneSpawner;
+        droneSpawner.DroneDestroyed(this);
+        _state = DroneState.Dead;
+        BulletHole.RemoveBulletHoles(this);
+        CallDeferred("queue_free");
     }
 }
