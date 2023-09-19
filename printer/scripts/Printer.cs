@@ -118,6 +118,9 @@ public class Printer : Spatial, IInteractable
 
 	public void PutGunInHolder(float delta)
 	{
+		var audioStreamPlayer = GetNode<AudioStreamPlayer3D>("AudioStreamPlayer3D");
+		audioStreamPlayer.Stop();
+
 		var gun = _gunHolder.GetNode<Gun>("Gun");
 		var camera = _cameraHolder.GetNode<Camera>("Camera");
 		MoveTowardsOrigin(gun, delta * 3f);
