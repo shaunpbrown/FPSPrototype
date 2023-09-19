@@ -21,6 +21,7 @@ public class Player : KinematicBody
 	private float _hitMarkerTimer;
 	private bool _isTitleSreenOpen = true;
 	private AudioStreamPlayer _hitAudioStreamPlayer;
+	private ViewportContainer _gunViewport;
 
 	public Player() : base()
 	{
@@ -39,6 +40,7 @@ public class Player : KinematicBody
 		_hitMarkerTexture = GD.Load<Texture>("res://player/crosshair_simple_hitconfirm.png");
 		Input.MouseMode = Input.MouseModeEnum.Captured;
 		_hitAudioStreamPlayer = GetNode<AudioStreamPlayer>("HitAudioStream");
+		_gunViewport = GetNode<ViewportContainer>("CanvasLayer/ViewportContainer");
 	}
 
 	public override void _Input(InputEvent @event)
@@ -59,6 +61,9 @@ public class Player : KinematicBody
 
 	public override void _Process(float delta)
 	{
+		_gunViewport.RectSize = GetViewport().Size;
+		_gunViewport.GetNode<Viewport>("Viewport").Size = GetViewport().Size;
+
 		if (_isTitleSreenOpen || _health.IsDead())
 		{
 			_health.DeathProcess(delta);
