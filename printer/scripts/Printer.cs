@@ -183,11 +183,15 @@ public class Printer : Spatial, IInteractable
 			_isClosed = false;
 			if (!_isOpen)
 			{
+				var audioStreamPlayer = GetNode<AudioStreamPlayer3D>("AudioStreamPlayer3D");
+				if (!audioStreamPlayer.Playing)
+					audioStreamPlayer.Play();
 				var newTime = _animationPlayer.CurrentAnimationPosition + delta * 2;
 				if (newTime >= _animationPlayer.CurrentAnimationLength)
 				{
 					newTime = _animationPlayer.CurrentAnimationLength;
 					_isOpen = true;
+					audioStreamPlayer.Stop();
 				}
 				_animationPlayer.Seek(newTime, true);
 			}
@@ -197,9 +201,13 @@ public class Printer : Spatial, IInteractable
 			_isOpen = false;
 			if (!_isClosed)
 			{
+				var audioStreamPlayer = GetNode<AudioStreamPlayer3D>("AudioStreamPlayer3D");
+				if (!audioStreamPlayer.Playing)
+					audioStreamPlayer.Play();
 				var newTime = _animationPlayer.CurrentAnimationPosition - delta;
 				if (newTime <= 0)
 				{
+					audioStreamPlayer.Stop();
 					newTime = 0;
 					_isClosed = true;
 				}
@@ -232,6 +240,9 @@ public class Printer : Spatial, IInteractable
 		var holoMod = NodeHelper.GetChildNode(selectedCard.ModName + "HOLO", gun) as Spatial;
 		holoMod.Visible = true;
 		_currentHoloMod = holoMod;
+
+		var selectedAudio = GetNode<AudioStreamPlayer>("SelectAudio");
+		selectedAudio.Play();
 	}
 
 	public void UpgradeCardConfirmed()
@@ -259,6 +270,9 @@ public class Printer : Spatial, IInteractable
 
 		Input.MouseMode = Input.MouseModeEnum.Captured;
 		_printerUI.Visible = false;
+
+		var confirmAudio = GetNode<AudioStreamPlayer>("ConfirmAudio");
+		confirmAudio.Play();
 	}
 
 	public bool ShuffleCards()

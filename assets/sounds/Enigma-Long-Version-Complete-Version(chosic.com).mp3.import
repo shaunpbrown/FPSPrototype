@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Enigma-Long-Version-Complete-Version(chosic.com).mp3-5a8b2e5411ce6719ef3222831e5401bd.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/Enigma-Long-Version-Complete-Version(chosic.com).mp3"
+dest_files=[ "res://.import/Enigma-Long-Version-Complete-Version(chosic.com).mp3-5a8b2e5411ce6719ef3222831e5401bd.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

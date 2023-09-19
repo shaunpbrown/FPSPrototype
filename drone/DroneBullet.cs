@@ -23,6 +23,7 @@ public class DroneBullet : Spatial
                 var clonedBulletSplash = BulletSplash.GetBulletSplash();
                 clonedBulletSplash.GlobalTranslation = hitPoint;
                 clonedBulletSplash.Emitting = true;
+                clonedBulletSplash.GetNode<AudioStreamPlayer3D>("AudioStreamPlayer3D").Stop();
 
                 var hitEntity = hit["collider"] as Spatial;
                 var hitNormal = (Vector3)hit["normal"];

@@ -1,7 +1,33 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://drone/Drone.cs" type="Script" id=1]
 [ext_resource path="res://assets/3D Models/Drone/Drone.glb" type="PackedScene" id=2]
+[ext_resource path="res://assets/sounds/gunshot.wav" type="AudioStream" id=3]
+[ext_resource path="res://assets/sounds/droneshot.wav" type="AudioStream" id=4]
+[ext_resource path="res://assets/sounds/hover.wav" type="AudioStream" id=5]
+[ext_resource path="res://drone/fireshader.png" type="Texture" id=6]
+
+[sub_resource type="SpatialMaterial" id=11]
+flags_transparent = true
+flags_unshaded = true
+vertex_color_use_as_albedo = true
+params_blend_mode = 1
+params_billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+albedo_texture = ExtResource( 6 )
+uv1_scale = Vector3( 0.5, 1, 1 )
+uv1_offset = Vector3( 0.5, 0, 0 )
+
+[sub_resource type="QuadMesh" id=12]
+material = SubResource( 11 )
+
+[sub_resource type="Curve" id=13]
+_data = [ Vector2( 0, 0.997727 ), 0.0, -0.218182, 0, 0, Vector2( 1, 0.025 ), -3.6, 0.0, 0, 0 ]
+
+[sub_resource type="Gradient" id=14]
+colors = PoolColorArray( 1, 0.235294, 0.0235294, 1, 0.894118, 0.529412, 0.0901961, 0.141176 )
 
 [sub_resource type="SphereShape" id=1]
 radius = 0.5
@@ -62,6 +88,20 @@ tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
 "clips": PoolStringArray( "Fire" ),
+"times": PoolRealArray( 0 )
+}
+tracks/1/type = "audio"
+tracks/1/path = NodePath("../AudioStreamPlayer3D")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 4 )
+} ],
 "times": PoolRealArray( 0 )
 }
 
@@ -125,64 +165,108 @@ bones/4/bound_children = [ NodePath("BoneAttachment13"), NodePath("BoneAttachmen
 bones/5/bound_children = [ NodePath("BoneAttachment10"), NodePath("BoneAttachment11"), NodePath("BoneAttachment12") ]
 
 [node name="BoneAttachment" parent="Drone/Armature/Skeleton" index="0"]
-transform = Transform( -0.0774923, 0.964017, -0.254292, 0.618123, -0.153667, -0.770914, -0.782252, -0.216925, -0.583973, 0.939433, 2.72379, 2.18156 )
+transform = Transform( 0.226781, 0.97356, -0.0274183, 0.741788, -0.190897, -0.64289, -0.631127, 0.125456, -0.765465, 1.59095, 2.11968, -0.14503 )
 
 [node name="BoneAttachment2" parent="Drone/Armature/Skeleton" index="1"]
-transform = Transform( -0.0774923, 0.964017, -0.254292, 0.618123, -0.153667, -0.770914, -0.782252, -0.216925, -0.583973, 0.939433, 2.72379, 2.18156 )
+transform = Transform( 0.226781, 0.97356, -0.0274183, 0.741788, -0.190897, -0.64289, -0.631127, 0.125456, -0.765465, 1.59095, 2.11968, -0.14503 )
 
 [node name="BoneAttachment3" parent="Drone/Armature/Skeleton" index="2"]
-transform = Transform( -0.0774923, 0.964017, -0.254292, 0.618123, -0.153667, -0.770914, -0.782252, -0.216925, -0.583973, 0.939433, 2.72379, 2.18156 )
+transform = Transform( 0.226781, 0.97356, -0.0274183, 0.741788, -0.190897, -0.64289, -0.631127, 0.125456, -0.765465, 1.59095, 2.11968, -0.14503 )
+
+[node name="Jet1" type="CPUParticles" parent="Drone/Armature/Skeleton/BoneAttachment3/Cylinder002" index="0"]
+transform = Transform( 3.19964, -2.60973, 7.99697, 1.5383, -8.23013, -3.3013, 8.27018, 2.54052, -2.47988, 0.832987, 2.64384, -0.8334 )
+lifetime = 0.2
+mesh = SubResource( 12 )
+gravity = Vector3( 0, -20, 0 )
+angle = 360.0
+angle_random = 1.0
+scale_amount = 0.5
+scale_amount_curve = SubResource( 13 )
+color_ramp = SubResource( 14 )
 
 [node name="BoneAttachment4" parent="Drone/Armature/Skeleton" index="3"]
-transform = Transform( -0.0774923, 0.964017, -0.254292, 0.618123, -0.153667, -0.770914, -0.782252, -0.216925, -0.583973, 0.939433, 2.72379, 2.18156 )
+transform = Transform( 0.226781, 0.97356, -0.0274183, 0.741788, -0.190897, -0.64289, -0.631127, 0.125456, -0.765465, 1.59095, 2.11968, -0.14503 )
+
+[node name="Jet2" type="CPUParticles" parent="Drone/Armature/Skeleton/BoneAttachment4/Cylinder003" index="0"]
+transform = Transform( -7.63751, 2.17217, 4.23676, -2.58374, -8.61783, -0.239325, 3.99909, -1.41939, 7.93678, 0.667042, 2.1036, -0.64935 )
+lifetime = 0.2
+mesh = SubResource( 12 )
+gravity = Vector3( 0, -20, 0 )
+angle = 360.0
+angle_random = 1.0
+scale_amount = 0.5
+scale_amount_curve = SubResource( 13 )
+color_ramp = SubResource( 14 )
 
 [node name="BoneAttachment5" parent="Drone/Armature/Skeleton" index="4"]
-transform = Transform( -0.12788, -0.817092, -0.562145, 0.816609, -0.408408, 0.407865, -0.562847, -0.406895, 0.719472, -2.24554, 2.55017, 2.27749 )
+transform = Transform( 0.0616072, -0.865077, -0.497843, 0.867985, -0.199813, 0.454618, -0.492754, -0.460128, 0.738564, -1.60101, 2.15634, -0.210846 )
 
 [node name="BoneAttachment6" parent="Drone/Armature/Skeleton" index="5"]
-transform = Transform( -0.12788, -0.817092, -0.562145, 0.816609, -0.408408, 0.407865, -0.562847, -0.406895, 0.719472, -2.24554, 2.55017, 2.27749 )
+transform = Transform( 0.0616072, -0.865077, -0.497843, 0.867985, -0.199813, 0.454618, -0.492754, -0.460128, 0.738564, -1.60101, 2.15634, -0.210846 )
 
 [node name="BoneAttachment7" parent="Drone/Armature/Skeleton" index="6"]
-transform = Transform( -0.12788, -0.817092, -0.562145, 0.816609, -0.408408, 0.407865, -0.562847, -0.406895, 0.719472, -2.24554, 2.55017, 2.27749 )
+transform = Transform( 0.0616072, -0.865077, -0.497843, 0.867985, -0.199813, 0.454618, -0.492754, -0.460128, 0.738564, -1.60101, 2.15634, -0.210846 )
+
+[node name="Jet3" type="CPUParticles" parent="Drone/Armature/Skeleton/BoneAttachment7/Cylinder009" index="0"]
+transform = Transform( 5.8298, 0.390398, 6.84551, 0.458596, -8.98748, 0.122003, 6.84128, 0.269786, -5.84158, -0.47807, 1.95949, 0.210589 )
+lifetime = 0.2
+mesh = SubResource( 12 )
+gravity = Vector3( 0, -20, 0 )
+angle = 360.0
+angle_random = 1.0
+scale_amount = 0.5
+scale_amount_curve = SubResource( 13 )
+color_ramp = SubResource( 14 )
 
 [node name="BoneAttachment8" parent="Drone/Armature/Skeleton" index="7"]
-transform = Transform( -0.12788, -0.817092, -0.562145, 0.816609, -0.408408, 0.407865, -0.562847, -0.406895, 0.719472, -2.24554, 2.55017, 2.27749 )
+transform = Transform( 0.0616072, -0.865077, -0.497843, 0.867985, -0.199813, 0.454618, -0.492754, -0.460128, 0.738564, -1.60101, 2.15634, -0.210846 )
+
+[node name="Jet4" type="CPUParticles" parent="Drone/Armature/Skeleton/BoneAttachment8/Cylinder010" index="0"]
+transform = Transform( 5.8298, 0.390399, 6.84551, 0.458596, -8.98748, 0.122004, 6.84128, 0.269785, -5.84158, -0.684235, 2.6342, 0.0357872 )
+lifetime = 0.2
+mesh = SubResource( 12 )
+gravity = Vector3( 0, -20, 0 )
+angle = 360.0
+angle_random = 1.0
+scale_amount = 0.5
+scale_amount_curve = SubResource( 13 )
+color_ramp = SubResource( 14 )
 
 [node name="BoneAttachment9" parent="Drone/Armature/Skeleton" index="8"]
-transform = Transform( -0.12788, -0.817092, -0.562145, 0.816609, -0.408408, 0.407865, -0.562847, -0.406895, 0.719472, -2.24554, 2.55017, 2.27749 )
+transform = Transform( 0.0616072, -0.865077, -0.497843, 0.867985, -0.199813, 0.454618, -0.492754, -0.460128, 0.738564, -1.60101, 2.15634, -0.210846 )
 
 [node name="BoneAttachment10" parent="Drone/Armature/Skeleton" index="9"]
-transform = Transform( 0.996882, 0.00638949, 0.0786451, 0.0783541, -0.19765, -0.977136, 0.00930082, 0.980252, -0.197534, -0.409186, -0.433468, 2.50209 )
+transform = Transform( 0.999925, 0.00170935, 0.0121501, 0.0121701, -0.0263294, -0.999756, -0.000973535, 1.42648, -0.0184678, -3.72529e-09, -0.806309, 0.76698 )
 
 [node name="BoneAttachment11" parent="Drone/Armature/Skeleton" index="10"]
-transform = Transform( 0.996882, 0.00638949, 0.0786451, 0.0783541, -0.19765, -0.977136, 0.00930082, 0.980252, -0.197534, -0.409186, -0.433468, 2.50209 )
+transform = Transform( 0.999925, 0.00170935, 0.0121501, 0.0121701, -0.0263294, -0.999756, -0.000973535, 1.42648, -0.0184678, -3.72529e-09, -0.806309, 0.76698 )
 
 [node name="BoneAttachment12" parent="Drone/Armature/Skeleton" index="11"]
-transform = Transform( 0.996882, 0.00638949, 0.0786451, 0.0783541, -0.19765, -0.977136, 0.00930082, 0.980252, -0.197534, -0.409186, -0.433468, 2.50209 )
+transform = Transform( 0.999925, 0.00170935, 0.0121501, 0.0121701, -0.0263294, -0.999756, -0.000973535, 1.42648, -0.0184678, -3.72529e-09, -0.806309, 0.76698 )
 
 [node name="BoneAttachment13" parent="Drone/Armature/Skeleton" index="12"]
-transform = Transform( 0.997646, 0.0631441, 0.0267235, 0.067569, -0.971619, -0.226697, 0.0116505, 0.227969, -0.973599, -0.521798, 1.29934, 2.09553 )
+transform = Transform( 0.999939, -0.0110628, -0.000177947, -0.0100256, -0.899138, -0.43755, 0.0046806, 0.437525, -0.899194, 0.0197297, 0.797235, -0.0133125 )
 
 [node name="BoneAttachment14" parent="Drone/Armature/Skeleton" index="13"]
-transform = Transform( 0.997646, 0.0631441, 0.0267235, 0.067569, -0.971619, -0.226697, 0.0116505, 0.227969, -0.973599, -0.521798, 1.29934, 2.09553 )
+transform = Transform( 0.999939, -0.0110628, -0.000177947, -0.0100256, -0.899138, -0.43755, 0.0046806, 0.437525, -0.899194, 0.0197297, 0.797235, -0.0133125 )
 
 [node name="BoneAttachment15" parent="Drone/Armature/Skeleton" index="14"]
-transform = Transform( 0.997646, 0.0631441, 0.0267235, 0.067569, -0.971619, -0.226697, 0.0116505, 0.227969, -0.973599, -0.521798, 1.29934, 2.09553 )
+transform = Transform( 0.999939, -0.0110628, -0.000177947, -0.0100256, -0.899138, -0.43755, 0.0046806, 0.437525, -0.899194, 0.0197297, 0.797235, -0.0133125 )
 
 [node name="BoneAttachment16" parent="Drone/Armature/Skeleton" index="15"]
-transform = Transform( -0.00716627, 0.084192, -0.996424, 0.128023, -0.988172, -0.0844154, -0.991745, -0.12817, -0.00369696, -0.677277, 3.12422, 2.33222 )
+transform = Transform( -0.00633705, 0.00530991, -0.999966, -0.0940649, -0.995555, -0.0046903, -0.995546, 0.094032, 0.00680839, 0.00992381, 2.63575, -0.186963 )
 
 [node name="BoneAttachment17" parent="Drone/Armature/Skeleton" index="16"]
-transform = Transform( -0.00716627, 0.084192, -0.996424, 0.128023, -0.988172, -0.0844154, -0.991745, -0.12817, -0.00369696, -0.677277, 3.12422, 2.33222 )
+transform = Transform( -0.00633705, 0.00530991, -0.999966, -0.0940649, -0.995555, -0.0046903, -0.995546, 0.094032, 0.00680839, 0.00992381, 2.63575, -0.186963 )
 
 [node name="BoneAttachment18" parent="Drone/Armature/Skeleton" index="17"]
-transform = Transform( -0.00716627, 0.084192, -0.996424, 0.128023, -0.988172, -0.0844154, -0.991745, -0.12817, -0.00369696, -0.677277, 3.12422, 2.33222 )
+transform = Transform( -0.00633705, 0.00530991, -0.999966, -0.0940649, -0.995555, -0.0046903, -0.995546, 0.094032, 0.00680839, 0.00992381, 2.63575, -0.186963 )
 
 [node name="BoneAttachment19" parent="Drone/Armature/Skeleton" index="18"]
-transform = Transform( -0.00716627, 0.084192, -0.996424, 0.128023, -0.988172, -0.0844154, -0.991745, -0.12817, -0.00369696, -0.677277, 3.12422, 2.33222 )
+transform = Transform( -0.00633705, 0.00530991, -0.999966, -0.0940649, -0.995555, -0.0046903, -0.995546, 0.094032, 0.00680839, 0.00992381, 2.63575, -0.186963 )
 
 [node name="BoneAttachment20" parent="Drone/Armature/Skeleton" index="19"]
-transform = Transform( -0.00716627, 0.084192, -0.996424, 0.128023, -0.988172, -0.0844154, -0.991745, -0.12817, -0.00369696, -0.677277, 3.12422, 2.33222 )
+transform = Transform( -0.00633705, 0.00530991, -0.999966, -0.0940649, -0.995555, -0.0046903, -0.995546, 0.094032, 0.00680839, 0.00992381, 2.63575, -0.186963 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0231106, 0.19042 )
@@ -206,6 +290,17 @@ anims/Fire = SubResource( 4 )
 anims/Forward = SubResource( 8 )
 anims/Hit = SubResource( 2 )
 anims/Idle = SubResource( 3 )
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource( 3 )
+unit_size = 10.0
+
+[node name="Idle" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource( 5 )
+unit_db = 5.0
+unit_size = 10.0
+max_db = 6.0
+autoplay = true
 
 [node name="GunBarrel" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0717295, -0.799683 )

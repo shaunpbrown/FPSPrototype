@@ -4,6 +4,8 @@ public class Gun : Spatial
 {
 	[Export]
 	public PackedScene Rocket;
+	[Export]
+	public PackedScene BulletSplashScene;
 	public GunStats GunStats = new GunStats();
 	public GunMods GunMods;
 
@@ -24,8 +26,7 @@ public class Gun : Spatial
 		Bullet.InitializePool(bullet);
 		bullet.Hide();
 
-		var bulletSplash = GetNode<CPUParticles>("BulletSplash") as BulletSplash;
-		BulletSplash.InitializePool(bulletSplash);
+		BulletSplash.InitializePool(this, BulletSplashScene);
 
 		var bulletHole = GetNode<Spatial>("BulletHole") as BulletHole;
 		BulletHole.InitializePool(bulletHole);

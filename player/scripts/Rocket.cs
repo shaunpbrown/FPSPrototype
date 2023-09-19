@@ -61,6 +61,8 @@ public class Rocket : Spatial
                     var particles2 = GetNode<CPUParticles>("Explosion/CPUParticles");
                     particles2.Emitting = true;
                     Target.Destroy();
+                    var explosionAudio = GetNode<AudioStreamPlayer3D>("ExplosionStream");
+                    explosionAudio.Play();
                 }
             }
             catch
@@ -84,5 +86,7 @@ public class Rocket : Spatial
         NodeHelper.ReparentNode(this, main);
         _smokeParticles.Emitting = true;
         _currentState = State.Up;
+        var audioStreamPlayer = GetNode<AudioStreamPlayer3D>("AudioStreamPlayer3D");
+        audioStreamPlayer.Play();
     }
 }

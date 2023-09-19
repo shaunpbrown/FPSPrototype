@@ -20,6 +20,7 @@ public class Player : KinematicBody
 	private Texture _crosshairTexture;
 	private float _hitMarkerTimer;
 	private bool _isTitleSreenOpen = true;
+	private AudioStreamPlayer _hitAudioStreamPlayer;
 
 	public Player() : base()
 	{
@@ -37,6 +38,7 @@ public class Player : KinematicBody
 		_crosshairTexture = _crosshair.Texture;
 		_hitMarkerTexture = GD.Load<Texture>("res://player/crosshair_simple_hitconfirm.png");
 		Input.MouseMode = Input.MouseModeEnum.Captured;
+		_hitAudioStreamPlayer = GetNode<AudioStreamPlayer>("HitAudioStream");
 	}
 
 	public override void _Input(InputEvent @event)
@@ -159,6 +161,8 @@ public class Player : KinematicBody
 	{
 		_crosshair.Texture = _hitMarkerTexture;
 		_hitMarkerTimer = 0.1f;
+		_hitAudioStreamPlayer.PitchScale = (float)GD.RandRange(0.8f, 1.2f);
+		_hitAudioStreamPlayer.Play();
 	}
 
 	public void SetInteractText(string text)

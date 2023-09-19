@@ -1,9 +1,11 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://player/guns/Metal.material" type="Material" id=1]
 [ext_resource path="res://player/scripts/Rocket.cs" type="Script" id=2]
 [ext_resource path="res://player/guns/Light Grey.material" type="Material" id=3]
 [ext_resource path="res://player/guns/Dark Grey.material" type="Material" id=4]
+[ext_resource path="res://assets/sounds/rocket.wav" type="AudioStream" id=5]
+[ext_resource path="res://assets/sounds/explosion.wav" type="AudioStream" id=6]
 
 [sub_resource type="ArrayMesh" id=1]
 resource_name = "rocket_Cylinder005"
@@ -128,3 +130,13 @@ emission_shape = 1
 emission_sphere_radius = 1.0
 gravity = Vector3( 0, 0, 0 )
 scale_amount_curve = SubResource( 5 )
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource( 5 )
+unit_db = 6.0
+
+[node name="ExplosionStream" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource( 6 )
+unit_db = 8.0
+unit_size = 30.0
+max_db = 6.0
